@@ -1,0 +1,83 @@
+Basics:
+-------
+GET    /users
+GET    /users/id
+POST   /users
+PUT    /users/id
+PATCH  /users/id
+DELETE /users/id
+
+Conditions:
+-----------
+" " → ==
+lt → <
+lte → <=
+gt → >
+gte → >=
+ne → !=
+
+example:
+GET /posts?views_gt=9000
+
+
+Range:
+-----
+start
+end
+limit
+
+example:
+GET /posts?_start=10&_end=20
+GET /posts?_start=10&_limit=10
+
+
+Paginate:
+--------
+page
+per_page (default = 10)
+
+example:
+GET /posts?_page=1&_per_page=25
+
+Sort:
+-----
+_sort=f1,f2
+
+example:
+GET /posts?_sort=id,-views
+
+Nested and array fields:
+------------------------
+x.y.z...
+x.y.z[i]...
+
+example:
+GET /foo?a.b=bar
+GET /foo?x.y_lt=100
+GET /foo?arr[0]=bar
+
+Embed:
+------
+GET /posts?_embed=comments
+GET /comments?_embed=post
+
+
+Delete:
+-------
+DELETE /posts/1
+DELETE /posts/1?_dependent=comments
+
+
+
+========================
+PRIMERI ADVANCED QUERIJA:
+========================
+http://localhost:8002/users?_embed=projects - Get users with their projects (Fetch All Projects for Users)
+http://localhost:8002/clients?_embed=projects - Get all clients with their projects (Fetch All Projects for Clients)
+
+http://localhost:8002/users/1?_embed=projects - Get one user and its coresponding Projects
+
+http://localhost:8002/projects?_expand=user - Get projects user data 
+http://localhost:8002/projects?_expand=user&_expand=client - Get project data and embed user and project assosiated with this project 
+
+http://localhost:8002/workEntries?_expand=user&_expand=project&_expand=client - Get all workEntries with embeded data for all entities
