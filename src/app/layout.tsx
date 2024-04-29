@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/vegait.ico" sizes="any" />
+        <link rel="stylesheet" href="../css/styles.css" />
       </head>
       <body>{children}</body>
     </html>
