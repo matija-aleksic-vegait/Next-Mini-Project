@@ -602,16 +602,43 @@ ul {
 /*# sourceMappingURL=style.css.map */
 
 
-#project1:hover h4 {
-  color: white;
+
+/* KOMENTARI ZA KSENIJU */
+/* ==================== */
+
+/* Volio bi da mogu samo ovako kad mi treba nesto jednostavno npr. da align text na sredinu da sa jednom kalsom mogu to da uradim
+da ne pisem custom svoje */
+.text-align-center{
+  text-align: center;
 }
 
+/* Marginu mozda da imam da dodam klasu npr.
+ m-0 = margin : 0;
+ m-1 = margin: 0.5rem; na primer;
+ m-2 = margin: 1rem;
+
+ mozda i ove 
+ ml-0 = margin-left: 0;
+ mr-0 = margin-right: 0;
+ mt-0 = margin-top: 0;
+ mb-0 = margin-bottom: 0;
+   */
 .loading-status{
-  text-align: center;
   font-size: 2rem;
   margin: 20px;
 }
 
+/* kul bi bilo da imam ovako osnove boje (crvenu = errori, zelenu za potvrdne response poruke,...) */
 .text-red{
   color: red;
+}
+
+/* Mozda za ove filtere Alphabet  i mozda za paginaciju bi fino bilo da  */
+.application-content__alphabet__letter:hover {
+  background-color: yellow;
+}
+
+/* Kada Alphabet slova koja nisu pronadjena da mogu jednostavno da im isljucim hover efekat */
+.pointer-events-disable{
+  pointer-events: none;
 }

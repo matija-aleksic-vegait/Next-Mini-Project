@@ -48,21 +48,21 @@
   "projects": [
     {
       "id": "1",
-      "name": "Name1",
+      "name": "AName1",
       "description": "Description1",
       "userId": "1",
       "clientId": "2"
     },
     {
       "id": "2",
-      "name": "Name2",
+      "name": "CName2",
       "description": "Description2",
       "userId": "1",
       "clientId": "2"
     },
     {
       "id": "3",
-      "name": "Name3",
+      "name": "EName3",
       "description": "Description3",
       "userId": "2",
       "clientId": "3"

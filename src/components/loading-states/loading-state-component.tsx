@@ -1,5 +1,5 @@
 function LoadingStateComponent() {
-  return <p className="loading-status">Loading...</p>;
+  return <p className="loading-status text-align-center">Loading...</p>;
 }
 
 export default LoadingStateComponent;
