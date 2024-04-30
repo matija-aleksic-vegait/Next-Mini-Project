@@ -1,4 +1,3 @@
-
 {
   "users": [
     {
@@ -51,21 +50,21 @@
       "id": "1",
       "name": "Name1",
       "description": "Description1",
-      "userId" : "1",
+      "userId": "1",
       "clientId": "2"
     },
     {
       "id": "2",
       "name": "Name2",
       "description": "Description2",
-      "userId" : "1",
+      "userId": "1",
       "clientId": "2"
     },
     {
       "id": "3",
       "name": "Name3",
       "description": "Description3",
-      "userId" : "2",
+      "userId": "2",
       "clientId": "3"
     }
   ],
@@ -77,8 +76,8 @@
       "overtime": 0,
       "description": "Description1",
       "clientId": "2",
-      "projectId" : "1",
-      "userId" : "1"
+      "projectId": "1",
+      "userId": "1"
     },
     {
       "id": "2",
@@ -87,8 +86,8 @@
       "overtime": 0,
       "description": "Description2",
       "clientId": "2",
-      "projectId" : "2",
-      "userId" : "1"
+      "projectId": "2",
+      "userId": "1"
     },
     {
       "id": "3",
@@ -97,19 +96,19 @@
       "overtime": 0,
       "description": "Description3",
       "clientId": "3",
-      "projectId" : "3",
-      "userId" : "2"
+      "projectId": "3",
+      "userId": "2"
     }
   ],
 
   "countries": [
-    {"name": "Serbia"},
-    {"name": "Montenegro"},
-    {"name": "BosniaAndHerzegovina"}
+    { "name": "Serbia" },
+    { "name": "Montenegro" },
+    { "name": "BosniaAndHerzegovina" }
   ],
 
   "roles": [
-    {"id": "1", "name": "admin"},
-    {"id": "2", "name": "worker"}
+    { "id": "1", "name": "admin" },
+    { "id": "2", "name": "worker" }
   ]
 }

@@ -7,27 +7,39 @@ import NotFound from "@/app/not-found";
 import Pagination from "@/components/navigation/pagination";
 import AlphabetFilter from "@/components/navigation/alphabet-filter";
 
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState, store } from "../../../redux/store";
+import { fetchProjectsAsync } from "@/redux/state/projectsSlice";
+import { LoadingStateEnum } from "@/utils/helpers/LoadingStateEnum";
+import LoadingStateComponent from "@/components/loading-states/loading-state-component";
+import EmptyStateComponent from "@/components/loading-states/empty-state-component";
+import ErrorStateComponent from "@/components/loading-states/error-state-component";
+
 function ProjectsTable() {
-  const [, setError] = useState();
-  const [projects, setProjects] = useState<Array<any>>([]);
+  const projects = useSelector(
+    (state: RootState) => state.projectsStore.projects
+  );
+  const loadingState = useSelector(
+    (state: RootState) => state.projectsStore.loadingState
+  );
+  const errorMessage = useSelector(
+    (state: RootState) => state.projectsStore.errorMessage
+  );
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    fetchProjects();
+    dispatch(fetchProjectsAsync());
   }, []);
 
-  const fetchProjects = async () =>
-    await ProjectsService.getAllProjectsForTable(1, 10)
-      .then((response: Array<any>) => {
-        if (response.length == 0) NotFound();
-        setProjects(response);
-      })
-      .catch((error) => {
-        setProjects(() => {
-          throw error.message;
-        });
-        // throw new Error(error.message);
-      });
+  // console.log(projects);
+  // console.log(LoadingStateEnum[loadingState]);
+  // console.log(errorMessage);
 
+  if (loadingState === LoadingStateEnum.loading) return LoadingStateComponent();
+  if (loadingState === LoadingStateEnum.empty)
+    return EmptyStateComponent({ entitiesName: "Projects" });
+  if (loadingState === LoadingStateEnum.failure)
+    return ErrorStateComponent({ errorMessage: errorMessage });
   return (
     <>
       <AlphabetFilter />

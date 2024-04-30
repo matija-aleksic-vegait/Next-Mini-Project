@@ -605,3 +605,13 @@ ul {
 #project1:hover h4 {
   color: white;
 }
+
+.loading-status{
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px;
+}
+
+.text-red{
+  color: red;
+}
