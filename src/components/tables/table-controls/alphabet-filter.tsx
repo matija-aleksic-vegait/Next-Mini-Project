@@ -21,7 +21,7 @@ function AlphabetFilter({
     dispatch(getAllAlphabetFunction());
   }, []);
 
-  const onCharClick = (char: string) => {
+  const onCharSelect = (char: string) => {
     dispatch(alphabetFilterProjects(char));
   };
 
@@ -40,7 +40,7 @@ function AlphabetFilter({
               }
               aria-label="Select Letter A"
               type="button"
-              onClick={() => onCharClick(char)}
+              onClick={() => onCharSelect(char)}
             >
               {char}
             </button>

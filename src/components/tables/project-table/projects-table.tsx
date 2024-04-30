@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import ProjectCard from "@/components/cards/project-card";
-import Pagination from "@/components/navigation/pagination";
-import AlphabetFilter from "@/components/navigation/alphabet-filter";
+import Pagination from "@/components/tables/table-controls/pagination";
+import AlphabetFilter from "@/components/tables/table-controls/alphabet-filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
@@ -29,11 +29,17 @@ function ProjectsTable() {
   const alphabet = useSelector(
     (state: RootState) => state.projectsStore.alphabet
   );
+  const pageIndex = useSelector(
+    (state: RootState) => state.projectsStore.pageIndex
+  );
+  const totalElementCount = useSelector(
+    (state: RootState) => state.projectsStore.totalElementCount
+  );
 
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(fetchProjectsAsync());
+    dispatch(fetchProjectsAsync(pageIndex));
   }, []);
 
   if (loadingState === LoadingStateEnum.loading) return LoadingStateComponent();
@@ -60,7 +66,7 @@ function ProjectsTable() {
             ))}
         </ul>
       </section>
-      <Pagination />
+      <Pagination pageIndex={pageIndex} totalElementCount={totalElementCount} />
     </>
   );
 }

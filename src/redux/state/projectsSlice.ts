@@ -1,6 +1,7 @@
 import ProjectsService from "@/services/projectsService";
 import { LoadingStateEnum } from "../../utils/constants/loadingStateEnum";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import TableConstants from "@/utils/constants/tableConstants";
 
 //STATE
 interface ProjectsState {
@@ -11,6 +12,9 @@ interface ProjectsState {
 
   alphabet: Array<string>;
   activeLetter: string;
+
+  totalElementCount: number;
+  pageIndex: number;
 }
 
 const initialState: ProjectsState = {
@@ -20,6 +24,8 @@ const initialState: ProjectsState = {
   projectsCache: [],
   alphabet: [],
   activeLetter: "",
+  totalElementCount: 0,
+  pageIndex: 1,
 };
 
 //ACTIONS
@@ -60,11 +66,13 @@ const projectsSlice = createSlice({
       .addCase(
         fetchProjectsAsync.fulfilled,
         (state, action: PayloadAction<any>) => {
-          if (action.payload.length === 0)
+          if (action.payload.data.projects.length === 0)
             state.loadingState = LoadingStateEnum.empty;
           else state.loadingState = LoadingStateEnum.loaded;
-          state.projects = action.payload;
-          state.projectsCache = action.payload;
+          state.projects = action.payload.data.projects;
+          state.projectsCache = action.payload.data.projects;
+          state.totalElementCount = action.payload.data.count;
+          state.pageIndex = action.payload.pageIndex;
         }
       )
       .addCase(fetchProjectsAsync.rejected, (state, action: any) => {
@@ -85,12 +93,18 @@ const projectsSlice = createSlice({
 //ASYNC METHODS
 export const fetchProjectsAsync = createAsyncThunk(
   "projectsSlice/fetchProjects",
-  async () => {
+  async (pageIndex: number) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    return await ProjectsService.getAllProjectsForTable(1, 10)
+    return await ProjectsService.getAllProjectsForTable(
+      pageIndex,
+      TableConstants.elementsPerPage
+    )
       .then((response) => {
-        return response;
+        return {
+          data: response,
+          pageIndex: pageIndex,
+        };
       })
       .catch((error) => {
         throw new Error(error.message);

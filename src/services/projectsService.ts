@@ -11,7 +11,10 @@ export default class ProjectsService {
       MockQueryConstants.getAllProjectsPagination(pageIndex, pageSize)
     )
       .then((response: any) => {
-        return response.data;
+        return {
+          count: response.headers["x-total-count"],
+          projects: response.data,
+        };
       })
       .catch((error) => {
         throw new Error(error.message);

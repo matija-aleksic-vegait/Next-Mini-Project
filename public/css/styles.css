@@ -637,8 +637,15 @@ da ne pisem custom svoje */
 .application-content__alphabet__letter:hover {
   background-color: yellow;
 }
+.application-content__list__pagination__number:hover{
+  background-color: #81817e;
+}
 
 /* Kada Alphabet slova koja nisu pronadjena da mogu jednostavno da im isljucim hover efekat */
 .pointer-events-disable{
   pointer-events: none;
+}
+
+.pointer-default{
+  cursor: default;
 }

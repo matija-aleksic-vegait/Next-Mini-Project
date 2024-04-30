@@ -27,4 +27,8 @@ export default class TableConstants {
     "Y",
     "Z",
   ];
+
+  public static elementsPerPage = 5;
+  public static numOfSideIndexes = 2;
+  public static numOfIndexesAdjacentForDots = 4;
 }
