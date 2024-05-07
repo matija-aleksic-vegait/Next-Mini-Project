@@ -88,6 +88,21 @@ const projectsSlice = createSlice({
         state.projectsCache
       );
     },
+    searchProjectByTitle: (state, action: PayloadAction<string>) => {
+      state.pageIndex = 1;
+      state.activeChar = "";
+
+      var tempProjectList = state.allProjectsCache.filter((project) =>
+        project.name.toLowerCase().includes(action.payload)
+      );
+
+      state.projects = ProjectsUtil.getSetOfProjectsForPage(
+        state.pageIndex,
+        tempProjectList
+      );
+      state.projectsCache = tempProjectList;
+      state.totalElementCount = tempProjectList.length;
+    },
   },
   extraReducers: (builder) => [
     builder
@@ -131,7 +146,7 @@ const projectsSlice = createSlice({
 //ASYNC METHODS
 export const fetchProjectsAsync = createAsyncThunk(
   "projectsSlice/fetchProjects",
-  async (pageIndex: number) => {
+  async () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     return await ProjectsService.getAllProjects().then((response) => {
       return response;
@@ -152,6 +167,6 @@ export const getAllAvailableLettersAsync = createAsyncThunk(
   }
 );
 
-export const { alphabetFilterProjects, changePageIndex } =
+export const { alphabetFilterProjects, changePageIndex, searchProjectByTitle } =
   projectsSlice.actions;
 export default projectsSlice.reducer;

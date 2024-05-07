@@ -3,6 +3,7 @@ import { AppDispatch, RootState } from "@/redux/store";
 import TableConstants from "@/constants/tableConstants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import AlphabetLetter from "./alphabet-letter";
 
 function AlphabetFilter({
   alphabetSelector,
@@ -29,22 +30,13 @@ function AlphabetFilter({
     <section aria-label="Alphabet Filter">
       <ul role="list" className="application-content__alphabet">
         {TableConstants.alphabetList.map((char) => (
-          <li key={char}>
-            <button
-              className={
-                alphabet.includes(char)
-                  ? char.toLowerCase() === activeLetter.toLowerCase()
-                    ? "application-content__alphabet__letter application-content__alphabet__letter--selected"
-                    : "application-content__alphabet__letter"
-                  : "application-content__alphabet__letter application-content__alphabet__letter--disabled pointer-events-disable"
-              }
-              aria-label="Select Letter A"
-              type="button"
-              onClick={() => onCharSelect(char)}
-            >
-              {char}
-            </button>
-          </li>
+          <AlphabetLetter
+            key={char}
+            activeLetter={activeLetter}
+            alphabet={alphabet}
+            char={char}
+            onCharSelect={onCharSelect}
+          />
         ))}
       </ul>
     </section>
