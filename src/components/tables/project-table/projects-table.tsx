@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import ProjectCard from "@/components/cards/project-card";
-import Pagination from "@/components/tables/table-controls/pagination";
-import AlphabetFilter from "@/components/tables/table-controls/alphabet-filter";
+import Pagination from "@/components/navigation/pagination";
+import AlphabetFilter from "@/components/navigation/alphabet-filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../redux/store";
@@ -11,7 +11,7 @@ import {
   fetchProjectsAsync,
   getAllAvailableLettersAsync,
 } from "@/redux/state/projectsSlice";
-import { LoadingStateEnum } from "@/utils/constants/loadingStateEnum";
+import { LoadingStateEnum } from "@/constants/loadingStateEnum";
 import LoadingStateComponent from "@/components/loading-states/loading-state-component";
 import EmptyStateComponent from "@/components/loading-states/empty-state-component";
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
@@ -34,6 +34,9 @@ function ProjectsTable() {
   );
   const totalElementCount = useSelector(
     (state: RootState) => state.projectsStore.totalElementCount
+  );
+  const activeChar = useSelector(
+    (state: RootState) => state.projectsStore.activeChar
   );
 
   const dispatch = useDispatch<AppDispatch>();
@@ -66,7 +69,11 @@ function ProjectsTable() {
             ))}
         </ul>
       </section>
-      <Pagination pageIndex={pageIndex} totalElementCount={totalElementCount} />
+      <Pagination
+        pageIndex={pageIndex}
+        totalElementCount={totalElementCount}
+        activeChar={activeChar}
+      />
     </>
   );
 }

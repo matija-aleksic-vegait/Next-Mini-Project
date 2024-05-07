@@ -1,6 +1,6 @@
 import { alphabetFilterProjects } from "@/redux/state/projectsSlice";
 import { AppDispatch, RootState } from "@/redux/store";
-import TableConstants from "@/utils/constants/tableConstants";
+import TableConstants from "@/constants/tableConstants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -14,7 +14,7 @@ function AlphabetFilter({
   const alphabet = alphabetSelector;
   const dispatch = useDispatch<AppDispatch>();
   const activeLetter = useSelector(
-    (state: RootState) => state.projectsStore.activeLetter
+    (state: RootState) => state.projectsStore.activeChar
   );
 
   useEffect(() => {

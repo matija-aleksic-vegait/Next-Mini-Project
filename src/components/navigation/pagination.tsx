@@ -1,17 +1,24 @@
-import { fetchProjectsAsync } from "@/redux/state/projectsSlice";
+import {
+  changePageIndex,
+  fetchProjectsAsync,
+} from "@/redux/state/projectsSlice";
 import { AppDispatch } from "@/redux/store";
-import TableConstants from "@/utils/constants/tableConstants";
+import TableConstants from "@/constants/tableConstants";
 import { useDispatch } from "react-redux";
-import PaginationNumber from "./pagination-number";
+import PaginationNumber from "../table-controls/pagination-number";
 
 function Pagination({
   pageIndex,
   totalElementCount,
+  activeChar,
 }: {
   pageIndex: number;
   totalElementCount: number;
+  activeChar: string;
 }) {
-  const pageIndexes = new Array(
+  var pageIndexes: Array<number> = [];
+
+  pageIndexes = new Array(
     Math.ceil(totalElementCount / TableConstants.elementsPerPage)
   )
     .fill(null)
@@ -24,7 +31,8 @@ function Pagination({
 
   const onPageIndexSelect = (pageIndex: number) => {
     if (pageIndex > 0 && pageIndex < pageIndexes.length + 3)
-      dispatch(fetchProjectsAsync(pageIndex));
+      dispatch(changePageIndex(pageIndex));
+    // dispatch(fetchProjectsAsync(pageIndex));
   };
 
   return (
@@ -81,11 +89,14 @@ function Pagination({
               </a>
             </li>
           )}
-          <PaginationNumber
-            selectedPageIndex={pageIndex}
-            onPageIndexSelect={onPageIndexSelect}
-            pageIndex={lastIndex!}
-          />
+
+          {lastIndex && (
+            <PaginationNumber
+              selectedPageIndex={pageIndex}
+              onPageIndexSelect={onPageIndexSelect}
+              pageIndex={lastIndex!}
+            />
+          )}
 
           <li onClick={() => onPageIndexSelect(pageIndex + 1)}>
             <a

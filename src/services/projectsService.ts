@@ -1,5 +1,5 @@
-import TableUtil from "@/utils/helpers/tableUtil";
-import MockQueryConstants from "../utils/constants/mockQueriesConstants";
+import TableUtil from "@/utils/tableUtil";
+import MockQueryConstants from "../constants/mockQueriesConstants";
 import AxiosService from "./axiosService";
 
 export default class ProjectsService {
@@ -33,6 +33,16 @@ export default class ProjectsService {
           }
         });
         return foundLetters;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+
+  public static async getAllProjects() {
+    return await AxiosService.get(MockQueryConstants.getAllProjects())
+      .then((response) => {
+        return response.data;
       })
       .catch((error) => {
         throw new Error(error.message);
