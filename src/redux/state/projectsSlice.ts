@@ -189,6 +189,9 @@ const projectsSlice = createSlice({
         createNewProject.fulfilled,
         (state, action: PayloadAction<any>) => {
           state.projects.push(action.payload.data);
+          state.allProjectsCache.push(action.payload.data);
+          state.projectsCache.push(action.payload.data);
+          state.totalElementCount = state.allProjectsCache.length;
           state.isCreateNewModalOpen = false;
         }
       )
@@ -197,16 +200,30 @@ const projectsSlice = createSlice({
           (element) => element.id === action.payload.data.id
         );
         state.projects[foundIndex] = action.payload.data;
+        foundIndex = state.allProjectsCache.findIndex(
+          (element) => element.id === action.payload.data.id
+        );
+        state.allProjectsCache[foundIndex] = action.payload.data;
+        foundIndex = state.projectsCache.findIndex(
+          (element) => element.id === action.payload.data.id
+        );
+        state.projectsCache[foundIndex] = action.payload.data;
+        state.totalElementCount = state.allProjectsCache.length;
         state.isUpdateModalOpen = false;
       })
       .addCase(
         deleteProject.fulfilled,
         (state, action: PayloadAction<string>) => {
-          console.log(action.payload);
-          console.log(typeof action.payload);
           state.projects = state.projects.filter(
             (project) => project.id !== action.payload
           );
+          state.allProjectsCache = state.allProjectsCache.filter(
+            (project) => project.id !== action.payload
+          );
+          state.projectsCache = state.allProjectsCache.filter(
+            (project) => project.id !== action.payload
+          );
+          state.totalElementCount = state.allProjectsCache.length;
           state.isUpdateModalOpen = false;
         }
       ),
