@@ -1,5 +1,6 @@
 import { ValidationConstants } from "@/constants/validationConstants";
 import {
+  createNewProject,
   getAllClientNames,
   getAllUserNames,
   toggleCreateNewModal,
@@ -31,10 +32,8 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
       .optional()
       .min(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MIN)
       .max(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MAX),
-    customer: Yup.string()
-      .required()
-      .oneOf(clientNames, "Please select a customer"),
-    lead: Yup.string().required().oneOf(userNames, "Please select a lead"),
+    clientId: Yup.string().required(),
+    userId: Yup.string().required(),
   });
 
   const {
@@ -47,8 +46,8 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
     defaultValues: {
       name: "",
       description: "",
-      customer: clientNames ? clientNames[0] : "Select Client",
-      lead: userNames ? userNames[0] : "Select Lead",
+      clientId: clientNames.length !== 0 ? clientNames[0].id : "Select Client",
+      userId: userNames.length !== 0 ? userNames[0].id : "Select Lead",
     },
   });
 
@@ -59,9 +58,7 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
 
   const onSubmit = async (data: any) => {
     console.log(data);
-    // await ProjectService.update({ name: data.name, description: data.description, clientName: data.customer, leadId: data.lead, id: project.id })
-    //     .then(() => setErrorMessage(""))
-    //     .catch((error) => { setErrorMessage(UtilService.extractErrorMessages(error.response.data)); });
+    dispatch(createNewProject(data));
   };
 
   return (
@@ -144,22 +141,22 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                     className="input-box__input-field input-box__select"
                     aria-label="Client"
                     defaultValue={
-                      clientNames ? clientNames[0] : "Select Client"
+                      clientNames ? clientNames[0].id : "Select Client"
                     }
-                    {...register("customer")}
+                    {...register("clientId")}
                   >
                     <option value="Select Client" disabled>
                       Select Client
                     </option>
-                    {clientNames.map((name) => (
-                      <option value={name} key={name}>
-                        {name}
+                    {clientNames.map((client) => (
+                      <option value={client.id} key={client.name}>
+                        {client.name}
                       </option>
                     ))}
                   </select>
-                  {errors.customer && (
+                  {errors.clientId && (
                     <span className="validation-error-message">
-                      {errors.customer.message?.toString()}
+                      {errors.clientId.message?.toString()}
                     </span>
                   )}
                 </div>
@@ -169,21 +166,21 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                     id="project-lead"
                     className="input-box__input-field input-box__select"
                     aria-label="Lead"
-                    defaultValue={userNames ? userNames[0] : "Select Lead"}
-                    {...register("lead")}
+                    defaultValue={userNames ? userNames[0].id : "Select Lead"}
+                    {...register("userId")}
                   >
                     <option value="Select Lead" disabled>
                       Select Lead
                     </option>
-                    {userNames.map((name) => (
-                      <option value={name} key={name}>
-                        {name}
+                    {userNames.map((user) => (
+                      <option value={user.id} key={user.name}>
+                        {user.name}
                       </option>
                     ))}
                   </select>
-                  {errors.lead && (
+                  {errors.userId && (
                     <span className="validation-error-message">
-                      {errors.lead.message?.toString()}
+                      {errors.userId.message?.toString()}
                     </span>
                   )}
                 </div>

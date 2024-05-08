@@ -1,33 +1,34 @@
 export default class MockQueryConstants {
+  private static base: string = "http://localhost:8002";
+  public static users: string = this.base + "/users";
+  public static projects: string = this.base + "/projects";
+  public static clients: string = this.base + "/clients";
+  public static workEntries: string = this.base + "/workEntries";
+
+  public static roles: string = this.base + "/roles";
+  public static countries: string = this.base + "/countries";
+
   //User queries
   public static getAllUsers(): string {
-    return "http://localhost:8002/users?_expand=role";
+    return this.users + "?_expand=role";
   }
 
   public static getAllUsersPagination(pageIndex: number, pageSize: number) {
-    return `http://localhost:8002/users?_page=${pageIndex}&_limit=${pageSize}`;
+    return `${this.users}?_page=${pageIndex}&_limit=${pageSize}`;
   }
 
   //Project queries
-  public static getAllProjects(): string {
-    return "http://localhost:8002/projects";
-  }
-
   public static getAllProjectsPagination(pageIndex: number, pageSize: number) {
-    return `http://localhost:8002/projects?_page=${pageIndex}&_limit=${pageSize}`;
+    return `${this.projects}?_page=${pageIndex}&_limit=${pageSize}`;
   }
 
   //Client queries
-  public static getAllClients(): string {
-    return "http://localhost:8002/clients";
-  }
-
   public static getAllClientsPagination(pageIndex: number, pageSize: number) {
-    return `http://localhost:8002/clients?_page=${pageIndex}&_limit=${pageSize}`;
+    return `${this.clients}?_page=${pageIndex}&_limit=${pageSize}`;
   }
 
   public static getAllClientsFetchProjects(): string {
-    return "http://localhost:8002/clients?_embed=projects";
+    return `${this.clients}?_embed=projects`;
   }
 
   //WorkEntry queries
@@ -36,7 +37,7 @@ export default class MockQueryConstants {
     startDate: Date,
     endDate: Date
   ): string {
-    return `http://localhost:8002/workEntries?${this.formUserQuery(
+    return `${this.workEntries}?${this.formUserQuery(
       false,
       userId
     )}${this.formDateGreaterThanEqualQuery(
@@ -52,22 +53,12 @@ export default class MockQueryConstants {
     startDate?: Date,
     endDate?: Date
   ) {
-    return `http://localhost:8002/workEntries?
+    return `${this.workEntries}?
         ${this.formUserQuery(false, userId)}
         ${this.formDateGreaterThanEqualQuery(true, startDate)}
         ${this.formDateLowerThanEqualQuery(true, endDate)}
         ${this.formClientQuery(true, clientId)}
         ${this.formProjectQuery(true, projectId)}`;
-  }
-
-  //Country queries
-  public static getAllCountries(): string {
-    return "http://localhost:8002/countries";
-  }
-
-  //Role queries
-  public static getAllRoles(): string {
-    return "http://localhost:8002/roles";
   }
 
   //HELPER METHODS

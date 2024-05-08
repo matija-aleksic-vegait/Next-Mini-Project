@@ -24,8 +24,8 @@ interface ProjectsState {
   isCreateNewModalOpen: boolean;
   isUpdateModalOpen: boolean;
 
-  userNames: Array<string>;
-  clientNames: Array<string>;
+  userNames: Array<any>;
+  clientNames: Array<any>;
 }
 
 const initialState: ProjectsState = {
@@ -163,12 +163,24 @@ const projectsSlice = createSlice({
           state.alphabet = action.payload;
         }
       )
-      .addCase(getAllUserNames.fulfilled, (state, action: any) => {
-        state.userNames = UserUtil.extractUserNames(action.payload);
-      })
-      .addCase(getAllClientNames.fulfilled, (state, action: any) => {
-        state.clientNames = ClientUtil.extractClientNames(action.payload);
-      }),
+      .addCase(
+        getAllUserNames.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          state.userNames = UserUtil.extractUserNames(action.payload);
+        }
+      )
+      .addCase(
+        getAllClientNames.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          state.clientNames = ClientUtil.extractClientNames(action.payload);
+        }
+      )
+      .addCase(
+        createNewProject.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          console.log(action.payload);
+        }
+      ),
   ],
 });
 
@@ -213,6 +225,19 @@ export const getAllClientNames = createAsyncThunk(
   "projectsSlice/getAllClientNames",
   async () => {
     return await ClientService.getAllClients()
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+);
+
+export const createNewProject = createAsyncThunk(
+  "projectsSlice/createNewProject",
+  async (data: any) => {
+    return await ProjectsService.createNewProject(data)
       .then((response) => {
         return response;
       })

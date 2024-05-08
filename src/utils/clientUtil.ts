@@ -1,7 +1,7 @@
 export default class ClientUtil {
-  public static extractClientNames(clients: Array<any>): Array<string> {
+  public static extractClientNames(clients: Array<any>): Array<any> {
     return clients.map((client) => {
-      return client.name;
+      return { name: client.name, id: client.id };
     });
   }
 }

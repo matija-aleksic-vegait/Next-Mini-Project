@@ -22,7 +22,7 @@ export default class ProjectsService {
   }
 
   public static async getAllProjectsAlphabet() {
-    return await AxiosService.get(MockQueryConstants.getAllProjects())
+    return await AxiosService.get(MockQueryConstants.projects)
       .then((response) => {
         var foundLetters: string[] = [];
         response.data.forEach((element: any) => {
@@ -40,12 +40,22 @@ export default class ProjectsService {
   }
 
   public static async getAllProjects() {
-    return await AxiosService.get(MockQueryConstants.getAllProjects())
+    return await AxiosService.get(MockQueryConstants.projects)
       .then((response) => {
         return response.data;
       })
       .catch((error) => {
         throw new Error(error.message);
       });
+  }
+
+  public static async createNewProject(data: any) {
+    return await AxiosService.post(MockQueryConstants.projects, {
+      id: Date.now().toString(),
+      name: data.name,
+      description: data.description,
+      clientId: data.clientId,
+      userId: data.userId,
+    });
   }
 }

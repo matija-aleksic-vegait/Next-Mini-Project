@@ -2,6 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import projectsReducer from "./state/projectsSlice";
 
 export const store = configureStore({
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false,
+    }),
   reducer: {
     projectsStore: projectsReducer,
   },

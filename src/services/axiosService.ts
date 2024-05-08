@@ -4,8 +4,8 @@ export default class AxiosService {
   public static get(urlPath: string) {
     return axios
       .get(urlPath)
-      .then((res) => {
-        return res;
+      .then((response) => {
+        return response;
       })
       .catch((error) => {
         if (error.message) {
@@ -15,6 +15,17 @@ export default class AxiosService {
         } else {
           throw new Error(error.response);
         }
+      });
+  }
+
+  public static post(urlPath: string, data: any) {
+    return axios
+      .post(urlPath, data)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
       });
   }
 }
