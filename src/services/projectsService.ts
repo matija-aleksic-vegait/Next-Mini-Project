@@ -67,4 +67,8 @@ export default class ProjectsService {
       userId: data.user,
     });
   }
+
+  public static async deleteProject(id: string) {
+    return await AxiosService.delete(MockQueryConstants.projects + `/${id}`);
+  }
 }

@@ -4,6 +4,7 @@ import { ValidationConstants } from "@/constants/validationConstants";
 import {
   closeModal,
   createNewProject,
+  deleteProject,
   toggleCreateNewModal,
   updateProject,
 } from "@/redux/state/projectsSlice";
@@ -30,6 +31,8 @@ function ProjectModal({
   const clientNames = useSelector(
     (state: RootState) => state.projectsStore.clientNames
   );
+
+  console.log(project);
 
   const schema = Yup.object().shape({
     name: Yup.string()
@@ -226,14 +229,26 @@ function ProjectModal({
                     Save
                   </button>
 
-                  <button
-                    type="reset"
-                    className="btn btn--secondary gray-hover"
-                    aria-label="Reset Form"
-                    onClick={() => reset()}
-                  >
-                    Reset
-                  </button>
+                  {!isUpdate && (
+                    <button
+                      type="reset"
+                      className="btn btn--secondary gray-hover"
+                      aria-label="Reset Form"
+                      onClick={() => reset()}
+                    >
+                      Reset
+                    </button>
+                  )}
+                  {isUpdate && (
+                    <button
+                      type="button"
+                      className="btn btn--secondary btn--secondary--danger gray-hover"
+                      aria-label="Delete Project"
+                      onClick={() => dispatch(deleteProject(project.id))}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               </form>
             </div>

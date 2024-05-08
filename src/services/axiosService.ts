@@ -39,4 +39,15 @@ export default class AxiosService {
         throw new Error(error.message);
       });
   }
+
+  public static delete(urlPath: string) {
+    return axios
+      .delete(urlPath)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
 }

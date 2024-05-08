@@ -198,7 +198,18 @@ const projectsSlice = createSlice({
         );
         state.projects[foundIndex] = action.payload.data;
         state.isUpdateModalOpen = false;
-      }),
+      })
+      .addCase(
+        deleteProject.fulfilled,
+        (state, action: PayloadAction<string>) => {
+          console.log(action.payload);
+          console.log(typeof action.payload);
+          state.projects = state.projects.filter(
+            (project) => project.id !== action.payload
+          );
+          state.isUpdateModalOpen = false;
+        }
+      ),
   ],
 });
 
@@ -271,6 +282,19 @@ export const updateProject = createAsyncThunk(
     return await ProjectsService.updateProject(data.data, data.id)
       .then((response) => {
         return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+);
+
+export const deleteProject = createAsyncThunk(
+  "projectsSlice/deleteProject",
+  async (id: string) => {
+    return await ProjectsService.deleteProject(id)
+      .then(() => {
+        return id;
       })
       .catch((error) => {
         throw new Error(error.message);

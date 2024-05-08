@@ -47,6 +47,20 @@
   ],
   "projects": [
     {
+      "id": "1",
+      "name": "Astral",
+      "description": "Description1",
+      "userId": "1",
+      "clientId": "2"
+    },
+    {
+      "id": "2",
+      "name": "Center",
+      "description": "Description2",
+      "userId": "2",
+      "clientId": "1"
+    },
+    {
       "id": "3",
       "name": "Exo",
       "description": "Description3",
@@ -181,6 +195,16 @@
     }
   ],
   "workEntries": [
+    {
+      "id": "2",
+      "date": "2024-04-22T18:25:43.511Z",
+      "time": 8,
+      "overtime": 0,
+      "description": "Description2",
+      "clientId": "2",
+      "projectId": "2",
+      "userId": "1"
+    },
     {
       "id": "3",
       "date": "2024-04-23T18:25:43.511Z",
