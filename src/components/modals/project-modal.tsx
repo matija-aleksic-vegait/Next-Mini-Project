@@ -1,18 +1,27 @@
+"use client";
+
 import { ValidationConstants } from "@/constants/validationConstants";
 import {
+  closeModal,
   createNewProject,
-  getAllClientNames,
-  getAllUserNames,
   toggleCreateNewModal,
+  updateProject,
 } from "@/redux/state/projectsSlice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect } from "react";
 
-function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
+function ProjectModal({
+  isOpenModal,
+  isUpdate,
+  project,
+}: {
+  isOpenModal: boolean;
+  isUpdate: boolean;
+  project?: any;
+}) {
   const dispatch = useDispatch<AppDispatch>();
 
   const userNames = useSelector(
@@ -32,8 +41,8 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
       .optional()
       .min(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MIN)
       .max(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MAX),
-    clientId: Yup.string().required(),
-    userId: Yup.string().required(),
+    client: Yup.string().required(),
+    user: Yup.string().required(),
   });
 
   const {
@@ -44,21 +53,24 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
   } = useForm({
     resolver: yupResolver(schema),
     defaultValues: {
-      name: "",
-      description: "",
-      clientId: clientNames.length !== 0 ? clientNames[0].id : "Select Client",
-      userId: userNames.length !== 0 ? userNames[0].id : "Select Lead",
+      name: project ? project.name : "",
+      description: project ? project.description : "",
+      client: project
+        ? project.clientId
+        : clientNames.length !== 0
+        ? clientNames[0].id
+        : "Select Client",
+      user: project
+        ? project.userId
+        : userNames.length !== 0
+        ? userNames[0].id
+        : "Select Lead",
     },
   });
 
-  useEffect(() => {
-    dispatch(getAllUserNames());
-    dispatch(getAllClientNames());
-  }, []);
-
   const onSubmit = async (data: any) => {
-    console.log(data);
-    dispatch(createNewProject(data));
+    if (isUpdate) dispatch(updateProject({ data: data, id: project.id }));
+    else dispatch(createNewProject(data));
   };
 
   return (
@@ -70,7 +82,7 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
               id="create-project-modal-overlay"
               className="modal-overlay modal-overlay--background-shadow"
               onClick={() => {
-                dispatch(toggleCreateNewModal());
+                dispatch(closeModal());
               }}
             ></div>
             <div
@@ -80,12 +92,23 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
               aria-labelledby="modal-title"
             >
               <header className="modal__header">
-                <h1
-                  id="modal-title"
-                  className="modal__header__title heading-lg"
-                >
-                  New project
-                </h1>
+                {!isUpdate && (
+                  <h1
+                    id="modal-title"
+                    className="modal__header__title heading-lg"
+                  >
+                    New project
+                  </h1>
+                )}
+                {isUpdate && (
+                  <h1
+                    id="modal-title"
+                    className="modal__header__title heading-lg"
+                  >
+                    Project
+                  </h1>
+                )}
+
                 <button
                   className="modal__header__close gray-hover"
                   type="button"
@@ -141,9 +164,13 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                     className="input-box__input-field input-box__select"
                     aria-label="Client"
                     defaultValue={
-                      clientNames ? clientNames[0].id : "Select Client"
+                      project
+                        ? project.clientId
+                        : clientNames.length !== 0
+                        ? clientNames[0].id
+                        : "Select Client"
                     }
-                    {...register("clientId")}
+                    {...register("client")}
                   >
                     <option value="Select Client" disabled>
                       Select Client
@@ -154,9 +181,9 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                       </option>
                     ))}
                   </select>
-                  {errors.clientId && (
+                  {errors.client && (
                     <span className="validation-error-message">
-                      {errors.clientId.message?.toString()}
+                      {errors.client.message?.toString()}
                     </span>
                   )}
                 </div>
@@ -166,8 +193,14 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                     id="project-lead"
                     className="input-box__input-field input-box__select"
                     aria-label="Lead"
-                    defaultValue={userNames ? userNames[0].id : "Select Lead"}
-                    {...register("userId")}
+                    defaultValue={
+                      project
+                        ? project.userId
+                        : userNames.length !== 0
+                        ? userNames[0].id
+                        : "Select Lead"
+                    }
+                    {...register("user")}
                   >
                     <option value="Select Lead" disabled>
                       Select Lead
@@ -178,9 +211,9 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                       </option>
                     ))}
                   </select>
-                  {errors.userId && (
+                  {errors.user && (
                     <span className="validation-error-message">
-                      {errors.userId.message?.toString()}
+                      {errors.user.message?.toString()}
                     </span>
                   )}
                 </div>
@@ -192,6 +225,7 @@ function ProjectModal({ isOpenModal }: { isOpenModal: boolean }) {
                   >
                     Save
                   </button>
+
                   <button
                     type="reset"
                     className="btn btn--secondary gray-hover"

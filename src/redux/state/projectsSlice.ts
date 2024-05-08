@@ -23,6 +23,7 @@ interface ProjectsState {
 
   isCreateNewModalOpen: boolean;
   isUpdateModalOpen: boolean;
+  updateModalProject?: any;
 
   userNames: Array<any>;
   clientNames: Array<any>;
@@ -34,12 +35,16 @@ const initialState: ProjectsState = {
   projects: [],
   projectsCache: [],
   allProjectsCache: [],
+
   alphabet: [],
   activeChar: "",
+
   totalElementCount: 0,
   pageIndex: 1,
+
   isCreateNewModalOpen: false,
   isUpdateModalOpen: false,
+  updateModalProject: null,
 
   userNames: [],
   clientNames: [],
@@ -119,12 +124,17 @@ const projectsSlice = createSlice({
       state.totalElementCount = tempProjectList.length;
     },
     toggleCreateNewModal: (state) => {
-      state.isCreateNewModalOpen = !state.isCreateNewModalOpen;
       state.isUpdateModalOpen = false;
+      state.isCreateNewModalOpen = !state.isCreateNewModalOpen;
     },
-    toggleUpdateModal: (state) => {
-      state.isUpdateModalOpen = !state.isUpdateModalOpen;
+    toggleUpdateModal: (state, action: PayloadAction<string>) => {
+      state.updateModalProject = action.payload;
       state.isCreateNewModalOpen = false;
+      state.isUpdateModalOpen = !state.isUpdateModalOpen;
+    },
+    closeModal: (state) => {
+      state.isCreateNewModalOpen = false;
+      state.isUpdateModalOpen = false;
     },
   },
   extraReducers: (builder) => [
@@ -178,9 +188,17 @@ const projectsSlice = createSlice({
       .addCase(
         createNewProject.fulfilled,
         (state, action: PayloadAction<any>) => {
-          console.log(action.payload);
+          state.projects.push(action.payload.data);
+          state.isCreateNewModalOpen = false;
         }
-      ),
+      )
+      .addCase(updateProject.fulfilled, (state, action: PayloadAction<any>) => {
+        var foundIndex = state.projects.findIndex(
+          (element) => element.id === action.payload.data.id
+        );
+        state.projects[foundIndex] = action.payload.data;
+        state.isUpdateModalOpen = false;
+      }),
   ],
 });
 
@@ -247,11 +265,25 @@ export const createNewProject = createAsyncThunk(
   }
 );
 
+export const updateProject = createAsyncThunk(
+  "projectsSlice/updateProject",
+  async (data: any) => {
+    return await ProjectsService.updateProject(data.data, data.id)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+);
+
 export const {
   alphabetFilterProjects,
   changePageIndex,
   searchProjectByTitle,
   toggleCreateNewModal,
   toggleUpdateModal,
+  closeModal,
 } = projectsSlice.actions;
 export default projectsSlice.reducer;

@@ -10,8 +10,11 @@ import { AppDispatch, RootState } from "../../../../redux/store";
 import {
   fetchProjectsAsync,
   getAllAvailableLettersAsync,
+  getAllClientNames,
+  getAllUserNames,
   searchProjectByTitle,
   toggleCreateNewModal,
+  toggleUpdateModal,
 } from "@/redux/state/projectsSlice";
 import { LoadingStateEnum } from "@/constants/loadingStateEnum";
 import LoadingStateComponent from "@/components/loading-states/loading-state-component";
@@ -48,6 +51,9 @@ function ProjectsTable() {
   const isUpdateModalOpen = useSelector(
     (state: RootState) => state.projectsStore.isUpdateModalOpen
   );
+  const updateProject = useSelector(
+    (state: RootState) => state.projectsStore.updateModalProject
+  );
 
   var title = "Projects";
   var description =
@@ -55,6 +61,10 @@ function ProjectsTable() {
 
   const newProjectModal = () => {
     dispatch(toggleCreateNewModal());
+  };
+
+  const updateProjectModal = (project: any) => {
+    dispatch(toggleUpdateModal(project));
   };
 
   const searchProjects = (searchString: string) => {
@@ -65,6 +75,8 @@ function ProjectsTable() {
 
   useEffect(() => {
     dispatch(fetchProjectsAsync());
+    dispatch(getAllUserNames());
+    dispatch(getAllClientNames());
   }, []);
 
   if (loadingState === LoadingStateEnum.loading) return LoadingStateComponent();
@@ -88,12 +100,13 @@ function ProjectsTable() {
         <ul role="list" className="application-content__list">
           {projects &&
             projects.map((project: any) => (
-              <ProjectCard
-                key={project.id}
-                id={project.id}
-                description={project.description}
-                name={project.name}
-              />
+              <div key={project.id} onClick={() => updateProjectModal(project)}>
+                <ProjectCard
+                  id={project.id}
+                  description={project.description}
+                  name={project.name}
+                />
+              </div>
             ))}
         </ul>
       </section>
@@ -103,7 +116,21 @@ function ProjectsTable() {
         activeChar={activeChar}
       />
 
-      <ProjectModal isOpenModal={isCreateNewModalOpen} />
+      {isCreateNewModalOpen && (
+        <ProjectModal
+          isOpenModal={isCreateNewModalOpen}
+          isUpdate={false}
+          project={undefined}
+        />
+      )}
+
+      {isUpdateModalOpen && (
+        <ProjectModal
+          isOpenModal={isUpdateModalOpen}
+          isUpdate={true}
+          project={updateProject}
+        />
+      )}
     </>
   );
 }

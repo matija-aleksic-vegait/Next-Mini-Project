@@ -28,4 +28,15 @@ export default class AxiosService {
         throw new Error(error.message);
       });
   }
+
+  public static put(urlPath: string, data: any) {
+    return axios
+      .put(urlPath, data)
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
 }

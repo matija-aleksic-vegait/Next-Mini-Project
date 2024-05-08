@@ -40,7 +40,7 @@ export default class ProjectsService {
   }
 
   public static async getAllProjects() {
-    return await AxiosService.get(MockQueryConstants.projects)
+    return await AxiosService.get(MockQueryConstants.projects + "?_sort=name")
       .then((response) => {
         return response.data;
       })
@@ -54,8 +54,17 @@ export default class ProjectsService {
       id: Date.now().toString(),
       name: data.name,
       description: data.description,
-      clientId: data.clientId,
-      userId: data.userId,
+      clientId: data.client,
+      userId: data.user,
+    });
+  }
+
+  public static async updateProject(data: any, id: string) {
+    return await AxiosService.put(MockQueryConstants.projects + `/${id}`, {
+      name: data.name,
+      description: data.description,
+      clientId: data.client,
+      userId: data.user,
     });
   }
 }
