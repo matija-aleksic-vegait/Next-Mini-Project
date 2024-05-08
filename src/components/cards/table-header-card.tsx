@@ -17,7 +17,7 @@ function TableHeaderCard({
         <div className="heading-lg">{title}</div>
         <p className="text-lg">{description}</p>
         <button
-          className="btn btn--secondary btn--secondary--icon-left js-toggle-create-modal"
+          className="btn btn--secondary btn--secondary--icon-left js-toggle-create-modal gray-hover"
           type="button"
           aria-label={`New ${title.slice(0, -1)}`}
           onClick={() => newElementFunction()}

@@ -11,12 +11,14 @@ import {
   fetchProjectsAsync,
   getAllAvailableLettersAsync,
   searchProjectByTitle,
+  toggleCreateNewModal,
 } from "@/redux/state/projectsSlice";
 import { LoadingStateEnum } from "@/constants/loadingStateEnum";
 import LoadingStateComponent from "@/components/loading-states/loading-state-component";
 import EmptyStateComponent from "@/components/loading-states/empty-state-component";
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
 import TableHeaderCard from "@/components/cards/table-header-card";
+import ProjectModal from "@/components/modals/project-modal";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -40,13 +42,19 @@ function ProjectsTable() {
   const activeChar = useSelector(
     (state: RootState) => state.projectsStore.activeChar
   );
+  const isCreateNewModalOpen = useSelector(
+    (state: RootState) => state.projectsStore.isCreateNewModalOpen
+  );
+  const isUpdateModalOpen = useSelector(
+    (state: RootState) => state.projectsStore.isUpdateModalOpen
+  );
 
   var title = "Projects";
   var description =
     "Here, you have full control over your project database, empowering you to efficiently organize and maintain your projects.";
 
   const newProjectModal = () => {
-    console.log("New project modal");
+    dispatch(toggleCreateNewModal());
   };
 
   const searchProjects = (searchString: string) => {
@@ -94,6 +102,8 @@ function ProjectsTable() {
         totalElementCount={totalElementCount}
         activeChar={activeChar}
       />
+
+      <ProjectModal isOpenModal={isCreateNewModalOpen} />
     </>
   );
 }

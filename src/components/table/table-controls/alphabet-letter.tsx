@@ -12,13 +12,13 @@ function AlphabetLetter({
   return (
     <li>
       <button
-        className={
+        className={`application-content__alphabet__letter ${
           alphabet.includes(char)
             ? char.toLowerCase() === activeLetter.toLowerCase()
-              ? "application-content__alphabet__letter application-content__alphabet__letter--selected"
-              : "application-content__alphabet__letter"
-            : "application-content__alphabet__letter application-content__alphabet__letter--disabled pointer-events-disable"
-        }
+              ? "application-content__alphabet__letter--selected yellow-hover"
+              : "yellow-hover"
+            : "application-content__alphabet__letter--disabled pointer-events-disable"
+        }`}
         aria-label="Select Letter A"
         type="button"
         onClick={() => onCharSelect(char)}

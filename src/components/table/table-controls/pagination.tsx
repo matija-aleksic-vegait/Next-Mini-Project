@@ -36,7 +36,7 @@ function Pagination({
         <ul role="list" className="application-content__list__pagination">
           <li onClick={() => onPageIndexSelect(pageIndex - 1)}>
             <a
-              className="application-content__list__pagination__number"
+              className="application-content__list__pagination__number gray-hover"
               aria-label="Go to the Previous Page"
             >
               <img src="/icons/chevron-left.svg" alt="left" />
@@ -95,7 +95,7 @@ function Pagination({
 
           <li onClick={() => onPageIndexSelect(pageIndex + 1)}>
             <a
-              className="application-content__list__pagination__number"
+              className="application-content__list__pagination__number gray-hover"
               aria-label="Go to Next Page"
             >
               <img src="/icons/chevron-right.svg" alt="right" />

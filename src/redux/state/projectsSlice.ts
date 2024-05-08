@@ -2,6 +2,10 @@ import ProjectsService from "@/services/projectsService";
 import { LoadingStateEnum } from "../../constants/loadingStateEnum";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ProjectsUtil } from "@/utils/projectsUtil";
+import UserService from "@/services/userService";
+import ClientService from "@/services/clientService";
+import UserUtil from "@/utils/userUtil";
+import ClientUtil from "@/utils/clientUtil";
 
 //STATE
 interface ProjectsState {
@@ -16,6 +20,12 @@ interface ProjectsState {
 
   totalElementCount: number;
   pageIndex: number;
+
+  isCreateNewModalOpen: boolean;
+  isUpdateModalOpen: boolean;
+
+  userNames: Array<string>;
+  clientNames: Array<string>;
 }
 
 const initialState: ProjectsState = {
@@ -28,6 +38,11 @@ const initialState: ProjectsState = {
   activeChar: "",
   totalElementCount: 0,
   pageIndex: 1,
+  isCreateNewModalOpen: false,
+  isUpdateModalOpen: false,
+
+  userNames: [],
+  clientNames: [],
 };
 
 //ACTIONS
@@ -103,6 +118,14 @@ const projectsSlice = createSlice({
       state.projectsCache = tempProjectList;
       state.totalElementCount = tempProjectList.length;
     },
+    toggleCreateNewModal: (state) => {
+      state.isCreateNewModalOpen = !state.isCreateNewModalOpen;
+      state.isUpdateModalOpen = false;
+    },
+    toggleUpdateModal: (state) => {
+      state.isUpdateModalOpen = !state.isUpdateModalOpen;
+      state.isCreateNewModalOpen = false;
+    },
   },
   extraReducers: (builder) => [
     builder
@@ -139,7 +162,13 @@ const projectsSlice = createSlice({
         (state, action: PayloadAction<any>) => {
           state.alphabet = action.payload;
         }
-      ),
+      )
+      .addCase(getAllUserNames.fulfilled, (state, action: any) => {
+        state.userNames = UserUtil.extractUserNames(action.payload);
+      })
+      .addCase(getAllClientNames.fulfilled, (state, action: any) => {
+        state.clientNames = ClientUtil.extractClientNames(action.payload);
+      }),
   ],
 });
 
@@ -167,6 +196,37 @@ export const getAllAvailableLettersAsync = createAsyncThunk(
   }
 );
 
-export const { alphabetFilterProjects, changePageIndex, searchProjectByTitle } =
-  projectsSlice.actions;
+export const getAllUserNames = createAsyncThunk(
+  "projectsSlice/getAllUserNames",
+  async () => {
+    return await UserService.getAllUsers()
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+);
+
+export const getAllClientNames = createAsyncThunk(
+  "projectsSlice/getAllClientNames",
+  async () => {
+    return await ClientService.getAllClients()
+      .then((response) => {
+        return response;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+);
+
+export const {
+  alphabetFilterProjects,
+  changePageIndex,
+  searchProjectByTitle,
+  toggleCreateNewModal,
+  toggleUpdateModal,
+} = projectsSlice.actions;
 export default projectsSlice.reducer;

@@ -294,6 +294,15 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  z-index: 1000;    
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal__header {
   display: flex;
@@ -305,6 +314,8 @@ ul {
 .modal__header__close {
   border: none;
   background-color: inherit;
+  border-radius: 50%;
+  padding: 1%;
 }
 .modal__content {
   display: flex;
@@ -338,13 +349,12 @@ ul {
 .btn--secondary {
   color: #000000;
   background-color: #ffffff;
-  padding: 5px;
 }
 .btn--secondary--danger {
   color: #95120b;
 }
 .btn--secondary--icon-left {
-  padding-left: 0px;
+  padding: 2%;
 }
 .btn--secondary--icon-right {
   padding-right: 0px;
@@ -633,19 +643,26 @@ da ne pisem custom svoje */
   color: red;
 }
 
-/* Mozda za ove filtere Alphabet  i mozda za paginaciju bi fino bilo da  */
-.application-content__alphabet__letter:hover {
-  background-color: yellow;
-}
-.application-content__list__pagination__number:hover{
-  background-color: #81817e;
-}
 
 /* Kada Alphabet slova koja nisu pronadjena da mogu jednostavno da im isljucim hover efekat */
 .pointer-events-disable{
   pointer-events: none;
 }
-
 .pointer-default{
   cursor: default;
+}
+
+
+.gray-hover:hover{
+  background-color: #81817e;
+}
+.yellow-hover:hover{
+  background-color: yellow;
+}
+
+.validation-error-message{
+  display: flex;
+  color: red;
+  justify-content: center;
+  padding-top: 3%;
 }
