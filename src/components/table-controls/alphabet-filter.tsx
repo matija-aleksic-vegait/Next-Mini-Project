@@ -1,22 +1,21 @@
 import { alphabetFilterProjects } from "@/features/projects/redux/projects-slice";
-import { AppDispatch, RootState } from "@/redux/store";
+import { AppDispatch } from "@/redux/store";
 import TableConstants from "@/constants/table-constants";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import AlphabetLetter from "./alphabet-letter";
 
 function AlphabetFilter({
+  activeLetter,
   alphabetSelector,
   getAllAlphabetFunction,
 }: {
+  activeLetter: string;
   alphabetSelector: Array<string>;
   getAllAlphabetFunction: Function;
 }) {
   const alphabet = alphabetSelector;
   const dispatch = useDispatch<AppDispatch>();
-  const activeLetter = useSelector(
-    (state: RootState) => state.projectsStore.activeChar
-  );
 
   useEffect(() => {
     dispatch(getAllAlphabetFunction());

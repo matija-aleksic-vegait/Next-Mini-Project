@@ -1,11 +1,17 @@
-import ProjectsService from "@/features/projects/services/projects-service";
 import { LoadingStateEnum } from "../../../constants/loading-state-enum";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ProjectsUtil } from "@/features/projects/utils/projects-util";
-import UserService from "@/features/users/services/user-service";
-import ClientService from "@/features/clients/services/client-service";
 import UserUtil from "@/features/users/utils/user-util";
 import ClientUtil from "@/features/clients/utils/client-util";
+import {
+  createNewProject,
+  deleteProject,
+  fetchProjectsAsync,
+  getAllAvailableLettersAsync,
+  getAllClientNames,
+  getAllUserNames,
+  updateProject,
+} from "./projects-async-methods";
 
 //STATE
 interface ProjectsState {
@@ -229,95 +235,6 @@ const projectsSlice = createSlice({
       ),
   ],
 });
-
-//ASYNC METHODS
-export const fetchProjectsAsync = createAsyncThunk(
-  "projectsSlice/fetchProjects",
-  async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    return await ProjectsService.getAllProjects().then((response) => {
-      return response;
-    });
-  }
-);
-
-export const getAllAvailableLettersAsync = createAsyncThunk(
-  "projectsSlice/getAllProjectsAlphabet",
-  async () => {
-    return await ProjectsService.getAllProjectsAlphabet()
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
-
-export const getAllUserNames = createAsyncThunk(
-  "projectsSlice/getAllUserNames",
-  async () => {
-    return await UserService.getAllUsers()
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
-
-export const getAllClientNames = createAsyncThunk(
-  "projectsSlice/getAllClientNames",
-  async () => {
-    return await ClientService.getAllClients()
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
-
-export const createNewProject = createAsyncThunk(
-  "projectsSlice/createNewProject",
-  async (data: any) => {
-    return await ProjectsService.createNewProject(data)
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
-
-export const updateProject = createAsyncThunk(
-  "projectsSlice/updateProject",
-  async (data: any) => {
-    return await ProjectsService.updateProject(data.data, data.id)
-      .then((response) => {
-        return response;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
-
-export const deleteProject = createAsyncThunk(
-  "projectsSlice/deleteProject",
-  async (id: string) => {
-    return await ProjectsService.deleteProject(id)
-      .then(() => {
-        return id;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-);
 
 export const {
   alphabetFilterProjects,

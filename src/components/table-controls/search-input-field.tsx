@@ -1,3 +1,4 @@
+import TableConstants from "@/constants/table-constants";
 import useDebounce from "@/utils/debounce-util";
 import { useEffect, useState } from "react";
 
@@ -9,7 +10,10 @@ function SearchInputField({
   searchFunction: Function;
 }) {
   const [searchString, setSearchString] = useState("");
-  const debouncedSearch = useDebounce(searchString, 300);
+  const debouncedSearch = useDebounce(
+    searchString,
+    TableConstants.searchInputDebounceMilliseconds
+  );
 
   useEffect(() => {
     searchFunction(searchString);

@@ -47,53 +47,11 @@
   ],
   "projects": [
     {
-      "id": "3",
-      "name": "Exo",
-      "description": "Description3",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "4",
-      "name": "Name",
+      "name": "Name12",
       "description": "Description",
+      "clientId": "3",
       "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "5",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "6",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "7",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "8",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "9",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
+      "id": "9"
     },
     {
       "id": "10",
@@ -110,13 +68,6 @@
       "clientId": "3"
     },
     {
-      "id": "12",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
       "id": "13",
       "name": "Name",
       "description": "Description",
@@ -124,74 +75,35 @@
       "clientId": "3"
     },
     {
-      "id": "14",
-      "name": "Name",
+      "name": "Name1",
       "description": "Description",
+      "clientId": "3",
       "userId": "2",
-      "clientId": "3"
+      "id": "14"
     },
     {
-      "id": "15",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
+      "id": "1715246597090",
+      "name": "asdf",
+      "description": "asdf",
+      "clientId": "1",
+      "userId": "1"
     },
     {
-      "id": "16",
-      "name": "Name",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
+      "id": "1715247680059",
+      "name": "asdf",
+      "description": "asdf",
+      "clientId": "1",
+      "userId": "1"
     },
     {
-      "id": "18",
-      "name": "Hello",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "19",
-      "name": "Hello",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "20",
-      "name": "Hello",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "21",
-      "name": "Hello",
-      "description": "Description",
-      "userId": "2",
-      "clientId": "3"
-    },
-    {
-      "id": "1715179884437",
+      "id": "1715248123012",
       "name": "asdf",
       "description": "asdf",
       "clientId": "1",
       "userId": "1"
     }
   ],
-  "workEntries": [
-    {
-      "id": "3",
-      "date": "2024-04-23T18:25:43.511Z",
-      "time": 8,
-      "overtime": 0,
-      "description": "Description3",
-      "clientId": "3",
-      "projectId": "3",
-      "userId": "2"
-    }
-  ],
+  "workEntries": [],
   "countries": [
     {
       "name": "Serbia"

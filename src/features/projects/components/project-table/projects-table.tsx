@@ -1,17 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import ProjectCard from "@/components/cards/project-card";
+import ProjectCard from "@/features/projects/components/cards/project-card";
 import Pagination from "@/components/table-controls/pagination";
 import AlphabetFilter from "@/components/table-controls/alphabet-filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
 import {
-  fetchProjectsAsync,
-  getAllAvailableLettersAsync,
-  getAllClientNames,
-  getAllUserNames,
   searchProjectByTitle,
   toggleCreateNewModal,
   toggleUpdateModal,
@@ -21,7 +17,7 @@ import LoadingStateComponent from "@/components/loading-states/loading-state-com
 import EmptyStateComponent from "@/components/loading-states/empty-state-component";
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
 import TableHeaderCard from "@/components/cards/table-header-card";
-import ProjectModal from "@/components/modals/project-modal";
+import ProjectModal from "@/features/projects/components/modals/project-modal";
 
 function ProjectsTable() {
   const projects = useSelector(

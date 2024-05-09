@@ -31,4 +31,6 @@ export default class TableConstants {
   public static elementsPerPage = 4;
   public static numOfSideIndexes = 2;
   public static numOfIndexesAdjacentForDots = 4;
+
+  public static searchInputDebounceMilliseconds = 300;
 }
