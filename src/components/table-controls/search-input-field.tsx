@@ -1,4 +1,4 @@
-import useDebounce from "@/utils/debounceUtil";
+import useDebounce from "@/utils/debounce-util";
 import { useEffect, useState } from "react";
 
 function SearchInputField({

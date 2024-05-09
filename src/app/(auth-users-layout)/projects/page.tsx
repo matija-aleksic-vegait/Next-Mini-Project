@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import ProjectsTableProvider from "@/components/providers/projects-table-provider";
+import ProjectsTableProvider from "@/features/projects/providers/projects-table-provider";
 
 export const metadata: Metadata = {
   title: "Projects",

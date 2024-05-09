@@ -1,4 +1,4 @@
-import TableConstants from "@/constants/tableConstants";
+import TableConstants from "@/constants/table-constants";
 
 export class ProjectsUtil {
   public static filterProjectsStartWithChar(

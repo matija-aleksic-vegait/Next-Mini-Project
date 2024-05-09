@@ -2,8 +2,8 @@
 
 import { useEffect } from "react";
 import ProjectCard from "@/components/cards/project-card";
-import Pagination from "@/components/table/table-controls/pagination";
-import AlphabetFilter from "@/components/table/table-controls/alphabet-filter";
+import Pagination from "@/components/table-controls/pagination";
+import AlphabetFilter from "@/components/table-controls/alphabet-filter";
 
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
@@ -15,8 +15,8 @@ import {
   searchProjectByTitle,
   toggleCreateNewModal,
   toggleUpdateModal,
-} from "@/redux/state/projectsSlice";
-import { LoadingStateEnum } from "@/constants/loadingStateEnum";
+} from "@/features/projects/redux/projects-slice";
+import { LoadingStateEnum } from "@/constants/loading-state-enum";
 import LoadingStateComponent from "@/components/loading-states/loading-state-component";
 import EmptyStateComponent from "@/components/loading-states/empty-state-component";
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
@@ -93,6 +93,7 @@ function ProjectsTable() {
         searchFunction={searchProjects}
       />
       <AlphabetFilter
+        activeLetter={activeChar}
         alphabetSelector={alphabet}
         getAllAlphabetFunction={getAllAvailableLettersAsync}
       />

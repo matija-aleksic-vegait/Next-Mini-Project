@@ -1,6 +1,6 @@
-import { changePageIndex } from "@/redux/state/projectsSlice";
+import { changePageIndex } from "@/features/projects/redux/projects-slice";
 import { AppDispatch } from "@/redux/store";
-import TableConstants from "@/constants/tableConstants";
+import TableConstants from "@/constants/table-constants";
 import { useDispatch } from "react-redux";
 import PaginationNumber from "./pagination-number";
 

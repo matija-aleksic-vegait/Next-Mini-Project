@@ -1,4 +1,4 @@
-import SearchInputField from "../table/table-controls/search-input-field";
+import SearchInputField from "../table-controls/search-input-field";
 
 function TableHeaderCard({
   title,

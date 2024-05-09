@@ -28,7 +28,7 @@ export default class TableConstants {
     "Z",
   ];
 
-  public static elementsPerPage = 2;
+  public static elementsPerPage = 4;
   public static numOfSideIndexes = 2;
   public static numOfIndexesAdjacentForDots = 4;
 }

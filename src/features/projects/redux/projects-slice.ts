@@ -1,11 +1,11 @@
-import ProjectsService from "@/services/projectsService";
-import { LoadingStateEnum } from "../../constants/loadingStateEnum";
+import ProjectsService from "@/features/projects/services/projects-service";
+import { LoadingStateEnum } from "../../../constants/loading-state-enum";
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProjectsUtil } from "@/utils/projectsUtil";
-import UserService from "@/services/userService";
-import ClientService from "@/services/clientService";
-import UserUtil from "@/utils/userUtil";
-import ClientUtil from "@/utils/clientUtil";
+import { ProjectsUtil } from "@/features/projects/utils/projects-util";
+import UserService from "@/features/users/services/user-service";
+import ClientService from "@/features/clients/services/client-service";
+import UserUtil from "@/features/users/utils/user-util";
+import ClientUtil from "@/features/clients/utils/client-util";
 
 //STATE
 interface ProjectsState {

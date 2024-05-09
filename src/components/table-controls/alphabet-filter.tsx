@@ -1,6 +1,6 @@
-import { alphabetFilterProjects } from "@/redux/state/projectsSlice";
+import { alphabetFilterProjects } from "@/features/projects/redux/projects-slice";
 import { AppDispatch, RootState } from "@/redux/store";
-import TableConstants from "@/constants/tableConstants";
+import TableConstants from "@/constants/table-constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AlphabetLetter from "./alphabet-letter";

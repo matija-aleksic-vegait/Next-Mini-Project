@@ -1,13 +1,13 @@
 "use client";
 
-import { ValidationConstants } from "@/constants/validationConstants";
+import { ProjectValidationConstants } from "@/features/projects/constants/project-validation-constants";
 import {
   closeModal,
   createNewProject,
   deleteProject,
   toggleCreateNewModal,
   updateProject,
-} from "@/redux/state/projectsSlice";
+} from "@/features/projects/redux/projects-slice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
@@ -37,13 +37,13 @@ function ProjectModal({
   const schema = Yup.object().shape({
     name: Yup.string()
       .required()
-      .min(ValidationConstants.PROJECT_NAME_SIZE_MIN)
-      .max(ValidationConstants.PROJECT_NAME_SIZE_MAX),
+      .min(ProjectValidationConstants.PROJECT_NAME_SIZE_MIN)
+      .max(ProjectValidationConstants.PROJECT_NAME_SIZE_MAX),
     description: Yup.string()
       .nullable()
       .optional()
-      .min(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MIN)
-      .max(ValidationConstants.PROJECT_DESCRIPTION_SIZE_MAX),
+      .min(ProjectValidationConstants.PROJECT_DESCRIPTION_SIZE_MIN)
+      .max(ProjectValidationConstants.PROJECT_DESCRIPTION_SIZE_MAX),
     client: Yup.string().required(),
     user: Yup.string().required(),
   });
