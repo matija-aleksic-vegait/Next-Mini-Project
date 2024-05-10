@@ -1,3 +1,4 @@
+import Timesheet from "@/features/timesheet/components/timesheet/timesheet";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,5 +6,11 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <h1 className="flex justify-center text-5xl"> TIMESHEET </h1>;
+  return (
+    <div className="application">
+      <main className="application-content">
+        <Timesheet />
+      </main>
+    </div>
+  );
 }
