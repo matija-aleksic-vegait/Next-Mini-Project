@@ -85,7 +85,7 @@ function ProjectForm({
         )}
       </div>
       <div className="input-box">
-        <label className="sr-only">Name</label>
+        <label className="sr-only">Description</label>
         <input
           id="project-description"
           className="input-box__input-field"

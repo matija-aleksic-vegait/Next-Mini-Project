@@ -1,3 +1,4 @@
+import ClientsTableProvider from "@/features/clients/providers/clients-table-provider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -5,7 +6,13 @@ export const metadata: Metadata = {
 };
 
 function Clients() {
-  return <h1 className="flex justify-center text-5xl">CLIENTS</h1>;
+  return (
+    <div className="application">
+      <main className="application-content">
+        <ClientsTableProvider />
+      </main>
+    </div>
+  );
 }
 
 export default Clients;

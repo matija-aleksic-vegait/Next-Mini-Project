@@ -2,7 +2,7 @@
 
 import { Provider } from "react-redux";
 import { store } from "@/redux/store";
-import ProjectsTable from "../components/project-table/projects-table";
+import ProjectsTable from "../components/tables/projects-table";
 
 function ProjectsTableProvider() {
   return (

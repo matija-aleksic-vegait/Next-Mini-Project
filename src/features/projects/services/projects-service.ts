@@ -3,18 +3,10 @@ import MockQueryConstants from "../../../constants/mock-queries-constants";
 import AxiosService from "../../../services/axios-service";
 
 export default class ProjectsService {
-  public static async getAllProjectsForTable(
-    pageIndex: number,
-    pageSize: number
-  ) {
-    return await AxiosService.get(
-      MockQueryConstants.getAllProjectsPagination(pageIndex, pageSize)
-    )
-      .then((response: any) => {
-        return {
-          count: response.headers["x-total-count"],
-          projects: response.data,
-        };
+  public static async getAllProjects() {
+    return await AxiosService.get(MockQueryConstants.projects + "?_sort=name")
+      .then((response) => {
+        return response.data;
       })
       .catch((error) => {
         throw new Error(error.message);
@@ -33,16 +25,6 @@ export default class ProjectsService {
           }
         });
         return foundLetters;
-      })
-      .catch((error) => {
-        throw new Error(error.message);
-      });
-  }
-
-  public static async getAllProjects() {
-    return await AxiosService.get(MockQueryConstants.projects + "?_sort=name")
-      .then((response) => {
-        return response.data;
       })
       .catch((error) => {
         throw new Error(error.message);

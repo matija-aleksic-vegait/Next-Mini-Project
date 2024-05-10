@@ -8,9 +8,11 @@ import AlphabetFilter from "@/components/table-controls/alphabet-filter";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
 import {
-  searchProjectByTitle,
+  alphabetFilterProjects,
+  searchProjectByName,
   toggleCreateNewModal,
   toggleUpdateModal,
+  changePageIndex,
 } from "@/features/projects/redux/projects-slice";
 import { LoadingStateEnum } from "@/constants/loading-state-enum";
 import LoadingStateComponent from "@/components/loading-states/loading-state-component";
@@ -18,6 +20,12 @@ import EmptyStateComponent from "@/components/loading-states/empty-state-compone
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
 import TableHeaderCard from "@/components/cards/table-header-card";
 import ProjectModal from "@/features/projects/components/modals/project-modal";
+import {
+  fetchProjectsAsync,
+  getAllAvailableLettersAsync,
+  getAllClientNames,
+  getAllUserNames,
+} from "../../redux/projects-async-methods";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -64,7 +72,19 @@ function ProjectsTable() {
   };
 
   const searchProjects = (searchString: string) => {
-    dispatch(searchProjectByTitle(searchString));
+    dispatch(searchProjectByName(searchString));
+  };
+
+  const getAllAvailableLetters = () => {
+    dispatch(getAllAvailableLettersAsync());
+  };
+
+  const selectActiveLetter = (char: string) => {
+    dispatch(alphabetFilterProjects(char));
+  };
+
+  const changePageIdx = (pageIndex: number) => {
+    dispatch(changePageIndex(pageIndex));
   };
 
   const dispatch = useDispatch<AppDispatch>();
@@ -88,21 +108,19 @@ function ProjectsTable() {
         newElementFunction={newProjectModal}
         searchFunction={searchProjects}
       />
+
       <AlphabetFilter
         activeLetter={activeChar}
         alphabetSelector={alphabet}
-        getAllAlphabetFunction={getAllAvailableLettersAsync}
+        getAllAlphabetLettersFunction={getAllAvailableLetters}
+        alphabetFilterFunction={selectActiveLetter}
       />
       <section aria-label={`${title} List`}>
         <ul role="list" className="application-content__list">
           {projects &&
             projects.map((project: any) => (
               <div key={project.id} onClick={() => updateProjectModal(project)}>
-                <ProjectCard
-                  id={project.id}
-                  description={project.description}
-                  name={project.name}
-                />
+                <ProjectCard project={project} />
               </div>
             ))}
         </ul>
@@ -110,7 +128,7 @@ function ProjectsTable() {
       <Pagination
         pageIndex={pageIndex}
         totalElementCount={totalElementCount}
-        activeChar={activeChar}
+        changePageIndexFunction={changePageIdx}
       />
 
       {isCreateNewModalOpen && (

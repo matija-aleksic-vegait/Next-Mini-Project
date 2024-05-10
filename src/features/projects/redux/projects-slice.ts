@@ -1,5 +1,5 @@
 import { LoadingStateEnum } from "../../../constants/loading-state-enum";
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { ProjectsUtil } from "@/features/projects/utils/projects-util";
 import UserUtil from "@/features/users/utils/user-util";
 import ClientUtil from "@/features/clients/utils/client-util";
@@ -114,7 +114,7 @@ const projectsSlice = createSlice({
         state.projectsCache
       );
     },
-    searchProjectByTitle: (state, action: PayloadAction<string>) => {
+    searchProjectByName: (state, action: PayloadAction<string>) => {
       state.pageIndex = 1;
       state.activeChar = "";
 
@@ -239,9 +239,10 @@ const projectsSlice = createSlice({
 export const {
   alphabetFilterProjects,
   changePageIndex,
-  searchProjectByTitle,
+  searchProjectByName,
   toggleCreateNewModal,
   toggleUpdateModal,
   closeModal,
 } = projectsSlice.actions;
+
 export default projectsSlice.reducer;

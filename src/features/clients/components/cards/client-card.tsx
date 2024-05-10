@@ -1,4 +1,4 @@
-function ProjectCard({ project }: { project: any }) {
+function ClientCard({ client }: { client: any }) {
   return (
     <li>
       <button
@@ -6,9 +6,9 @@ function ProjectCard({ project }: { project: any }) {
         type="button"
       >
         <div>
-          <span>{project.name}</span>
+          <span>{client.name}</span>
           <span className="application-content__list__item__info-text">
-            {project.description}
+            {client.country}
           </span>
         </div>
         <img src="/icons/chevron-right.svg" alt="right" />
@@ -17,4 +17,4 @@ function ProjectCard({ project }: { project: any }) {
   );
 }
 
-export default ProjectCard;
+export default ClientCard;

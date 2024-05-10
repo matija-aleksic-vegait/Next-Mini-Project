@@ -1,16 +1,14 @@
-import { changePageIndex } from "@/features/projects/redux/projects-slice";
-import { AppDispatch } from "@/redux/store";
 import TableConstants from "@/constants/table-constants";
-import { useDispatch } from "react-redux";
 import PaginationNumber from "./pagination-number";
 
 function Pagination({
   pageIndex,
   totalElementCount,
+  changePageIndexFunction,
 }: {
   pageIndex: number;
   totalElementCount: number;
-  activeChar: string;
+  changePageIndexFunction: Function;
 }) {
   var pageIndexes: Array<number> = [];
 
@@ -23,11 +21,9 @@ function Pagination({
   const firstIndex = pageIndexes.shift();
   const lastIndex = pageIndexes.pop();
 
-  const dispatch = useDispatch<AppDispatch>();
-
   const onPageIndexSelect = (pageIndex: number) => {
     if (pageIndex > 0 && pageIndex < pageIndexes.length + 3)
-      dispatch(changePageIndex(pageIndex));
+      changePageIndexFunction(pageIndex);
   };
 
   return (

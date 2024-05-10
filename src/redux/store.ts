@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import projectsReducer from "../features/projects/redux/projects-slice";
+import clientsReducer from "../features/clients/redux/clients-slice";
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
@@ -8,6 +9,7 @@ export const store = configureStore({
     }),
   reducer: {
     projectsStore: projectsReducer,
+    clientsStore: clientsReducer,
   },
 });
 
