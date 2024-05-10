@@ -107,14 +107,6 @@
       "city": "City",
       "zipCode": 123,
       "country": "Serbia"
-    },
-    {
-      "id": "1715327573089",
-      "name": "asdfasdf",
-      "address": "asdfasdf",
-      "city": "asdfasdf",
-      "zipCode": 111,
-      "country": "Serbia"
     }
   ],
   "projects": [
