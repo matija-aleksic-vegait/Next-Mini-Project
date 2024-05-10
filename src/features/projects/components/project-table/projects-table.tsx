@@ -8,6 +8,8 @@ import AlphabetFilter from "@/components/table-controls/alphabet-filter";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
 import {
+  alphabetFilterProjects,
+  changePageIndex,
   searchProjectByTitle,
   toggleCreateNewModal,
   toggleUpdateModal,
@@ -18,6 +20,12 @@ import EmptyStateComponent from "@/components/loading-states/empty-state-compone
 import ErrorStateComponent from "@/components/loading-states/error-state-component";
 import TableHeaderCard from "@/components/cards/table-header-card";
 import ProjectModal from "@/features/projects/components/modals/project-modal";
+import {
+  fetchProjectsAsync,
+  getAllAvailableLettersAsync,
+  getAllClientNames,
+  getAllUserNames,
+} from "../../redux/projects-async-methods";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -67,6 +75,18 @@ function ProjectsTable() {
     dispatch(searchProjectByTitle(searchString));
   };
 
+  const getAllAvailableLetters = () => {
+    dispatch(getAllAvailableLettersAsync());
+  };
+
+  const selectActiveLetter = (char: string) => {
+    dispatch(alphabetFilterProjects(char));
+  };
+
+  const changePageIdx = (pageIndex: number) => {
+    dispatch(changePageIndex(pageIndex));
+  };
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -91,7 +111,8 @@ function ProjectsTable() {
       <AlphabetFilter
         activeLetter={activeChar}
         alphabetSelector={alphabet}
-        getAllAlphabetFunction={getAllAvailableLettersAsync}
+        getAllAlphabetLettersFunction={getAllAvailableLetters}
+        alphabetFilterFunction={selectActiveLetter}
       />
       <section aria-label={`${title} List`}>
         <ul role="list" className="application-content__list">
@@ -110,7 +131,7 @@ function ProjectsTable() {
       <Pagination
         pageIndex={pageIndex}
         totalElementCount={totalElementCount}
-        activeChar={activeChar}
+        changePageIndexFunction={changePageIdx}
       />
 
       {isCreateNewModalOpen && (

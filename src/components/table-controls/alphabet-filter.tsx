@@ -1,28 +1,26 @@
-import { alphabetFilterProjects } from "@/features/projects/redux/projects-slice";
-import { AppDispatch } from "@/redux/store";
 import TableConstants from "@/constants/table-constants";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import AlphabetLetter from "./alphabet-letter";
 
 function AlphabetFilter({
   activeLetter,
   alphabetSelector,
-  getAllAlphabetFunction,
+  getAllAlphabetLettersFunction,
+  alphabetFilterFunction,
 }: {
   activeLetter: string;
   alphabetSelector: Array<string>;
-  getAllAlphabetFunction: Function;
+  getAllAlphabetLettersFunction: Function;
+  alphabetFilterFunction: Function;
 }) {
   const alphabet = alphabetSelector;
-  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    dispatch(getAllAlphabetFunction());
+    getAllAlphabetLettersFunction();
   }, []);
 
   const onCharSelect = (char: string) => {
-    dispatch(alphabetFilterProjects(char));
+    alphabetFilterFunction(char);
   };
 
   return (
