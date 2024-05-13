@@ -1,9 +1,9 @@
 import React from "react";
 import "../../../../public/css/styles.css";
-import { buttonType } from "@/components/atoms/button/button";
-import { altType } from "../icon/icon";
+import { Icon, altType } from "@/components/atoms/icon/icon";
+import { Button, buttonType } from "@/components/atoms/button/button";
 
-interface ImageButtonProps {
+interface IconButtonProps {
   className: string;
   type: buttonType;
   src: string;
@@ -14,7 +14,7 @@ interface ImageButtonProps {
   onClick?: () => void;
 }
 
-export const ImageButton: React.FC<ImageButtonProps> = ({
+export const IconButton: React.FC<IconButtonProps> = ({
   className,
   type,
   src,
@@ -24,14 +24,14 @@ export const ImageButton: React.FC<ImageButtonProps> = ({
   onClick,
 }) => {
   return (
-    <button
+    <Button
       type={type}
       className={className}
       onClick={onClick}
       aria-label={ariaLabel}
     >
-      <img src={src} alt={alt} />
+      <Icon src={src} alt={alt} />
       {label}
-    </button>
+    </Button>
   );
 };

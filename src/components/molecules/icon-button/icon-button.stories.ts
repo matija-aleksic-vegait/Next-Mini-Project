@@ -1,8 +1,8 @@
-import { ImageButton } from "./image-button";
+import { IconButton } from "./icon-button";
 
 export default {
-  title: "atoms/ImageButton",
-  component: ImageButton,
+  title: "molecules/IconButtons",
+  component: IconButton,
   parameters: {},
   tags: ["autodocs"],
 };
@@ -15,8 +15,6 @@ export const PlusButton = {
     className: "btn btn--secondary btn--secondary--icon-left gray-hover",
     src: "/icons/plus.svg",
     alt: "add",
-    onClick: () => {
-      alert("New element button clicked");
-    },
+    onClick: () => alert("New element button clicked"),
   },
 };

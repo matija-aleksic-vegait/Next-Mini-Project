@@ -1,7 +1,7 @@
 import { Icon } from "./icon";
 
 export default {
-  title: "atoms/Icon",
+  title: "atoms/Iconography",
   component: Icon,
   parameters: {},
   tags: ["autodocs"],

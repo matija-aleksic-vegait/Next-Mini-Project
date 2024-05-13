@@ -10,6 +10,7 @@ export interface ButtonProps {
   ariaControls?: string;
   ariaLabel?: string;
   onClick?: () => void;
+  children?: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -19,6 +20,7 @@ export const Button: React.FC<ButtonProps> = ({
   ariaControls,
   ariaLabel,
   onClick,
+  children,
 }) => {
   return (
     <button
@@ -28,6 +30,7 @@ export const Button: React.FC<ButtonProps> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
+      {children}
       {label}
     </button>
   );
