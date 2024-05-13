@@ -1,11 +1,18 @@
 import { Metadata } from "next";
+import ProjectsTableProvider from "@/features/projects/providers/projects-table-provider";
 
 export const metadata: Metadata = {
   title: "Projects",
 };
 
 function Projects() {
-  return <h1 className="flex justify-center text-5xl">PROJECTS</h1>;
+  return (
+    <div className="application">
+      <main className="application-content">
+        <ProjectsTableProvider />
+      </main>
+    </div>
+  );
 }
 
 export default Projects;

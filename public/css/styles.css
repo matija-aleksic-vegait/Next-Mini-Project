@@ -294,6 +294,15 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  z-index: 1000;    
+}
+
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .modal__header {
   display: flex;
@@ -305,6 +314,8 @@ ul {
 .modal__header__close {
   border: none;
   background-color: inherit;
+  border-radius: 50%;
+  padding: 1%;
 }
 .modal__content {
   display: flex;
@@ -338,13 +349,12 @@ ul {
 .btn--secondary {
   color: #000000;
   background-color: #ffffff;
-  padding: 5px;
 }
 .btn--secondary--danger {
   color: #95120b;
 }
 .btn--secondary--icon-left {
-  padding-left: 0px;
+  padding: 2%;
 }
 .btn--secondary--icon-right {
   padding-right: 0px;
@@ -602,6 +612,57 @@ ul {
 /*# sourceMappingURL=style.css.map */
 
 
-#project1:hover h4 {
-  color: white;
+
+/* KOMENTARI ZA KSENIJU */
+/* ==================== */
+
+/* Volio bi da mogu samo ovako kad mi treba nesto jednostavno npr. da align text na sredinu da sa jednom kalsom mogu to da uradim
+da ne pisem custom svoje */
+.text-align-center{
+  text-align: center;
+}
+
+/* Marginu mozda da imam da dodam klasu npr.
+ m-0 = margin : 0;
+ m-1 = margin: 0.5rem; na primer;
+ m-2 = margin: 1rem;
+
+ mozda i ove 
+ ml-0 = margin-left: 0;
+ mr-0 = margin-right: 0;
+ mt-0 = margin-top: 0;
+ mb-0 = margin-bottom: 0;
+   */
+.loading-status{
+  font-size: 2rem;
+  margin: 20px;
+}
+
+/* kul bi bilo da imam ovako osnove boje (crvenu = errori, zelenu za potvrdne response poruke,...) */
+.text-red{
+  color: red;
+}
+
+
+/* Kada Alphabet slova koja nisu pronadjena da mogu jednostavno da im isljucim hover efekat */
+.pointer-events-disable{
+  pointer-events: none;
+}
+.pointer-default{
+  cursor: default;
+}
+
+
+.gray-hover:hover{
+  background-color: #81817e;
+}
+.yellow-hover:hover{
+  background-color: yellow;
+}
+
+.validation-error-message{
+  display: flex;
+  color: red;
+  justify-content: center;
+  padding-top: 3%;
 }

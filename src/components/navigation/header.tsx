@@ -14,10 +14,7 @@ function Header() {
           id="application-menu"
         >
           <li>
-            <Link
-              href="/"
-              className="application-header__menu__list__item hover:color"
-            >
+            <Link href="/" className="application-header__menu__list__item">
               Timesheet
             </Link>
           </li>
