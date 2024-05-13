@@ -9,10 +9,7 @@ function ProjectCard({
 }) {
   return (
     <li>
-      <button
-        className="application-content__list__item js-toggle-edit-modal"
-        type="button"
-      >
+      <button className="application-content__list__item" type="button">
         <div>
           <span>{name}</span>
           <span className="application-content__list__item__info-text">
