@@ -1,33 +1,36 @@
 import React from "react";
 import "../../../../public/css/styles.css";
+import { buttonType } from "@/components/atoms/button/button";
+import { altType } from "../icon/icon";
 
-export type buttonType = "button" | "submit" | "reset";
-
-export interface ButtonProps {
+interface ImageButtonProps {
   className: string;
   type: buttonType;
+  src: string;
+  alt: altType;
   label?: string;
   ariaControls?: string;
   ariaLabel?: string;
   onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  label,
+export const ImageButton: React.FC<ImageButtonProps> = ({
   className,
   type,
-  ariaControls,
+  src,
+  alt,
+  label,
   ariaLabel,
   onClick,
 }) => {
   return (
     <button
-      className={className}
       type={type}
-      aria-controls={ariaControls}
-      aria-label={ariaLabel}
+      className={className}
       onClick={onClick}
+      aria-label={ariaLabel}
     >
+      <img src={src} alt={alt} />
       {label}
     </button>
   );

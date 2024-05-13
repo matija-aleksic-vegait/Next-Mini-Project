@@ -1,8 +1,8 @@
-import { Image } from "./image";
+import { Icon } from "./icon";
 
 export default {
-  title: "atoms/Image",
-  component: Image,
+  title: "atoms/Icon",
+  component: Icon,
   parameters: {},
   tags: ["autodocs"],
 };
@@ -11,20 +11,6 @@ export const Plus = {
   args: {
     src: "/icons/plus.svg",
     alt: "add",
-  },
-};
-
-export const VegaItMediumLogo = {
-  args: {
-    src: "/logos/logo-md.svg",
-    alt: "VegaIT Logo",
-  },
-};
-
-export const VegaItSmallLogo = {
-  args: {
-    src: "/logos/logo-sm.svg",
-    alt: "VegaIT Logo",
   },
 };
 
