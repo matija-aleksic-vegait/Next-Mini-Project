@@ -14,14 +14,17 @@ function Header() {
           id="application-menu"
         >
           <li>
-            <Link href="/" className="application-header__menu__list__item">
+            <Link
+              href="/"
+              className="application-header__menu__list__item shadow-hover"
+            >
               Timesheet
             </Link>
           </li>
           <li>
             <Link
               href="/clients"
-              className="application-header__menu__list__item"
+              className="application-header__menu__list__item shadow-hover"
             >
               Clients
             </Link>
@@ -29,7 +32,7 @@ function Header() {
           <li>
             <Link
               href="/projects"
-              className="application-header__menu__list__item"
+              className="application-header__menu__list__item shadow-hover"
             >
               Projects
             </Link>
@@ -37,7 +40,7 @@ function Header() {
           <li>
             <Link
               href="/reports"
-              className="application-header__menu__list__item"
+              className="application-header__menu__list__item shadow-hover"
             >
               Reports
             </Link>

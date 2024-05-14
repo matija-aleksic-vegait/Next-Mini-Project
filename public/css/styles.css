@@ -66,6 +66,9 @@ ul {
 .application-header__menu__list__item {
   text-decoration: none;
   color: #000000;
+  padding: 15%;
+  border: 2px solid white;
+  border-radius: 15%;
 }
 .application-header__menu__hamburger-icon {
   display: none;
@@ -658,6 +661,9 @@ da ne pisem custom svoje */
 }
 .yellow-hover:hover{
   background-color: yellow;
+}
+.shadow-hover:hover {
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
 }
 
 .validation-error-message{

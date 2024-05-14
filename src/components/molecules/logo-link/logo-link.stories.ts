@@ -1,7 +1,7 @@
 import { LogoLink } from "./logo-link";
 
 export default {
-  title: "atoms/Logo Links",
+  title: "molecules/Logo Links",
   component: LogoLink,
   parameters: {},
   tags: ["autodocs"],

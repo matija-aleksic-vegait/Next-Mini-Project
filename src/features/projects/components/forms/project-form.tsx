@@ -49,13 +49,13 @@ function ProjectForm({
       client: project
         ? project.clientId
         : clientNames.length !== 0
-        ? clientNames[0].id
-        : "Select Client",
+          ? clientNames[0].id
+          : "Select Client",
       user: project
         ? project.userId
         : userNames.length !== 0
-        ? userNames[0].id
-        : "Select Lead",
+          ? userNames[0].id
+          : "Select Lead",
     },
   });
 
@@ -69,7 +69,6 @@ function ProjectForm({
   return (
     <form className="modal__content" onSubmit={handleSubmit(onSubmit)}>
       <div className="input-box">
-        <label className="sr-only">Name</label>
         <input
           id="project-name"
           className="input-box__input-field"
@@ -85,7 +84,9 @@ function ProjectForm({
         )}
       </div>
       <div className="input-box">
-        <label className="sr-only">Name</label>
+        <label className="sr-only" htmlFor="project-description">
+          Name
+        </label>
         <input
           id="project-description"
           className="input-box__input-field"
@@ -110,8 +111,8 @@ function ProjectForm({
             project
               ? project.clientId
               : clientNames.length !== 0
-              ? clientNames[0].id
-              : "Select Client"
+                ? clientNames[0].id
+                : "Select Client"
           }
           {...register("client")}
         >
@@ -140,8 +141,8 @@ function ProjectForm({
             project
               ? project.userId
               : userNames.length !== 0
-              ? userNames[0].id
-              : "Select Lead"
+                ? userNames[0].id
+                : "Select Lead"
           }
           {...register("user")}
         >

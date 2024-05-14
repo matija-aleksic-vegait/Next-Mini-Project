@@ -28,7 +28,6 @@ function SearchInputField({
         >
           <img src="/icons/search.svg" alt="search" />
         </button>
-        <label className="sr-only">Search {title}</label>
         <input
           id="project-search"
           className="input-box__input-field input-box__input-field--icon--left"
