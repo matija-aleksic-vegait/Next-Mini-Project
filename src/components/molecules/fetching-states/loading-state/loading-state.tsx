@@ -1,12 +1,12 @@
 import { Paragraph } from "@/components/atoms/paragraph/paragraph";
 
-function EmptyStateComponent({ entitiesName }: { entitiesName: string }) {
+export const LoadingState: React.FC = () => {
   return (
     <Paragraph
       className="loading-status text-align-center"
-      label={`No ${entitiesName} found...`}
+      label={"Loading..."}
     />
   );
-}
+};
 
-export default EmptyStateComponent;
+export default LoadingState;

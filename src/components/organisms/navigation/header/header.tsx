@@ -7,9 +7,7 @@ import { Ul } from "@/components/atoms/ul/ul";
 import { IconButton } from "@/components/molecules/icon-button/icon-button";
 import { LogoLink } from "@/components/molecules/logo-link/logo-link";
 
-interface HeaderProps {}
-
-export const Header: React.FC<HeaderProps> = ({}) => {
+export const Header: React.FC = () => {
   return (
     <Head className="application-header">
       <LogoLink

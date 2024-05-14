@@ -1,8 +1,10 @@
 import { Header } from "./header";
 
 export default {
-  title: "molecules/Header",
+  title: "organisms/Header",
   component: Header,
   parameters: {},
   tags: ["autodocs"],
 };
+
+export const MainHeader = {};

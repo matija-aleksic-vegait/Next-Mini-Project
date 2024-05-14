@@ -24,9 +24,9 @@ import {
   getAllUserNames,
 } from "../../redux/projects-async-methods";
 import { TableHeader } from "@/components/organisms/table/table-header/table-header";
-import LoadingStateComponent from "@/components/molecules/loading-states/loading-state-component";
-import EmptyStateComponent from "@/components/molecules/loading-states/empty-state-component";
-import ErrorStateComponent from "@/components/molecules/loading-states/error-state-component";
+import LoadingState from "@/components/molecules/fetching-states/loading-state/loading-state";
+import EmptyState from "@/components/molecules/fetching-states/empty-state/empty-state";
+import ErrorState from "@/components/molecules/fetching-states/error-state/error-state";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -96,11 +96,11 @@ function ProjectsTable() {
     dispatch(getAllClientNames());
   }, []);
 
-  if (loadingState === LoadingStateEnum.loading) return LoadingStateComponent();
+  if (loadingState === LoadingStateEnum.loading) return LoadingState();
   if (loadingState === LoadingStateEnum.empty)
-    return EmptyStateComponent({ entitiesName: title });
+    return EmptyState({ entitiesName: title });
   if (loadingState === LoadingStateEnum.failure)
-    return ErrorStateComponent({ errorMessage: errorMessage });
+    return ErrorState({ errorMessage: errorMessage });
   return (
     <>
       <TableHeader
