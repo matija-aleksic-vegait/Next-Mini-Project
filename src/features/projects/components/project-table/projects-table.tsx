@@ -15,10 +15,7 @@ import {
   toggleUpdateModal,
 } from "@/features/projects/redux/projects-slice";
 import { LoadingStateEnum } from "@/constants/loading-state-enum";
-import LoadingStateComponent from "@/components/loading-states/loading-state-component";
-import EmptyStateComponent from "@/components/loading-states/empty-state-component";
-import ErrorStateComponent from "@/components/loading-states/error-state-component";
-import TableHeaderCard from "@/components/cards/table-header-card";
+
 import ProjectModal from "@/features/projects/components/modals/project-modal";
 import {
   fetchProjectsAsync,
@@ -26,6 +23,10 @@ import {
   getAllClientNames,
   getAllUserNames,
 } from "../../redux/projects-async-methods";
+import { TableHeader } from "@/components/organisms/table/table-header/table-header";
+import LoadingStateComponent from "@/components/molecules/loading-states/loading-state-component";
+import EmptyStateComponent from "@/components/molecules/loading-states/empty-state-component";
+import ErrorStateComponent from "@/components/molecules/loading-states/error-state-component";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -102,7 +103,7 @@ function ProjectsTable() {
     return ErrorStateComponent({ errorMessage: errorMessage });
   return (
     <>
-      <TableHeaderCard
+      <TableHeader
         title={title}
         description={description}
         newElementFunction={newProjectModal}

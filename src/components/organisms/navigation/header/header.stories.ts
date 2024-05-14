@@ -1,7 +1,7 @@
 import { Header } from "./header";
 
 export default {
-  title: "atoms/Header",
+  title: "molecules/Header",
   component: Header,
   parameters: {},
   tags: ["autodocs"],
