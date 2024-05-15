@@ -1,14 +1,19 @@
+import { Div } from "@/components/atoms/div/div";
+import { IconButton } from "../../icon-button/icon-button";
+import { InputField } from "@/components/atoms/input-field/input-field";
 import TableConstants from "@/constants/table-constants";
 import useDebounce from "@/utils/debounce-util";
 import { useEffect, useState } from "react";
 
-function SearchInputField({
-  title,
-  searchFunction,
-}: {
+interface SearchInputFieldProps {
   title: string;
   searchFunction: Function;
-}) {
+}
+
+export const SearchInputField: React.FC<SearchInputFieldProps> = ({
+  title,
+  searchFunction,
+}) => {
   const [searchString, setSearchString] = useState("");
   const debouncedSearch = useDebounce(
     searchString,
@@ -20,25 +25,26 @@ function SearchInputField({
   }, [debouncedSearch]);
 
   return (
-    <div>
-      <div className="input-box" role="search">
-        <button
+    <Div>
+      <Div className="input-box" role="search">
+        <IconButton
           className="input-box__btn input-box__btn--left"
-          onClick={() => searchFunction()}
-        >
-          <img src="/icons/search.svg" alt="search" />
-        </button>
-        <input
+          onClick={() => searchFunction(searchString)}
+          src="/icons/search.svg"
+          alt="search"
+          type="button"
+        />
+
+        <InputField
           id="project-search"
           className="input-box__input-field input-box__input-field--icon--left"
           placeholder="Search"
           type="search"
           aria-label={`Search ${title}`}
-          onChange={(e) => setSearchString(e.target.value)}
+          includeLabel={false}
+          onChange={setSearchString}
         />
-      </div>
-    </div>
+      </Div>
+    </Div>
   );
-}
-
-export default SearchInputField;
+};

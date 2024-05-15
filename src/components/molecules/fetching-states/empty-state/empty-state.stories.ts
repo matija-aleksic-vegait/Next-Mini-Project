@@ -1,7 +1,7 @@
 import { EmptyState } from "./empty-state";
 
 export default {
-  title: "molecules/EmptyState",
+  title: "molecules/FetchingStates/EmptyState",
   component: EmptyState,
   parameters: {},
   tags: ["autodocs"],

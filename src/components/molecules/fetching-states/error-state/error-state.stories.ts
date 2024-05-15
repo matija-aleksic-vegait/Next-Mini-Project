@@ -1,7 +1,7 @@
 import { ErrorState } from "./error-state";
 
 export default {
-  title: "molecules/ErrorState",
+  title: "molecules/FetchingStates/ErrorState",
   component: ErrorState,
   parameters: {},
   tags: ["autodocs"],

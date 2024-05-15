@@ -1,6 +1,8 @@
 import { Paragraph } from "@/components/atoms/paragraph/paragraph";
 
-export const LoadingState: React.FC = () => {
+interface LoadingProps {}
+
+export const LoadingState: React.FC<LoadingProps> = ({}) => {
   return (
     <Paragraph
       className="loading-status text-align-center"
@@ -8,5 +10,3 @@ export const LoadingState: React.FC = () => {
     />
   );
 };
-
-export default LoadingState;

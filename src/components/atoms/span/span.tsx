@@ -1,11 +1,16 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import "../../../../public/css/styles.css";
 
 interface SpanProps {
-  label: string;
+  label?: string;
   className?: string;
+  children?: ReactNode;
 }
 
-export const Span: React.FC<SpanProps> = ({ label, className }) => {
-  return <span className={className}>{label}</span>;
+export const Span: React.FC<SpanProps> = ({ label, className, children }) => {
+  return (
+    <span className={className}>
+      {label} {children}
+    </span>
+  );
 };

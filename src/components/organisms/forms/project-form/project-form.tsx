@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { ProjectValidationConstants } from "../../constants/project-validation-constants";
+import { ProjectValidationConstants } from "../../../../features/projects/constants/project-validation-constants";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
@@ -7,21 +7,30 @@ import { AppDispatch } from "@/redux/store";
 import {
   createNewProject,
   updateProject,
-} from "../../redux/projects-async-methods";
+} from "../../../../features/projects/redux/projects-async-methods";
+import { Form } from "@/components/atoms/form/form";
+import { Div } from "@/components/atoms/div/div";
+import { Span } from "@/components/atoms/span/span";
+import { FormInputField } from "@/components/molecules/form/form-input-field/form-input-field";
+import { FormSelect } from "@/components/molecules/form/form-select/form-select";
+import { Option } from "@/components/atoms/option/option";
+import { Button } from "@/components/atoms/button/button";
 
-function ProjectForm({
-  isUpdate,
-  project,
-  clientNames,
-  userNames,
-  deleteProjectFunction,
-}: {
+interface ProjectFormProps {
   project: any;
   isUpdate: boolean;
   clientNames: Array<any>;
   userNames: Array<any>;
   deleteProjectFunction: any;
-}) {
+}
+
+export const ProjectForm: React.FC<ProjectFormProps> = ({
+  isUpdate,
+  project,
+  clientNames,
+  userNames,
+  deleteProjectFunction,
+}) => {
   const schema = Yup.object().shape({
     name: Yup.string()
       .required()
@@ -67,45 +76,39 @@ function ProjectForm({
   };
 
   return (
-    <form className="modal__content" onSubmit={handleSubmit(onSubmit)}>
-      <div className="input-box">
-        <input
+    <Form className="modal__content" onSubmit={handleSubmit(onSubmit)}>
+      <Div className="input-box">
+        <FormInputField
           id="project-name"
-          className="input-box__input-field"
           type="text"
           placeholder="Name"
           aria-label="Name"
-          {...register("name")}
+          formRegistrationOptions={{ ...register("name") }}
         />
         {errors.name && (
-          <span className="validation-error-message">
+          <Span className="validation-error-message">
             {errors.name.message?.toString()}
-          </span>
+          </Span>
         )}
-      </div>
-      <div className="input-box">
-        <label className="sr-only" htmlFor="project-description">
-          Name
-        </label>
-        <input
+      </Div>
+      <Div className="input-box">
+        <FormInputField
           id="project-description"
-          className="input-box__input-field"
           type="text"
           placeholder="Description"
           aria-label="Description"
-          {...register("description")}
+          formRegistrationOptions={{ ...register("description") }}
         />
         {errors.description && (
-          <span className="validation-error-message">
+          <Span className="validation-error-message">
             {errors.description.message?.toString()}
-          </span>
+          </Span>
         )}
-      </div>
-      <div className="input-box">
-        <label className="sr-only">Client</label>
-        <select
+      </Div>
+      <Div className="input-box">
+        <FormSelect
+          label="Client"
           id="project-client"
-          className="input-box__input-field input-box__select"
           aria-label="Client"
           defaultValue={
             project
@@ -114,28 +117,23 @@ function ProjectForm({
                 ? clientNames[0].id
                 : "Select Client"
           }
-          {...register("client")}
+          formRegistrationOptions={{ ...register("client") }}
         >
-          <option value="Select Client" disabled>
-            Select Client
-          </option>
+          <Option value="Select Client" label="Select Client" disabled={true} />
           {clientNames.map((client) => (
-            <option value={client.id} key={client.name}>
-              {client.name}
-            </option>
+            <Option value={client.id} label={client.name} key={client.name} />
           ))}
-        </select>
+        </FormSelect>
         {errors.client && (
-          <span className="validation-error-message">
+          <Span className="validation-error-message">
             {errors.client.message?.toString()}
-          </span>
+          </Span>
         )}
-      </div>
-      <div className="input-box">
-        <label className="sr-only">Lead</label>
-        <select
+      </Div>
+      <Div className="input-box">
+        <FormSelect
+          label="Lead"
           id="project-lead"
-          className="input-box__input-field input-box__select"
           aria-label="Lead"
           defaultValue={
             project
@@ -144,41 +142,35 @@ function ProjectForm({
                 ? userNames[0].id
                 : "Select Lead"
           }
-          {...register("user")}
+          formRegistrationOptions={{ ...register("user") }}
         >
-          <option value="Select Lead" disabled>
-            Select Lead
-          </option>
+          <Option value="Select Lead" label="Select Lead" disabled={true} />
           {userNames.map((user) => (
-            <option value={user.id} key={user.name}>
-              {user.name}
-            </option>
+            <Option value={user.id} label={user.name} key={user.name} />
           ))}
-        </select>
+        </FormSelect>
         {errors.user && (
-          <span className="validation-error-message">
+          <Span className="validation-error-message">
             {errors.user.message?.toString()}
-          </span>
+          </Span>
         )}
-      </div>
-      <div className="modal__controls">
-        <button
+      </Div>
+      <Div className="modal__controls">
+        <Button
           type="submit"
           className="btn btn--primary gray-hover"
           aria-label="Save Project"
-        >
-          Save
-        </button>
+          label={"Save"}
+        />
         <ResetOrDeleteButton
           isUpdate={isUpdate}
           resetFormFunction={reset}
           deleteProjectFunction={deleteProjectFunction}
         />
-      </div>
-    </form>
+      </Div>
+    </Form>
   );
-}
-export default ProjectForm;
+};
 
 function ResetOrDeleteButton({
   isUpdate,
@@ -192,24 +184,22 @@ function ResetOrDeleteButton({
   return (
     <>
       {!isUpdate && (
-        <button
+        <Button
           type="reset"
           className="btn btn--secondary gray-hover"
           aria-label="Reset Form"
           onClick={() => resetFormFunction()}
-        >
-          Reset
-        </button>
+          label="Reset"
+        />
       )}
       {isUpdate && (
-        <button
+        <Button
           type="button"
           className="btn btn--secondary btn--secondary--danger gray-hover"
           aria-label="Delete Project"
           onClick={() => deleteProjectFunction()}
-        >
-          Delete
-        </button>
+          label="Delete"
+        />
       )}
     </>
   );

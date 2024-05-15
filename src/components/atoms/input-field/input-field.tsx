@@ -1,12 +1,10 @@
-import { ReactNode } from "react";
-
 export interface InputFieldProps {
   id: string;
   className: string;
   placeholder: string;
   type: string;
   includeLabel: boolean;
-  onChange: Function;
+  onChange?: Function;
   ariaLabel?: string;
 }
 

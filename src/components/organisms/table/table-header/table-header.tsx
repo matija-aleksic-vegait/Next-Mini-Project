@@ -2,7 +2,7 @@ import { Div } from "@/components/atoms/div/div";
 import { Paragraph } from "@/components/atoms/paragraph/paragraph";
 import { Section } from "@/components/atoms/section/section";
 import { IconButton } from "@/components/molecules/icon-button/icon-button";
-import { SearchInputField } from "@/components/molecules/search-input-field/search-input-field";
+import { SearchInputField } from "@/components/molecules/table/search-input-field/search-input-field";
 
 interface TableHeaderCardProps {
   title: string;

@@ -1,7 +1,7 @@
 import { LoadingState } from "./loading-state";
 
 export default {
-  title: "molecules/LoadingState",
+  title: "molecules/FetchingStates/LoadingState",
   component: LoadingState,
   parameters: {},
   tags: ["autodocs"],

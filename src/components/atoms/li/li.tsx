@@ -4,14 +4,13 @@ import React from "react";
 import "../../../../public/css/styles.css";
 
 export interface LiProps {
-  key?: string;
   onClick?: Function;
   children?: React.ReactNode;
 }
 
-export const Li: React.FC<LiProps> = ({ key, onClick, children }) => {
+export const Li: React.FC<LiProps> = ({ onClick, children, ...props }) => {
   return (
-    <li key={key} onClick={() => onClick}>
+    <li onClick={() => onClick} {...props}>
       {children}
     </li>
   );

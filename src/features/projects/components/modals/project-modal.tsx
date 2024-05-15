@@ -1,8 +1,8 @@
 import { closeModal } from "@/features/projects/redux/projects-slice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import ProjectForm from "../forms/project-form";
 import { deleteProject } from "../../redux/projects-async-methods";
+import { ProjectForm } from "@/components/organisms/forms/project-form/project-form";
 
 function ProjectModal({
   isOpenModal,

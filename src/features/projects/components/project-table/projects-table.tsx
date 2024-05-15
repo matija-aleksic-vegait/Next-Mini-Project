@@ -1,10 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import ProjectCard from "@/features/projects/components/cards/project-card";
-import Pagination from "@/components/table-controls/pagination";
-import AlphabetFilter from "@/components/table-controls/alphabet-filter";
-
+import Pagination from "@/components/organisms/table/pagination/pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../redux/store";
 import {
@@ -15,7 +12,6 @@ import {
   toggleUpdateModal,
 } from "@/features/projects/redux/projects-slice";
 import { LoadingStateEnum } from "@/constants/loading-state-enum";
-
 import ProjectModal from "@/features/projects/components/modals/project-modal";
 import {
   fetchProjectsAsync,
@@ -24,9 +20,14 @@ import {
   getAllUserNames,
 } from "../../redux/projects-async-methods";
 import { TableHeader } from "@/components/organisms/table/table-header/table-header";
-import LoadingState from "@/components/molecules/fetching-states/loading-state/loading-state";
-import EmptyState from "@/components/molecules/fetching-states/empty-state/empty-state";
-import ErrorState from "@/components/molecules/fetching-states/error-state/error-state";
+import { EmptyState } from "@/components/molecules/fetching-states/empty-state/empty-state";
+import { ErrorState } from "@/components/molecules/fetching-states/error-state/error-state";
+import { AlphabetFilter } from "@/components/organisms/table/alphabet-filter/alphabet-filter";
+import { LoadingState } from "@/components/molecules/fetching-states/loading-state/loading-state";
+import { Li } from "@/components/atoms/li/li";
+import { ProjectCard } from "@/components/molecules/table/cards/project-card/project-card";
+import { Div } from "@/components/atoms/div/div";
+import { Ul } from "@/components/atoms/ul/ul";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -96,7 +97,7 @@ function ProjectsTable() {
     dispatch(getAllClientNames());
   }, []);
 
-  if (loadingState === LoadingStateEnum.loading) return LoadingState();
+  if (loadingState === LoadingStateEnum.loading) return LoadingState({});
   if (loadingState === LoadingStateEnum.empty)
     return EmptyState({ entitiesName: title });
   if (loadingState === LoadingStateEnum.failure)
@@ -111,23 +112,24 @@ function ProjectsTable() {
       />
       <AlphabetFilter
         activeLetter={activeChar}
-        alphabetSelector={alphabet}
+        availableLetters={alphabet}
         getAllAlphabetLettersFunction={getAllAvailableLetters}
         alphabetFilterFunction={selectActiveLetter}
       />
       <section aria-label={`${title} List`}>
-        <ul role="list" className="application-content__list">
+        <Ul role="list" className="application-content__list">
           {projects &&
             projects.map((project: any) => (
-              <div key={project.id} onClick={() => updateProjectModal(project)}>
-                <ProjectCard
-                  id={project.id}
-                  description={project.description}
-                  name={project.name}
-                />
-              </div>
+              <Div
+                key={project.id}
+                onClick={() => {
+                  updateProjectModal(project);
+                }}
+              >
+                <ProjectCard project={project} />
+              </Div>
             ))}
-        </ul>
+        </Ul>
       </section>
       <Pagination
         pageIndex={pageIndex}
