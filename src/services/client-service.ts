@@ -1,5 +1,5 @@
 import MockQueryConstants from "@/constants/mock-queries-constants";
-import AxiosService from "../../../services/axios-service";
+import AxiosService from "./axios-service";
 
 export default class ClientService {
   public static async getAllClients() {

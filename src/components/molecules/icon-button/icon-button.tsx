@@ -9,8 +9,6 @@ interface IconButtonProps {
   src: string;
   alt: altType;
   label?: string;
-  ariaControls?: string;
-  ariaLabel?: string;
   onClick?: () => void;
 }
 
@@ -20,16 +18,11 @@ export const IconButton: React.FC<IconButtonProps> = ({
   src,
   alt,
   label,
-  ariaLabel,
   onClick,
+  ...props
 }) => {
   return (
-    <Button
-      type={type}
-      className={className}
-      onClick={onClick}
-      aria-label={ariaLabel}
-    >
+    <Button type={type} className={className} onClick={onClick} {...props}>
       <Icon src={src} alt={alt} />
       {label}
     </Button>

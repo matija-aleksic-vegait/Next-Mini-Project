@@ -10,7 +10,6 @@ export default {
 export const LogoLinkHeader = {
   args: {
     href: "https://www.vegaitglobal.com/",
-    ariaLabel: "Go to VegaIT Website",
     src: "/logos/logo-sm.svg",
     alt: "VegaIT Logo",
   },
@@ -19,7 +18,6 @@ export const LogoLinkHeader = {
 export const LogoLinkFooter = {
   args: {
     href: "https://www.vegaitglobal.com/",
-    ariaLabel: "Go to VegaIT Website",
     src: "/logos/logo-md.svg",
     alt: "VegaIT Logo",
   },

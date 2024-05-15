@@ -13,7 +13,6 @@ export const InputFieldExample = {
     className: "input-box__input-field input-box__input-field--icon--left",
     placeholder: "Input",
     type: "text",
-    ariaLabel: "Input",
     includeLabel: false,
   },
 };

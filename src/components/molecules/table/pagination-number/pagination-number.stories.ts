@@ -1,7 +1,7 @@
 import { PaginationNumber } from "./pagination-number";
 
 export default {
-  title: "organisms/PaginationNumber",
+  title: "molecules/PaginationNumber",
   component: PaginationNumber,
   parameters: {},
   tags: ["autodocs"],

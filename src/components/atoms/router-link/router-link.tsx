@@ -10,9 +10,10 @@ export const RouterLink: React.FC<RouterLinkProps> = ({
   href,
   label,
   className,
+  ...props
 }) => {
   return (
-    <Link href={href} className={className}>
+    <Link href={href} className={className} {...props}>
       {label}
     </Link>
   );

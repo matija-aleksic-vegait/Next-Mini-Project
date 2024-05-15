@@ -5,6 +5,14 @@ interface MainProps {
   children: ReactNode;
 }
 
-export const Main: React.FC<MainProps> = ({ className, children }) => {
-  return <main className={className}>{children}</main>;
+export const Main: React.FC<MainProps> = ({
+  className,
+  children,
+  ...props
+}) => {
+  return (
+    <main className={className} {...props}>
+      {children}
+    </main>
+  );
 };

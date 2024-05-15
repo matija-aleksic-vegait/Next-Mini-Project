@@ -5,14 +5,12 @@ export interface InputFieldProps {
   type: string;
   includeLabel: boolean;
   onChange?: Function;
-  ariaLabel?: string;
 }
 
 export const InputField: React.FC<InputFieldProps> = ({
   id,
   className,
   placeholder,
-  ariaLabel,
   includeLabel,
   onChange,
   ...props
@@ -28,7 +26,6 @@ export const InputField: React.FC<InputFieldProps> = ({
         id={id}
         className={className}
         placeholder={placeholder}
-        aria-label={ariaLabel}
         onChange={(e: any) => onChange!(e.target.value)}
         {...props}
       />

@@ -34,7 +34,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   };
 
   return (
-    <Nav ariaLabel="Pagination">
+    <Nav aria-label="Pagination">
       <Ul role="list" className="application-content__list__pagination">
         <Li onClick={() => onPageIndexSelect(pageIndex - 1)}>
           <IconLink

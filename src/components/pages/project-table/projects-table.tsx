@@ -3,31 +3,33 @@
 import { useEffect } from "react";
 import Pagination from "@/components/organisms/table/pagination/pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../redux/store";
+import { AppDispatch, RootState } from "../../../redux/store";
 import {
   alphabetFilterProjects,
   changePageIndex,
   searchProjectByTitle,
   toggleCreateNewModal,
   toggleUpdateModal,
-} from "@/features/projects/redux/projects-slice";
+  closeModal,
+} from "@/redux/projects/projects-slice";
 import { LoadingStateEnum } from "@/constants/loading-state-enum";
-import ProjectModal from "@/features/projects/components/modals/project-modal";
 import {
   fetchProjectsAsync,
   getAllAvailableLettersAsync,
   getAllClientNames,
   getAllUserNames,
-} from "../../redux/projects-async-methods";
+  deleteProject,
+} from "../../../redux/projects/projects-async-methods";
 import { TableHeader } from "@/components/organisms/table/table-header/table-header";
 import { EmptyState } from "@/components/molecules/fetching-states/empty-state/empty-state";
 import { ErrorState } from "@/components/molecules/fetching-states/error-state/error-state";
 import { AlphabetFilter } from "@/components/organisms/table/alphabet-filter/alphabet-filter";
 import { LoadingState } from "@/components/molecules/fetching-states/loading-state/loading-state";
-import { Li } from "@/components/atoms/li/li";
 import { ProjectCard } from "@/components/molecules/table/cards/project-card/project-card";
 import { Div } from "@/components/atoms/div/div";
 import { Ul } from "@/components/atoms/ul/ul";
+import { ProjectModal } from "@/components/organisms/project-modal/project-modal";
+import { Section } from "@/components/atoms/section/section";
 
 function ProjectsTable() {
   const projects = useSelector(
@@ -89,6 +91,14 @@ function ProjectsTable() {
     dispatch(changePageIndex(pageIndex));
   };
 
+  const closeProjectModal = async () => {
+    dispatch(closeModal());
+  };
+
+  const deleteProjectEntity = async (id: string) => {
+    dispatch(deleteProject(id));
+  };
+
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -116,7 +126,7 @@ function ProjectsTable() {
         getAllAlphabetLettersFunction={getAllAvailableLetters}
         alphabetFilterFunction={selectActiveLetter}
       />
-      <section aria-label={`${title} List`}>
+      <Section aria-label={`${title} List`}>
         <Ul role="list" className="application-content__list">
           {projects &&
             projects.map((project: any) => (
@@ -130,7 +140,7 @@ function ProjectsTable() {
               </Div>
             ))}
         </Ul>
-      </section>
+      </Section>
       <Pagination
         pageIndex={pageIndex}
         totalElementCount={totalElementCount}
@@ -142,6 +152,8 @@ function ProjectsTable() {
           isOpenModal={isCreateNewModalOpen}
           isUpdate={false}
           project={undefined}
+          closeModalFunction={closeProjectModal}
+          deleteProjectFunction={deleteProjectEntity}
         />
       )}
 
@@ -150,6 +162,8 @@ function ProjectsTable() {
           isOpenModal={isUpdateModalOpen}
           isUpdate={true}
           project={updateProject}
+          closeModalFunction={closeProjectModal}
+          deleteProjectFunction={deleteProjectEntity}
         />
       )}
     </>

@@ -89,25 +89,11 @@
       "userId": "1"
     },
     {
-      "id": "1715248123012",
-      "name": "asdf",
+      "name": "asdf2",
       "description": "asdf",
       "clientId": "1",
-      "userId": "1"
-    },
-    {
-      "id": "1715767577397",
-      "name": "asdf",
-      "description": "asdf",
-      "clientId": "1",
-      "userId": "1"
-    },
-    {
-      "id": "1715768146517",
-      "name": "asdf",
-      "description": "asdf",
-      "clientId": "1",
-      "userId": "1"
+      "userId": "2",
+      "id": "1715248123012"
     }
   ],
   "workEntries": [],

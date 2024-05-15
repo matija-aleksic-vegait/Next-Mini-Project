@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
         alt="VegaIT Logo"
       />
 
-      <Nav ariaLabel="Main Menu" className="application-header__menu">
+      <Nav aria-label="Main Menu" className="application-header__menu">
         <Ul
           role="list"
           className="application-header__menu__list"

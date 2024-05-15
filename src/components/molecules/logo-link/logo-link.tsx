@@ -4,10 +4,8 @@ import { Logo, altType } from "@/components/atoms/logo/logo";
 interface LogoLinkProps {
   src: string;
   alt: altType;
-
   href: string;
   label?: string;
-  ariaLabel?: string;
   className?: string;
 }
 
@@ -15,10 +13,10 @@ export const LogoLink: React.FC<LogoLinkProps> = ({
   src,
   alt,
   href,
-  ariaLabel,
+  ...props
 }) => {
   return (
-    <Link href={href} ariaLabel={ariaLabel}>
+    <Link href={href} {...props}>
       <Logo src={src} alt={alt}></Logo>
     </Link>
   );

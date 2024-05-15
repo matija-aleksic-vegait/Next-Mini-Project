@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { ProjectValidationConstants } from "../../../../features/projects/constants/project-validation-constants";
+import { ProjectValidationConstants } from "../../../../constants/project-validation-constants";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import { AppDispatch } from "@/redux/store";
 import {
   createNewProject,
   updateProject,
-} from "../../../../features/projects/redux/projects-async-methods";
+} from "../../../../redux/projects/projects-async-methods";
 import { Form } from "@/components/atoms/form/form";
 import { Div } from "@/components/atoms/div/div";
 import { Span } from "@/components/atoms/span/span";
@@ -163,6 +163,7 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
           label={"Save"}
         />
         <ResetOrDeleteButton
+          project={project}
           isUpdate={isUpdate}
           resetFormFunction={reset}
           deleteProjectFunction={deleteProjectFunction}
@@ -173,10 +174,12 @@ export const ProjectForm: React.FC<ProjectFormProps> = ({
 };
 
 function ResetOrDeleteButton({
+  project,
   isUpdate,
   resetFormFunction,
   deleteProjectFunction,
 }: {
+  project: any;
   isUpdate: boolean;
   resetFormFunction: any;
   deleteProjectFunction: any;
@@ -197,7 +200,9 @@ function ResetOrDeleteButton({
           type="button"
           className="btn btn--secondary btn--secondary--danger gray-hover"
           aria-label="Delete Project"
-          onClick={() => deleteProjectFunction()}
+          onClick={() => {
+            deleteProjectFunction(project.id);
+          }}
           label="Delete"
         />
       )}

@@ -7,6 +7,6 @@ export interface LogoProps {
   alt: altType;
 }
 
-export const Logo: React.FC<LogoProps> = ({ src, alt }) => {
-  return <img src={src} alt={alt} />;
+export const Logo: React.FC<LogoProps> = ({ src, alt, ...props }) => {
+  return <img src={src} alt={alt} {...props} />;
 };

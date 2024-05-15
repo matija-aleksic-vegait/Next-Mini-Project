@@ -11,7 +11,7 @@ export const Option: React.FC<OptionProps> = ({
   ...props
 }) => {
   return (
-    <option value={value} {...props} disabled={disabled}>
+    <option value={value} disabled={disabled} {...props}>
       {label}
     </option>
   );

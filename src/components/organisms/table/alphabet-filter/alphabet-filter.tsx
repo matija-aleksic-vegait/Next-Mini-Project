@@ -27,7 +27,7 @@ export const AlphabetFilter: React.FC<AlphabetLetterProps> = ({
   };
 
   return (
-    <Section ariaLabel="Alphabet Filter">
+    <Section aria-label="Alphabet Filter">
       <Ul role="list" className="application-content__alphabet">
         {TableConstants.alphabetList.map((char) => (
           <Li key={char}>

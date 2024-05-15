@@ -1,14 +1,13 @@
 import { ReactNode } from "react";
 
 interface NavProps {
-  ariaLabel: string;
   children: ReactNode;
   className?: string;
 }
 
-export const Nav: React.FC<NavProps> = ({ ariaLabel, children, className }) => {
+export const Nav: React.FC<NavProps> = ({ children, className, ...props }) => {
   return (
-    <nav aria-label={ariaLabel} className={className}>
+    <nav className={className} {...props}>
       {children}
     </nav>
   );

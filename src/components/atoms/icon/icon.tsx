@@ -7,6 +7,6 @@ export interface IconProps {
   alt: altType;
 }
 
-export const Icon: React.FC<IconProps> = ({ src, alt }) => {
-  return <img src={src} alt={alt} />;
+export const Icon: React.FC<IconProps> = ({ src, alt, ...props }) => {
+  return <img src={src} alt={alt} {...props} />;
 };

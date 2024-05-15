@@ -3,6 +3,14 @@ interface ParagraphProps {
   className?: string;
 }
 
-export const Paragraph: React.FC<ParagraphProps> = ({ label, className }) => {
-  return <p className={className}>{label}</p>;
+export const Paragraph: React.FC<ParagraphProps> = ({
+  label,
+  className,
+  ...props
+}) => {
+  return (
+    <p className={className} {...props}>
+      {label}
+    </p>
+  );
 };

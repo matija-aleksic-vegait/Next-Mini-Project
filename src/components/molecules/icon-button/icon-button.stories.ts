@@ -10,7 +10,6 @@ export default {
 export const PlusButton = {
   args: {
     type: "button",
-    ariaLabel: "New Element",
     className: "btn btn--secondary btn--secondary--icon-left gray-hover",
     src: "/icons/plus.svg",
     alt: "add",

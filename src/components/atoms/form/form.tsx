@@ -10,9 +10,10 @@ export const Form: React.FC<FormProps> = ({
   className,
   onSubmit,
   children,
+  ...props
 }) => {
   return (
-    <form className={className} onSubmit={onSubmit}>
+    <form className={className} onSubmit={onSubmit} {...props}>
       {children}
     </form>
   );

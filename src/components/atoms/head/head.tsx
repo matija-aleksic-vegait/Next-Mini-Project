@@ -5,6 +5,14 @@ interface HeadProps {
   className?: string;
 }
 
-export const Head: React.FC<HeadProps> = ({ children, className }) => {
-  return <header className={className}>{children}</header>;
+export const Head: React.FC<HeadProps> = ({
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <header className={className} {...props}>
+      {children}
+    </header>
+  );
 };

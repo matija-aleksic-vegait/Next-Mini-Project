@@ -10,7 +10,7 @@ export default {
 export const TableAlphabetFilter = {
   args: {
     activeLetter: "A",
-    alphabetSelector: ["A", "B", "C"],
+    availableLetters: ["A", "B", "C"],
     getAllAlphabetLettersFunction: () => {},
     alphabetFilterFunction: (selectedLetter: string) => alert(selectedLetter),
   },

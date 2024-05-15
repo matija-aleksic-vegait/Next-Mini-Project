@@ -18,14 +18,14 @@ export const TableHeader: React.FC<TableHeaderCardProps> = ({
   searchFunction,
 }) => {
   return (
-    <Section ariaLabel={`${title} Card`} className="application-content__card">
+    <Section aria-label={`${title} Card`} className="application-content__card">
       <Div className="application-content__card__action-container">
         <Div className="heading-lg">{title}</Div>
         <Paragraph className="text-lg" label={description} />
         <IconButton
           className="btn btn--secondary btn--secondary--icon-left gray-hover"
           type="button"
-          ariaLabel={`New ${title.slice(0, -1)}`}
+          aria-label={`New ${title.slice(0, -1)}`}
           onClick={() => newElementFunction()}
           src="/icons/plus.svg"
           alt="add"

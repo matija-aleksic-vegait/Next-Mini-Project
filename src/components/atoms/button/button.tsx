@@ -7,8 +7,6 @@ export interface ButtonProps {
   className: string;
   type: buttonType;
   label?: string;
-  ariaControls?: string;
-  ariaLabel?: string;
   onClick?: () => void;
   children?: React.ReactNode;
 }
@@ -17,19 +15,12 @@ export const Button: React.FC<ButtonProps> = ({
   label,
   className,
   type,
-  ariaControls,
-  ariaLabel,
   onClick,
   children,
+  ...props
 }) => {
   return (
-    <button
-      className={className}
-      type={type}
-      aria-controls={ariaControls}
-      aria-label={ariaLabel}
-      onClick={onClick}
-    >
+    <button className={className} type={type} onClick={onClick} {...props}>
       {children}
       {label}
     </button>

@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 interface SelectProps {
   id: string;
   className: string;
-  ariaLabel: string;
   children: ReactNode;
   includeLabel: boolean;
   defaultValue?: string;
@@ -12,19 +11,19 @@ interface SelectProps {
 export const Select: React.FC<SelectProps> = ({
   id,
   className,
-  ariaLabel,
   defaultValue,
   children,
   includeLabel,
+  ...props
 }) => {
   return (
     <>
-      {includeLabel && <label className="sr-only" aria-label={ariaLabel} />}
+      {includeLabel && <label className="sr-only" />}
       <select
         id={id}
         className={className}
-        aria-label={ariaLabel}
         defaultValue={defaultValue}
+        {...props}
       >
         {children}
       </select>

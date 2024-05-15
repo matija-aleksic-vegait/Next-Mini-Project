@@ -1,18 +1,17 @@
 import { ReactNode } from "react";
 
 interface SectionProps {
-  ariaLabel: string;
   children: ReactNode;
   className?: string;
 }
 
 export const Section: React.FC<SectionProps> = ({
-  ariaLabel,
   className,
   children,
+  ...props
 }) => {
   return (
-    <section aria-label={ariaLabel} className={className}>
+    <section className={className} {...props}>
       {children}
     </section>
   );

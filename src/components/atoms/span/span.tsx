@@ -7,9 +7,14 @@ interface SpanProps {
   children?: ReactNode;
 }
 
-export const Span: React.FC<SpanProps> = ({ label, className, children }) => {
+export const Span: React.FC<SpanProps> = ({
+  label,
+  className,
+  children,
+  ...props
+}) => {
   return (
-    <span className={className}>
+    <span className={className} {...props}>
       {label} {children}
     </span>
   );
