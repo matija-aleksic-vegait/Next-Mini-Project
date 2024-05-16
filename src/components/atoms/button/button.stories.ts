@@ -1,4 +1,5 @@
 import { Button } from "@atoms";
+import "../../../../public/css/styles.css";
 
 export default {
   title: "atoms/Button",

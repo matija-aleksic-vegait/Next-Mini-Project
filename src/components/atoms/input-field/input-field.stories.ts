@@ -1,4 +1,5 @@
 import { InputField } from "@atoms";
+import "../../../../public/css/styles.css";
 
 export default {
   title: "atoms/InputField",
