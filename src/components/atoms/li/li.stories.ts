@@ -1,4 +1,4 @@
-import { Li } from "./li";
+import { Li } from "@atoms";
 
 export default {
   title: "atoms/Li",

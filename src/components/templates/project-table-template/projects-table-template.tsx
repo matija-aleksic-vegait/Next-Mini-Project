@@ -12,6 +12,15 @@ import { ProjectModal } from "@/components/organisms/project-modal/project-modal
 import { Section } from "@/components/atoms/section/section";
 
 interface ProjectsTableProps {
+  projects: Array<any>;
+  alphabet: Array<string>;
+  pageIndex: number;
+  totalElementCount: number;
+  activeChar: string;
+  isCreateNewModalOpen: boolean;
+  isUpdateModalOpen: boolean;
+  updateProject: any;
+
   newProjectModal: Function;
   searchProjects: (searchString: string) => void;
   getAllAvailableLetters: Function;
@@ -23,6 +32,15 @@ interface ProjectsTableProps {
 }
 
 export const ProjectsTableTemplate: React.FC<ProjectsTableProps> = ({
+  projects,
+  alphabet,
+  pageIndex,
+  totalElementCount,
+  activeChar,
+  isCreateNewModalOpen,
+  isUpdateModalOpen,
+  updateProject,
+
   newProjectModal,
   searchProjects,
   getAllAvailableLetters,
@@ -32,31 +50,6 @@ export const ProjectsTableTemplate: React.FC<ProjectsTableProps> = ({
   closeProjectModal,
   deleteProjectEntity,
 }) => {
-  const projects = useSelector(
-    (state: RootState) => state.projectsStore.projects
-  );
-  const alphabet = useSelector(
-    (state: RootState) => state.projectsStore.alphabet
-  );
-  const pageIndex = useSelector(
-    (state: RootState) => state.projectsStore.pageIndex
-  );
-  const totalElementCount = useSelector(
-    (state: RootState) => state.projectsStore.totalElementCount
-  );
-  const activeChar = useSelector(
-    (state: RootState) => state.projectsStore.activeChar
-  );
-  const isCreateNewModalOpen = useSelector(
-    (state: RootState) => state.projectsStore.isCreateNewModalOpen
-  );
-  const isUpdateModalOpen = useSelector(
-    (state: RootState) => state.projectsStore.isUpdateModalOpen
-  );
-  const updateProject = useSelector(
-    (state: RootState) => state.projectsStore.updateModalProject
-  );
-
   var title = "Projects";
   var description =
     "Here, you have full control over your project database, empowering you to efficiently organize and maintain your projects.";

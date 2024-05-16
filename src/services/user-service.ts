@@ -1,7 +1,7 @@
-import MockQueryConstants from "@/constants/mock-queries-constants";
-import AxiosService from "./axios-service";
+import { MockQueryConstants } from "@constants";
+import { AxiosService } from "@services";
 
-export default class UserService {
+export class UserService {
   public static async getAllUsers() {
     return await AxiosService.get(MockQueryConstants.getAllUsers())
       .then((response: any) => {

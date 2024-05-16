@@ -1,4 +1,4 @@
-import { AlphabetFilter } from "./alphabet-filter";
+import { AlphabetFilter } from "@organisms";
 
 export default {
   title: "organisms/AlphabetFilter",

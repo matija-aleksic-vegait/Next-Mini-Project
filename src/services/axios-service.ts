@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default class AxiosService {
+export class AxiosService {
   public static get(urlPath: string) {
     return axios
       .get(urlPath)

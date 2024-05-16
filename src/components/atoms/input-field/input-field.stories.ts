@@ -1,4 +1,4 @@
-import { InputField } from "./input-field";
+import { InputField } from "@atoms";
 
 export default {
   title: "atoms/InputField",

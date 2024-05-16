@@ -1,4 +1,4 @@
-import { Logo } from "./logo";
+import { Logo } from "@atoms";
 
 export default {
   title: "atoms/Logo",

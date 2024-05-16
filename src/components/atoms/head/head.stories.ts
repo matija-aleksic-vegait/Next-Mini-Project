@@ -1,4 +1,4 @@
-import { Head } from "./head";
+import { Head } from "@atoms";
 
 export default {
   title: "atoms/Head",

@@ -1,9 +1,10 @@
-import { Div } from "@/components/atoms/div/div";
-import { IconButton } from "../../icon-button/icon-button";
-import { InputField } from "@/components/atoms/input-field/input-field";
-import TableConstants from "@/constants/table-constants";
-import useDebounce from "@/utils/debounce-util";
+"use client";
+
 import { useEffect, useState } from "react";
+import { IconButton } from "../../../molecules/icon-button/icon-button";
+import { InputField, Div } from "@atoms";
+import { TableConstants } from "@constants";
+import { useDebounce } from "@utils";
 
 interface SearchInputFieldProps {
   title: string;

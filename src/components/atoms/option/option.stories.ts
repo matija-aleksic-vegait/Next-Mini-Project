@@ -1,4 +1,4 @@
-import { Option } from "./option";
+import { Option } from "@atoms";
 
 export default {
   title: "atoms/Option",

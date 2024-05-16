@@ -1,4 +1,4 @@
-import { Footer } from "./footer";
+import { Footer } from "@organisms";
 
 export default {
   title: "organisms/Footer",

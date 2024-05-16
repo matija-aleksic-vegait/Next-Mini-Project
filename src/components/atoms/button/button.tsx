@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../../public/css/styles.css";
 
 export type buttonType = "button" | "submit" | "reset";
 

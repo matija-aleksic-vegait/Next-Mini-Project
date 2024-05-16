@@ -1,10 +1,9 @@
-import { closeModal } from "@/redux/projects/projects-slice";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { ProjectForm } from "@/components/organisms/forms/project-form/project-form";
-import { ModalHeader } from "@/components/molecules/modal-header/modal-header";
-import { deleteProject } from "@/redux/projects/projects-async-methods";
-import { Div } from "@/components/atoms/div/div";
+import { closeModal, deleteProject } from "@redux";
+import { Div } from "@atoms";
+import { ModalHeader } from "@molecules";
+import { ProjectForm } from "../forms/project-form/project-form";
 
 interface ProjectModalProps {
   isOpenModal: boolean;

@@ -1,20 +1,11 @@
-import { useForm } from "react-hook-form";
-import { ProjectValidationConstants } from "../../../../constants/project-validation-constants";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
-import {
-  createNewProject,
-  updateProject,
-} from "../../../../redux/projects/projects-async-methods";
-import { Form } from "@/components/atoms/form/form";
-import { Div } from "@/components/atoms/div/div";
-import { Span } from "@/components/atoms/span/span";
-import { FormInputField } from "@/components/molecules/form/form-input-field/form-input-field";
-import { FormSelect } from "@/components/molecules/form/form-select/form-select";
-import { Option } from "@/components/atoms/option/option";
-import { Button } from "@/components/atoms/button/button";
+import { AppDispatch, createNewProject, updateProject } from "@redux";
+import { ProjectValidationConstants } from "@constants";
+import { Form, Div, Span, Option, Button } from "@atoms";
+import { FormInputField, FormSelect } from "@molecules";
+import { useForm } from "react-hook-form";
 
 interface ProjectFormProps {
   project: any;

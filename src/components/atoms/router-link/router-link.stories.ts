@@ -1,4 +1,4 @@
-import { RouterLink } from "./router-link";
+import { RouterLink } from "@atoms";
 
 export default {
   title: "atoms/Head",

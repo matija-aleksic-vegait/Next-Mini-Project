@@ -1,7 +1,4 @@
-import { Button } from "@/components/atoms/button/button";
-import { Div } from "@/components/atoms/div/div";
-import { Icon } from "@/components/atoms/icon/icon";
-import { Span } from "@/components/atoms/span/span";
+import { Button, Div, Icon, Span } from "@atoms";
 
 interface ProjectCardProps {
   project: any;

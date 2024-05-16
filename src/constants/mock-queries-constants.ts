@@ -1,4 +1,4 @@
-export default class MockQueryConstants {
+export class MockQueryConstants {
   private static base: string = "http://localhost:8002";
   public static users: string = this.base + "/users";
   public static projects: string = this.base + "/projects";
@@ -83,8 +83,8 @@ export default class MockQueryConstants {
     return andSignRequired
       ? "&"
       : "" + projectId
-      ? `projectId=${projectId}`
-      : "";
+        ? `projectId=${projectId}`
+        : "";
   }
 
   private static formDateGreaterThanEqualQuery(
@@ -94,8 +94,8 @@ export default class MockQueryConstants {
     return andSignRequired
       ? "&"
       : "" + date
-      ? `date_gte=${date?.toDateString()}`
-      : "";
+        ? `date_gte=${date?.toDateString()}`
+        : "";
   }
 
   private static formDateLowerThanEqualQuery(
@@ -105,7 +105,7 @@ export default class MockQueryConstants {
     return andSignRequired
       ? "&"
       : "" + date
-      ? `date_lte=${date?.toDateString()}`
-      : "";
+        ? `date_lte=${date?.toDateString()}`
+        : "";
   }
 }

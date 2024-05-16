@@ -1,10 +1,6 @@
-import TableConstants from "@/constants/table-constants";
-import PaginationNumber from "../../../molecules/table/pagination-number/pagination-number";
-import { Li } from "../../../atoms/li/li";
-import { Nav } from "@/components/atoms/nav/nav";
-import { IconLink } from "@/components/molecules/icon-link/icon-link";
-import { Ul } from "@/components/atoms/ul/ul";
-import { Link } from "@/components/atoms/link/link";
+import { TableConstants } from "@constants";
+import { Li, Nav, Ul, Link } from "@atoms";
+import { PaginationNumber, IconLink } from "@molecules";
 
 interface PaginationProps {
   pageIndex: number;

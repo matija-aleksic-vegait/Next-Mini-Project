@@ -1,4 +1,4 @@
-import { ModalHeader } from "./modal-header";
+import { ModalHeader } from "@molecules";
 
 export default {
   title: "molecules/ModalHeader",

@@ -1,4 +1,4 @@
-import { Span } from "./span";
+import { Span } from "@atoms";
 
 export default {
   title: "atoms/Span",

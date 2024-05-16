@@ -1,4 +1,4 @@
-import { LoadingState } from "./loading-state";
+import { LoadingState } from "@molecules";
 
 export default {
   title: "molecules/FetchingStates/LoadingState",

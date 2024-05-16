@@ -1,4 +1,4 @@
-import { Pagination } from "./pagination";
+import { Pagination } from "@organisms";
 
 export default {
   title: "organisms/Pagination",

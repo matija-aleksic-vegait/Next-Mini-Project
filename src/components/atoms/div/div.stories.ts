@@ -1,4 +1,4 @@
-import { Div } from "./div";
+import { Div } from "@atoms";
 
 export default {
   title: "atoms/Div",

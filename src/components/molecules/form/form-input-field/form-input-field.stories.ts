@@ -1,4 +1,4 @@
-import { FormInputField } from "./form-input-field";
+import { FormInputField } from "@molecules";
 
 export default {
   title: "molecules/FormInputField",

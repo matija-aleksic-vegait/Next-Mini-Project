@@ -1,13 +1,11 @@
 import React from "react";
-import "../../../../public/css/styles.css";
-import { Icon, altType } from "@/components/atoms/icon/icon";
-import { Button, buttonType } from "@/components/atoms/button/button";
+import { Icon, Button, buttonType } from "@atoms";
 
 interface IconButtonProps {
   className: string;
   type: buttonType;
   src: string;
-  alt: altType;
+  alt: string;
   label?: string;
   onClick?: () => void;
 }

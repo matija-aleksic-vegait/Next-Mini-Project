@@ -1,4 +1,4 @@
-import { ProjectModal } from "./project-modal";
+import { ProjectModal } from "@organisms";
 
 export default {
   title: "organisms/ProjectModal",

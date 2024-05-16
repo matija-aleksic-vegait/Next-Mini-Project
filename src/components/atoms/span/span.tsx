@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import "../../../../public/css/styles.css";
 
 interface SpanProps {
   label?: string;

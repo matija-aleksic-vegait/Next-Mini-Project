@@ -1,8 +1,6 @@
-import { LoadingStateEnum } from "../../constants/loading-state-enum";
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProjectsUtil } from "@/utils/projects-util";
-import UserUtil from "@/utils/user-util";
-import ClientUtil from "@/utils/client-util";
+import { LoadingStateEnum } from "@constants";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { ProjectsUtil, ClientUtil, UserUtil } from "@utils";
 import {
   createNewProject,
   deleteProject,

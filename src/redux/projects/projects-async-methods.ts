@@ -1,7 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import ProjectsService from "../../services/projects-service";
-import UserService from "@/services/user-service";
-import ClientService from "@/services/client-service";
+import { ProjectsService, UserService, ClientService } from "@services";
 
 export const fetchProjectsAsync = createAsyncThunk(
   "projectsSlice/fetchProjects",

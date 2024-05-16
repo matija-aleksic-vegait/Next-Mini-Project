@@ -1,7 +1,4 @@
-"use client";
-
-import { Link } from "@/components/atoms/link/link";
-import { Span } from "@/components/atoms/span/span";
+import { Link, Span } from "@atoms";
 
 interface PaginationNumberProps {
   pageIndex: number;

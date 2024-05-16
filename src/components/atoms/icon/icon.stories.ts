@@ -1,4 +1,4 @@
-import { Icon } from "./icon";
+import { Icon } from "@atoms";
 
 export default {
   title: "atoms/Iconography",

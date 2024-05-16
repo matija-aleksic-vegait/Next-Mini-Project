@@ -1,4 +1,4 @@
-import { LogoLink } from "./logo-link";
+import { LogoLink } from "@molecules";
 
 export default {
   title: "molecules/Logo Links",

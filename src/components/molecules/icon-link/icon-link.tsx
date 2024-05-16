@@ -1,9 +1,8 @@
-import { Icon, altType } from "@/components/atoms/icon/icon";
-import { Link } from "@/components/atoms/link/link";
+import { Icon, Link } from "@atoms";
 
 interface IconLinkProps {
   src: string;
-  alt: altType;
+  alt: string;
   className?: string;
   onClick?: () => void;
 }

@@ -1,5 +1,4 @@
 import React from "react";
-import "../../../../public/css/styles.css";
 
 export interface UlProps {
   className: string;

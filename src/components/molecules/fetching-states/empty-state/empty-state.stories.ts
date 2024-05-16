@@ -1,4 +1,4 @@
-import { EmptyState } from "./empty-state";
+import { EmptyState } from "@molecules";
 
 export default {
   title: "molecules/FetchingStates/EmptyState",

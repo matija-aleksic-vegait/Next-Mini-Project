@@ -1,4 +1,4 @@
-export default class TableConstants {
+export class TableConstants {
   public static alphabetList = [
     "A",
     "B",

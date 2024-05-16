@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import "../../../../public/css/styles.css";
 
 export interface LiProps {
   onClick?: Function;

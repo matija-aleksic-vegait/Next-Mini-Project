@@ -1,4 +1,4 @@
-import { Foot } from "./foot";
+import { Foot } from "@atoms";
 
 export default {
   title: "atoms/Foot",

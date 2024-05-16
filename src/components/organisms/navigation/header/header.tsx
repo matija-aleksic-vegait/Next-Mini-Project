@@ -1,11 +1,5 @@
-import { Button } from "@/components/atoms/button/button";
-import { Head } from "@/components/atoms/head/head";
-import { Li } from "@/components/atoms/li/li";
-import { Nav } from "@/components/atoms/nav/nav";
-import { RouterLink } from "@/components/atoms/router-link/router-link";
-import { Ul } from "@/components/atoms/ul/ul";
-import { IconButton } from "@/components/molecules/icon-button/icon-button";
-import { LogoLink } from "@/components/molecules/logo-link/logo-link";
+import { Button, Head, Li, Nav, RouterLink, Ul } from "@atoms";
+import { IconButton, LogoLink } from "@molecules";
 
 export const Header: React.FC = () => {
   return (

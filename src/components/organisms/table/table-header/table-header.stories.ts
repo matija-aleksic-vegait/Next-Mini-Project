@@ -1,4 +1,4 @@
-import { TableHeader } from "./table-header";
+import { TableHeader } from "@organisms";
 
 export default {
   title: "organisms/TableHeader",

@@ -1,4 +1,4 @@
-import { Form } from "./form";
+import { Form } from "@atoms";
 
 export default {
   title: "atoms/Form",

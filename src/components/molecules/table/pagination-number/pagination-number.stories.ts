@@ -1,4 +1,4 @@
-import { PaginationNumber } from "./pagination-number";
+import { PaginationNumber } from "@molecules";
 
 export default {
   title: "molecules/PaginationNumber",

@@ -1,4 +1,4 @@
-import { IconLink } from "./icon-link";
+import { IconLink } from "@molecules";
 
 export default {
   title: "molecules/IconLink",

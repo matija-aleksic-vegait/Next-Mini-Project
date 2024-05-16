@@ -1,8 +1,8 @@
-import TableUtil from "@/utils/table-util";
-import MockQueryConstants from "../constants/mock-queries-constants";
-import AxiosService from "./axios-service";
+import { MockQueryConstants } from "@constants";
+import { AxiosService } from "@services";
+import { TableUtil } from "@utils";
 
-export default class ProjectsService {
+export class ProjectsService {
   public static async getAllProjectsForTable(
     pageIndex: number,
     pageSize: number

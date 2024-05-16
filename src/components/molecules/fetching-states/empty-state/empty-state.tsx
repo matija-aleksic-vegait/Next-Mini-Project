@@ -1,4 +1,4 @@
-import { Paragraph } from "@/components/atoms/paragraph/paragraph";
+import { Paragraph } from "@atoms";
 
 interface EmptyStateProps {
   entitiesName: string;

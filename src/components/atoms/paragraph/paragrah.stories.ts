@@ -1,4 +1,4 @@
-import { Paragraph } from "./paragraph";
+import { Paragraph } from "@atoms";
 
 export default {
   title: "atoms/Paragraph",

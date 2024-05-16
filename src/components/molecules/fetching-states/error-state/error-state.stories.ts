@@ -1,4 +1,4 @@
-import { ErrorState } from "./error-state";
+import { ErrorState } from "@molecules";
 
 export default {
   title: "molecules/FetchingStates/ErrorState",

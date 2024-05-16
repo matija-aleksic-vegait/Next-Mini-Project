@@ -1,9 +1,8 @@
-import { Link } from "@/components/atoms/link/link";
-import { Logo, altType } from "@/components/atoms/logo/logo";
+import { Link, Logo } from "@atoms";
 
 interface LogoLinkProps {
   src: string;
-  alt: altType;
+  alt: string;
   href: string;
   label?: string;
   className?: string;

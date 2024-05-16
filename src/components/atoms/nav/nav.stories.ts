@@ -1,4 +1,4 @@
-import { Nav } from "./nav";
+import { Nav } from "@atoms";
 
 export default {
   title: "atoms/v",

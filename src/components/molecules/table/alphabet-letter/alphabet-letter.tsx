@@ -1,4 +1,4 @@
-import { Button } from "@/components/atoms/button/button";
+import { Button } from "@atoms";
 
 interface AlphabetLetterProps {
   char: string;

@@ -1,4 +1,4 @@
-import { Section } from "./section";
+import { Section } from "@atoms";
 
 export default {
   title: "atoms/Section",

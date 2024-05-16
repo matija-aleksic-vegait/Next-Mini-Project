@@ -1,4 +1,4 @@
-import { IconButton } from "./icon-button";
+import { IconButton } from "@molecules";
 
 export default {
   title: "molecules/IconButtons",

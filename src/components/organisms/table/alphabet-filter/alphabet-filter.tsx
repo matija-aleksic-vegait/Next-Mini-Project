@@ -1,9 +1,9 @@
-import TableConstants from "@/constants/table-constants";
+"use client";
+
 import { useEffect } from "react";
-import { AlphabetLetter } from "../../../molecules/table/alphabet-letter/alphabet-letter";
-import { Li } from "@/components/atoms/li/li";
-import { Ul } from "@/components/atoms/ul/ul";
-import { Section } from "@/components/atoms/section/section";
+import { TableConstants } from "@constants";
+import { AlphabetLetter } from "@molecules";
+import { Li, Ul, Section } from "@atoms";
 
 interface AlphabetLetterProps {
   activeLetter: string;

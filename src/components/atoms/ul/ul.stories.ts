@@ -1,4 +1,4 @@
-import { Ul } from "./ul";
+import { Ul } from "@atoms";
 
 export default {
   title: "atoms/Ul",

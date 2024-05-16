@@ -1,4 +1,4 @@
-import { AlphabetLetter } from "./alphabet-letter";
+import { AlphabetLetter } from "@molecules";
 
 export default {
   title: "molecules/AlphabetLetter",

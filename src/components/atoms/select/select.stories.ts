@@ -1,4 +1,4 @@
-import { Select } from "./select";
+import { Select } from "@atoms";
 
 export default {
   title: "atoms/Select",

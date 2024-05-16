@@ -1,4 +1,4 @@
-import { Main } from "./main";
+import { Main } from "@atoms";
 
 export default {
   title: "atoms/Main",

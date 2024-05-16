@@ -1,7 +1,7 @@
-import { ProjectCard } from "./project-card";
+import { ProjectCard } from "@molecules";
 
 export default {
-  title: "organisms/ProjectCard",
+  title: "molecules/ProjectCard",
   component: ProjectCard,
   parameters: {},
   tags: ["autodocs"],

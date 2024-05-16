@@ -1,4 +1,4 @@
-import { FormSelect } from "./form-select";
+import { FormSelect } from "@molecules";
 
 export default {
   title: "molecules/FormSelect",
