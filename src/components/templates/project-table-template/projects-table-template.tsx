@@ -1,8 +1,6 @@
 "use client";
 
 import Pagination from "@/components/organisms/table/pagination/pagination";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store";
 import { TableHeader } from "@/components/organisms/table/table-header/table-header";
 import { AlphabetFilter } from "@/components/organisms/table/alphabet-filter/alphabet-filter";
 import { ProjectCard } from "@/components/molecules/table/cards/project-card/project-card";

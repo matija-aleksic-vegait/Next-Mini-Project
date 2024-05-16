@@ -7,7 +7,8 @@ export class ProjectsService {
     pageIndex: number,
     pageSize: number
   ) {
-    return await AxiosService.get(
+    return await AxiosService(
+      "get",
       MockQueryConstants.getAllProjectsPagination(pageIndex, pageSize)
     )
       .then((response: any) => {
@@ -22,7 +23,7 @@ export class ProjectsService {
   }
 
   public static async getAllProjectsAlphabet() {
-    return await AxiosService.get(MockQueryConstants.projects)
+    return await AxiosService("get", MockQueryConstants.projects)
       .then((response) => {
         var foundLetters: string[] = [];
         response.data.forEach((element: any) => {
@@ -40,7 +41,10 @@ export class ProjectsService {
   }
 
   public static async getAllProjects() {
-    return await AxiosService.get(MockQueryConstants.projects + "?_sort=name")
+    return await AxiosService(
+      "get",
+      MockQueryConstants.projects + "?_sort=name"
+    )
       .then((response) => {
         return response.data;
       })
@@ -50,7 +54,7 @@ export class ProjectsService {
   }
 
   public static async createNewProject(data: any) {
-    return await AxiosService.post(MockQueryConstants.projects, {
+    return await AxiosService("post", MockQueryConstants.projects, {
       id: Date.now().toString(),
       name: data.name,
       description: data.description,
@@ -60,7 +64,7 @@ export class ProjectsService {
   }
 
   public static async updateProject(data: any, id: string) {
-    return await AxiosService.put(MockQueryConstants.projects + `/${id}`, {
+    return await AxiosService("put", MockQueryConstants.projects + `/${id}`, {
       name: data.name,
       description: data.description,
       clientId: data.client,
@@ -69,6 +73,6 @@ export class ProjectsService {
   }
 
   public static async deleteProject(id: string) {
-    return await AxiosService.delete(MockQueryConstants.projects + `/${id}`);
+    return await AxiosService("delete", MockQueryConstants.projects + `/${id}`);
   }
 }

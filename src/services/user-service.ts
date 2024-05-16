@@ -3,7 +3,7 @@ import { AxiosService } from "@services";
 
 export class UserService {
   public static async getAllUsers() {
-    return await AxiosService.get(MockQueryConstants.getAllUsers())
+    return await AxiosService("get", MockQueryConstants.getAllUsers())
       .then((response: any) => {
         return response.data;
       })
