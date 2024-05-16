@@ -5,4 +5,7 @@ export default {
   component: Div,
   parameters: {},
   tags: ["autodocs"],
+  excludeStories: /.*Example$/,
 };
+
+export const Example = {};

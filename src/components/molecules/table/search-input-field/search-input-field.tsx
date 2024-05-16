@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { IconButton } from "../../../molecules/icon-button/icon-button";
 import { InputField, Div } from "@atoms";
 import { TableConstants } from "@constants";
@@ -21,8 +21,13 @@ export const SearchInputField: React.FC<SearchInputFieldProps> = ({
     TableConstants.searchInputDebounceMilliseconds
   );
 
+  const debouncedSearchFunction = useCallback(
+    () => searchFunction(searchString),
+    [searchFunction, searchString]
+  );
+
   useEffect(() => {
-    searchFunction(searchString);
+    debouncedSearchFunction();
   }, [debouncedSearch]);
 
   return (

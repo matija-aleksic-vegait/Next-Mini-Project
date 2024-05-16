@@ -1,4 +1,5 @@
 import { Pagination } from "@organisms";
+import "@css";
 
 export default {
   title: "organisms/Pagination",

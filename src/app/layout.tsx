@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@css";
 
 export const metadata: Metadata = {
   title: {
@@ -16,7 +17,6 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="../icons/vegait.ico" sizes="any" />
-        <link rel="stylesheet" href="../css/styles.css" />
       </head>
       <body>{children}</body>
     </html>

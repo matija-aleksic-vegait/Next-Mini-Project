@@ -29,6 +29,7 @@
       "@organisms": ["./src/components/organisms"],
       "@templates": ["./src/components/templates"],
       "@pages": ["./src/components/pages"],
+      "@css": ["./public/css/styles.css"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

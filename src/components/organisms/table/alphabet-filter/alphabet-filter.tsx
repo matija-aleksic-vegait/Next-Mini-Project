@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { TableConstants } from "@constants";
 import { AlphabetLetter } from "@molecules";
 import { Li, Ul, Section } from "@atoms";
@@ -18,9 +18,13 @@ export const AlphabetFilter: React.FC<AlphabetLetterProps> = ({
   getAllAlphabetLettersFunction,
   alphabetFilterFunction,
 }) => {
+  const getAllAlphabetLetters = useCallback(
+    () => getAllAlphabetLettersFunction(),
+    [getAllAlphabetLettersFunction]
+  );
   useEffect(() => {
-    getAllAlphabetLettersFunction();
-  }, []);
+    getAllAlphabetLetters();
+  }, [getAllAlphabetLetters]);
 
   const onCharSelect = (char: string) => {
     alphabetFilterFunction(char);

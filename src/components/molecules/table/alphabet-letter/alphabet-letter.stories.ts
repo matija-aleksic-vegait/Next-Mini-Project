@@ -1,4 +1,5 @@
 import { AlphabetLetter } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/AlphabetLetter",

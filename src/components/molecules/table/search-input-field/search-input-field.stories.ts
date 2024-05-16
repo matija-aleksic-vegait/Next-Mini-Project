@@ -1,4 +1,5 @@
 import { SearchInputField } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/SearchInputField",

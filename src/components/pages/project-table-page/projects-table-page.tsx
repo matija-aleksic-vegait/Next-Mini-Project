@@ -91,7 +91,7 @@ export const ProjectsTablePage: React.FC = () => {
     dispatch(fetchProjectsAsync());
     dispatch(getAllUserNames());
     dispatch(getAllClientNames());
-  }, []);
+  }, [dispatch]);
 
   if (loadingState === LoadingStateEnum.loading) return LoadingState({});
   if (loadingState === LoadingStateEnum.empty)

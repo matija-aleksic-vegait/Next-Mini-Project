@@ -1,4 +1,5 @@
 import { AlphabetFilter } from "@organisms";
+import "@css";
 
 export default {
   title: "organisms/AlphabetFilter",

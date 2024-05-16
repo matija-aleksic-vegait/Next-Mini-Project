@@ -1,4 +1,6 @@
+import ImageConstants from "@/constants/image-constants";
 import { LogoLink } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/Logo Links",
@@ -12,6 +14,8 @@ export const LogoLinkHeader = {
     href: "https://www.vegaitglobal.com/",
     src: "/logos/logo-sm.svg",
     alt: "VegaIT Logo",
+    height: ImageConstants.LOGO_SM_HEIGHT,
+    width: ImageConstants.LOGO_SM_WIDTH,
   },
 };
 
@@ -20,5 +24,7 @@ export const LogoLinkFooter = {
     href: "https://www.vegaitglobal.com/",
     src: "/logos/logo-md.svg",
     alt: "VegaIT Logo",
+    height: ImageConstants.LOGO_MD_HEIGHT,
+    width: ImageConstants.LOGO_MD_WIDTH,
   },
 };

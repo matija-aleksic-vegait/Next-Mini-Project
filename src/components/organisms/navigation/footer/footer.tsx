@@ -1,3 +1,4 @@
+import ImageConstants from "@/constants/image-constants";
 import { Foot, Paragraph } from "@atoms";
 import { LogoLink } from "@molecules";
 
@@ -16,6 +17,8 @@ export const Footer: React.FC<FooterProps> = ({}) => {
         aria-label="Go to VegaIT Website"
         src="/logos/logo-md.svg"
         alt="VegaIT Logo"
+        height={ImageConstants.LOGO_MD_HEIGHT}
+        width={ImageConstants.LOGO_MD_WIDTH}
       />
       <Paragraph
         className="application-footer__content text-md"

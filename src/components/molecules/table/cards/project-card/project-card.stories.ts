@@ -1,4 +1,5 @@
 import { ProjectCard } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/ProjectCard",

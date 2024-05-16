@@ -1,5 +1,5 @@
 import { EmptyState } from "@molecules";
-import "../../../../../public/css/styles.css";
+import "@css";
 
 export default {
   title: "molecules/FetchingStates/EmptyState",

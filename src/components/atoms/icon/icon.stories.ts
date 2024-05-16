@@ -1,4 +1,5 @@
 import { Icon } from "@atoms";
+import "@css";
 
 export default {
   title: "atoms/Iconography",

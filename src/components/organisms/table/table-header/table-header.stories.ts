@@ -1,4 +1,5 @@
 import { TableHeader } from "@organisms";
+import "@css";
 
 export default {
   title: "organisms/TableHeader",
@@ -7,7 +8,7 @@ export default {
   tags: ["autodocs"],
 };
 
-export const Example = {
+export const TableHeaderExample = {
   args: {
     title: "Projects",
     description: "Some description",

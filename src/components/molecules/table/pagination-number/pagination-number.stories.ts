@@ -1,4 +1,5 @@
 import { PaginationNumber } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/PaginationNumber",

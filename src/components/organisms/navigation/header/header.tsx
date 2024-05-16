@@ -1,3 +1,4 @@
+import ImageConstants from "@/constants/image-constants";
 import { Button, Head, Li, Nav, RouterLink, Ul } from "@atoms";
 import { IconButton, LogoLink } from "@molecules";
 
@@ -9,6 +10,8 @@ export const Header: React.FC = () => {
         aria-label="Go to VegaIT Website"
         src="/logos/logo-sm.svg"
         alt="VegaIT Logo"
+        height={ImageConstants.LOGO_SM_HEIGHT}
+        width={ImageConstants.LOGO_SM_WIDTH}
       />
 
       <Nav aria-label="Main Menu" className="application-header__menu">

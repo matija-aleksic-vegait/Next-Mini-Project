@@ -5,4 +5,7 @@ export default {
   component: Link,
   parameters: {},
   tags: ["autodocs"],
+  excludeStories: /.*Example$/,
 };
+
+export const Example = {};

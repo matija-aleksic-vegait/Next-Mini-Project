@@ -1,5 +1,5 @@
 import { Button } from "@atoms";
-import "../../../../public/css/styles.css";
+import "@css";
 
 export default {
   title: "atoms/Button",

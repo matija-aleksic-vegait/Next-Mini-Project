@@ -1,4 +1,5 @@
 import { IconButton } from "@molecules";
+import "@css";
 
 export default {
   title: "molecules/IconButtons",
