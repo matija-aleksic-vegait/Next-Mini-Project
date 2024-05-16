@@ -36,12 +36,15 @@ export const Pagination: React.FC<PaginationProps> = ({
   return (
     <Nav aria-label="Pagination">
       <Ul role="list" className="application-content__list__pagination">
-        <Li onClick={() => onPageIndexSelect(pageIndex - 1)}>
+        <Li>
           <IconLink
             className="application-content__list__pagination__number gray-hover"
             aria-label="Go to the Previous Page"
             src="/icons/chevron-left.svg"
             alt="left"
+            onClick={() => {
+              onPageIndexSelect(pageIndex - 1);
+            }}
           />
         </Li>
 
@@ -99,12 +102,15 @@ export const Pagination: React.FC<PaginationProps> = ({
           />
         )}
 
-        <Li onClick={() => onPageIndexSelect(pageIndex + 1)}>
+        <Li>
           <IconLink
             className="application-content__list__pagination__number gray-hover"
             aria-label="Go to Next Page"
             src="/icons/chevron-right.svg"
             alt="right"
+            onClick={() => {
+              onPageIndexSelect(pageIndex + 1);
+            }}
           />
         </Li>
       </Ul>

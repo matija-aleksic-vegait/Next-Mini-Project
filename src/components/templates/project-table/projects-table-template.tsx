@@ -1,45 +1,39 @@
 "use client";
 
-import { useEffect } from "react";
 import Pagination from "@/components/organisms/table/pagination/pagination";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../redux/store";
-import {
-  alphabetFilterProjects,
-  changePageIndex,
-  searchProjectByTitle,
-  toggleCreateNewModal,
-  toggleUpdateModal,
-  closeModal,
-} from "@/redux/projects/projects-slice";
-import { LoadingStateEnum } from "@/constants/loading-state-enum";
-import {
-  fetchProjectsAsync,
-  getAllAvailableLettersAsync,
-  getAllClientNames,
-  getAllUserNames,
-  deleteProject,
-} from "../../../redux/projects/projects-async-methods";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 import { TableHeader } from "@/components/organisms/table/table-header/table-header";
-import { EmptyState } from "@/components/molecules/fetching-states/empty-state/empty-state";
-import { ErrorState } from "@/components/molecules/fetching-states/error-state/error-state";
 import { AlphabetFilter } from "@/components/organisms/table/alphabet-filter/alphabet-filter";
-import { LoadingState } from "@/components/molecules/fetching-states/loading-state/loading-state";
 import { ProjectCard } from "@/components/molecules/table/cards/project-card/project-card";
 import { Div } from "@/components/atoms/div/div";
 import { Ul } from "@/components/atoms/ul/ul";
 import { ProjectModal } from "@/components/organisms/project-modal/project-modal";
 import { Section } from "@/components/atoms/section/section";
 
-function ProjectsTable() {
+interface ProjectsTableProps {
+  newProjectModal: Function;
+  searchProjects: (searchString: string) => void;
+  getAllAvailableLetters: Function;
+  selectActiveLetter: Function;
+  updateProjectModal: Function;
+  changePageIdx: Function;
+  closeProjectModal: Function;
+  deleteProjectEntity: Function;
+}
+
+export const ProjectsTableTemplate: React.FC<ProjectsTableProps> = ({
+  newProjectModal,
+  searchProjects,
+  getAllAvailableLetters,
+  selectActiveLetter,
+  updateProjectModal,
+  changePageIdx,
+  closeProjectModal,
+  deleteProjectEntity,
+}) => {
   const projects = useSelector(
     (state: RootState) => state.projectsStore.projects
-  );
-  const loadingState = useSelector(
-    (state: RootState) => state.projectsStore.loadingState
-  );
-  const errorMessage = useSelector(
-    (state: RootState) => state.projectsStore.errorMessage
   );
   const alphabet = useSelector(
     (state: RootState) => state.projectsStore.alphabet
@@ -67,51 +61,6 @@ function ProjectsTable() {
   var description =
     "Here, you have full control over your project database, empowering you to efficiently organize and maintain your projects.";
 
-  const newProjectModal = () => {
-    dispatch(toggleCreateNewModal());
-  };
-
-  const updateProjectModal = (project: any) => {
-    dispatch(toggleUpdateModal(project));
-  };
-
-  const searchProjects = (searchString: string) => {
-    dispatch(searchProjectByTitle(searchString));
-  };
-
-  const getAllAvailableLetters = () => {
-    dispatch(getAllAvailableLettersAsync());
-  };
-
-  const selectActiveLetter = (char: string) => {
-    dispatch(alphabetFilterProjects(char));
-  };
-
-  const changePageIdx = (pageIndex: number) => {
-    dispatch(changePageIndex(pageIndex));
-  };
-
-  const closeProjectModal = async () => {
-    dispatch(closeModal());
-  };
-
-  const deleteProjectEntity = async (id: string) => {
-    dispatch(deleteProject(id));
-  };
-
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(fetchProjectsAsync());
-    dispatch(getAllUserNames());
-    dispatch(getAllClientNames());
-  }, []);
-
-  if (loadingState === LoadingStateEnum.loading) return LoadingState({});
-  if (loadingState === LoadingStateEnum.empty)
-    return EmptyState({ entitiesName: title });
-  if (loadingState === LoadingStateEnum.failure)
-    return ErrorState({ errorMessage: errorMessage });
   return (
     <>
       <TableHeader
@@ -168,6 +117,6 @@ function ProjectsTable() {
       )}
     </>
   );
-}
+};
 
-export default ProjectsTable;
+export default ProjectsTableTemplate;
