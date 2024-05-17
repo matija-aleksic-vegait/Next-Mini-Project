@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import TimesheetUtil from "../../utils/timesheet-util";
 import MockQueryConstants from "@/constants/mock-queries-constants";
 
-function TimesheetCalendar() {
+function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
   const [workEntries, setWorkEntries] = useState([]);
 
-  const currentDate = new Date();
   const daysInCurrentMonth = TimesheetUtil.formCalendarDaysArray(currentDate);
   const firstMondayOfMonth =
     TimesheetUtil.findFirstWorkingDayOfMonth(currentDate);

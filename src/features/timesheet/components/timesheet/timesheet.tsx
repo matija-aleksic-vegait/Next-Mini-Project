@@ -1,12 +1,21 @@
+"use client";
+
 import TimesheetNavigation from "../navigation/timesheet-navigation";
 import TimesheetCalendar from "../calendar/timesheet-calendar";
+import { addMonths } from "date-fns";
+import { useState } from "react";
 
 function Timesheet() {
+  const [currentDate, setCurrentDate] = useState<Date>(new Date());
+
   return (
     <>
       <TimesheetHeader />
-      <TimesheetNavigation />
-      <TimesheetCalendar />
+      <TimesheetNavigation
+        currentDate={currentDate}
+        setCurrentDate={setCurrentDate}
+      />
+      <TimesheetCalendar currentDate={currentDate} />
     </>
   );
 }
