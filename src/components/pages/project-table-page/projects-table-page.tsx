@@ -17,9 +17,10 @@ import {
   getAllUserNames,
   deleteProject,
 } from "@redux";
-import { LoadingStateEnum } from "@constants";
+import { LoadingStateEnum, MockQueryConstants } from "@constants";
 import { EmptyState, ErrorState, LoadingState } from "@molecules";
 import { ProjectsTableTemplate } from "@templates";
+import { ClientUtil, UserUtil } from "@/utils";
 
 export const ProjectsTablePage: React.FC = () => {
   const loadingState = useSelector(
@@ -91,7 +92,7 @@ export const ProjectsTablePage: React.FC = () => {
     dispatch(fetchProjectsAsync());
     dispatch(getAllUserNames());
     dispatch(getAllClientNames());
-  }, [dispatch]);
+  }, []);
 
   if (loadingState === LoadingStateEnum.loading) return LoadingState({});
   if (loadingState === LoadingStateEnum.empty)
