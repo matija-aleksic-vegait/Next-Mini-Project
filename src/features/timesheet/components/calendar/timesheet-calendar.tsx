@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import TimesheetUtil from "../../utils/timesheet-util";
 import MockQueryConstants from "@/constants/mock-queries-constants";
+import TimesheetCalendarDay from "./timesheet-calendar-day";
 
 function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
   const [workEntries, setWorkEntries] = useState([]);
@@ -46,37 +47,12 @@ function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
 
         {daysInCurrentMonth &&
           daysInCurrentMonth.map((day, index) => (
-            <a
+            <TimesheetCalendarDay
+              currentDate={currentDate}
+              day={day}
+              workEntries={workEntries}
               key={index}
-              href="#"
-              className={`calendar__day  ${
-                TimesheetUtil.checkIfDayIsInThisMonth(day, currentDate)
-                  ? "calendar-day--transparent"
-                  : ""
-              } 
-              ${
-                TimesheetUtil.checkIfWorkDayHasEntry(day, workEntries)
-                  ? TimesheetUtil.checkIfWorkEntryIsValid(day, workEntries)
-                    ? "calendar__day--valid"
-                    : "calendar__day--invalid"
-                  : "calendar__day--neutral"
-              }`}
-            >
-              <div className="calendar__day__date heading-xl">
-                {day.getDate()}
-                <div className="calendar__day__date__day-of-week">
-                  {TimesheetUtil.getDayName(day)}
-                </div>
-              </div>
-              {TimesheetUtil.extractWorkEntryDataForCalendar(
-                day,
-                workEntries
-              ).map((data, index) => (
-                <div key={index} className="calendar__day__hours text-md">
-                  {data.hours} {data.description}
-                </div>
-              ))}
-            </a>
+            />
           ))}
       </div>
     </section>
