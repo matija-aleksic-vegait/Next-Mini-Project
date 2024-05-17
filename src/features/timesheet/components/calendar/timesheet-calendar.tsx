@@ -27,7 +27,6 @@ function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
       })
       .then((body) => {
         setWorkEntries(body);
-        console.log(body);
       })
       .catch((error) => {
         throw new Error(error.message);

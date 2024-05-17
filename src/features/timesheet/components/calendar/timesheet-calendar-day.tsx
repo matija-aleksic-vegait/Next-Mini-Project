@@ -1,6 +1,5 @@
 import Link from "next/link";
 import TimesheetUtil from "../../utils/timesheet-util";
-import { current } from "@reduxjs/toolkit";
 
 function TimesheetCalendarDay({
   day,
@@ -13,7 +12,7 @@ function TimesheetCalendarDay({
 }) {
   return (
     <Link
-      href={`/${currentDate.getFullYear()}-${currentDate.getMonth()}-${currentDate.getDay()}`}
+      href={`/${day.getFullYear()}-${day.getMonth() + 1}-${day.getDay()}`}
       className={`calendar__day  ${
         TimesheetUtil.checkIfDayIsInThisMonth(day, currentDate)
           ? "calendar-day--transparent"
