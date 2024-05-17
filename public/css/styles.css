@@ -666,3 +666,7 @@ da ne pisem custom svoje */
   justify-content: center;
   padding-top: 3%;
 }
+
+.calendar-day--transparent{
+  opacity: 0.2;
+}

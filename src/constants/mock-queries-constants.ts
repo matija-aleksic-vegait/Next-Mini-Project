@@ -91,21 +91,17 @@ export default class MockQueryConstants {
     andSignRequired: boolean,
     date?: Date
   ) {
-    return andSignRequired
-      ? "&"
-      : "" + date
-      ? `date_gte=${date?.toDateString()}`
-      : "";
+    return `${andSignRequired ? "&" : ""}${
+      date != null ? `date_gte=${date!.toJSON()}` : ""
+    }`;
   }
 
   private static formDateLowerThanEqualQuery(
     andSignRequired: boolean,
     date?: Date
   ) {
-    return andSignRequired
-      ? "&"
-      : "" + date
-      ? `date_lte=${date?.toDateString()}`
-      : "";
+    return `${andSignRequired ? "&" : ""}${
+      date ? `date_lte=${date!.toJSON()}` : ""
+    }`;
   }
 }

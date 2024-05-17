@@ -81,3 +81,5 @@ http://localhost:8002/projects?_expand=user - Get projects user data
 http://localhost:8002/projects?_expand=user&_expand=client - Get project data and embed user and project assosiated with this project 
 
 http://localhost:8002/workEntries?_expand=user&_expand=project&_expand=client - Get all workEntries with embeded data for all entities
+
+http://localhost:8002/workEntries?userId=1&date_gte=2024-05-02T22:00:00.000Z&date_lte=2024-12-31T22:00:00.000Z - Get all workEntries for calendar

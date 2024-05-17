@@ -1,8 +1,38 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import TimesheetUtil from "../../utils/timesheet-util";
+import MockQueryConstants from "@/constants/mock-queries-constants";
 
 function TimesheetCalendar() {
+  const [workEntries, setWorkEntries] = useState([]);
+
   const currentDate = new Date();
   const daysInCurrentMonth = TimesheetUtil.formCalendarDaysArray(currentDate);
+  const firstMondayOfMonth =
+    TimesheetUtil.findFirstWorkingDayOfMonth(currentDate);
+  const lastFridayOfMonth =
+    TimesheetUtil.findLastWorkingDayOfMonth(currentDate);
+
+  useEffect(() => {
+    fetch(
+      MockQueryConstants.getAllWorkEntriesForUser(
+        "1",
+        firstMondayOfMonth,
+        lastFridayOfMonth
+      )
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        setWorkEntries(body);
+        console.log(body);
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }, []);
 
   return (
     <section aria-label="Calendar">
@@ -18,20 +48,35 @@ function TimesheetCalendar() {
         {daysInCurrentMonth &&
           daysInCurrentMonth.map((day, index) => (
             <a
-              href="#"
-              //   className="calendar__day calendar__day--neutral calendar__day--neutral--transparent"
-              className="calendar__day calendar__day--neutral"
-              // className="calendar__day calendar__day--valid calendar__day--valid--transparent"
-              // className="calendar__day calendar__day--invalid calendar__day--current-week"
               key={index}
+              href="#"
+              className={`calendar__day  ${
+                TimesheetUtil.checkIfDayIsInThisMonth(day, currentDate)
+                  ? "calendar-day--transparent"
+                  : ""
+              } 
+              ${
+                TimesheetUtil.checkIfWorkDayHasEntry(day, workEntries)
+                  ? TimesheetUtil.checkIfWorkEntryIsValid(day, workEntries)
+                    ? "calendar__day--valid"
+                    : "calendar__day--invalid"
+                  : "calendar__day--neutral"
+              }`}
             >
               <div className="calendar__day__date heading-xl">
-                {day}
-                <div className="calendar__day__date__day-of-week">MON</div>
+                {day.getDate()}
+                <div className="calendar__day__date__day-of-week">
+                  {TimesheetUtil.getDayName(day)}
+                </div>
               </div>
-              <div className="calendar__day__hours text-md">
-                4h Iqvia Holdings Inc.
-              </div>
+              {TimesheetUtil.extractWorkEntryDataForCalendar(
+                day,
+                workEntries
+              ).map((data, index) => (
+                <div key={index} className="calendar__day__hours text-md">
+                  {data.hours} {data.description}
+                </div>
+              ))}
             </a>
           ))}
       </div>
