@@ -1,34 +1,39 @@
+import TimesheetUtil from "@/features/timesheet/utils/timesheet-util";
 import DaysUtil from "../../util/days-util";
+import { addDays, subDays } from "date-fns";
+import Link from "next/link";
 
 function DaysNavigation({
   mondayDate,
   sundayDate,
-  nextWeekFunction,
-  previousWeekFunction,
+  currentDate,
 }: {
   mondayDate: Date;
   sundayDate: Date;
-  nextWeekFunction: Function;
-  previousWeekFunction: Function;
+  currentDate: Date;
 }) {
   return (
     <section aria-label="Days Navigation">
       <div className="calendar-navigation">
-        <div
+        <Link
+          href={`${DaysUtil.formHrefForDaysNavigation(
+            subDays(currentDate, 7)
+          )}`}
           className="calendar-navigation__navigate"
-          onClick={() => previousWeekFunction()}
         >
           <img src="/icons/chevron-left.svg" alt="navigate-previous" />
-        </div>
+        </Link>
         <div className="calendar-navigation__content">
           {DaysUtil.formatDateForDays(mondayDate, sundayDate)}
         </div>
-        <div
+        <Link
+          href={`${DaysUtil.formHrefForDaysNavigation(
+            addDays(currentDate, 7)
+          )}`}
           className="calendar-navigation__navigate"
-          onClick={() => nextWeekFunction()}
         >
           <img src="/icons/chevron-right.svg" alt="navigate-next" />
-        </div>
+        </Link>
       </div>
     </section>
   );

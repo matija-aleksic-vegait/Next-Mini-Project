@@ -29,6 +29,10 @@ export default class DaysUtil {
 
     return workingDays;
   }
+
+  public static formHrefForDaysNavigation(date: Date) {
+    return `/${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  }
 }
 
 function getDayNumberExtension(date: Date) {

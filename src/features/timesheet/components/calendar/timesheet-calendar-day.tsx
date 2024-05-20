@@ -1,19 +1,23 @@
 import Link from "next/link";
 import TimesheetUtil from "../../utils/timesheet-util";
+import DaysUtil from "@/features/days/util/days-util";
+import { isSameDay } from "date-fns";
 
 function TimesheetCalendarDay({
   day,
-  currentDate,
   workEntries,
+  currentDate,
 }: {
   day: Date;
-  currentDate: Date;
   workEntries: Array<any>;
+  currentDate: Date;
 }) {
   return (
     <Link
-      href={`/${day.getFullYear()}-${day.getMonth() + 1}-${day.getDay()}`}
-      className={`calendar__day  ${
+      href={DaysUtil.formHrefForDaysNavigation(day)}
+      className={`calendar__day  
+      ${isSameDay(day, new Date()) ? "calendar__day--current" : ""}
+      ${
         TimesheetUtil.checkIfDayIsInThisMonth(day, currentDate)
           ? "calendar-day--transparent"
           : ""

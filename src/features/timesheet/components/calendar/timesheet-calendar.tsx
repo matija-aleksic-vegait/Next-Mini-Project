@@ -31,7 +31,7 @@ function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
       .catch((error) => {
         throw new Error(error.message);
       });
-  }, []);
+  }, [currentDate]);
 
   return (
     <section aria-label="Calendar">
@@ -47,10 +47,10 @@ function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
         {daysInCurrentMonth &&
           daysInCurrentMonth.map((day, index) => (
             <TimesheetCalendarDay
-              currentDate={currentDate}
               day={day}
               workEntries={workEntries}
               key={index}
+              currentDate={currentDate}
             />
           ))}
       </div>

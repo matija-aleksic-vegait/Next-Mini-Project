@@ -5,14 +5,7 @@ import DaysEntryTable from "@/features/days/components/days-entry-table/days-ent
 import DaysHeader from "@/features/days/components/days-header/days-header";
 import DaysNavigation from "@/features/days/components/days-navigation/days-navigation";
 import DaysSelect from "@/features/days/components/days-select/days-select";
-import {
-  addDays,
-  isMonday,
-  isSunday,
-  nextSunday,
-  previousMonday,
-  subDays,
-} from "date-fns";
+import { isMonday, isSunday, nextSunday, previousMonday } from "date-fns";
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -24,14 +17,6 @@ type Props = {
 function Day({ params }: Props) {
   const [currentDate, setCurrentDay] = useState(new Date(params.date));
   const [workEntries, setWorkEntries] = useState([]);
-
-  const nextWeek = () => {
-    setCurrentDay(addDays(currentDate, 7));
-  };
-
-  const previousWeek = () => {
-    setCurrentDay(subDays(currentDate, 7));
-  };
 
   var firstMonday = isMonday(currentDate)
     ? currentDate
@@ -57,17 +42,16 @@ function Day({ params }: Props) {
 
   return (
     <>
-      <div className="low-resolution-warning body-md">
+      {/* <div className="low-resolution-warning body-md">
         Resolution under 420px is not supported.
-      </div>
+      </div> */}
       <div className="application">
         <main aria-label="Days Card" className="application-content">
           <DaysHeader />
           <DaysNavigation
             mondayDate={firstMonday}
             sundayDate={lastSunday}
-            nextWeekFunction={nextWeek}
-            previousWeekFunction={previousWeek}
+            currentDate={currentDate}
           />
           <DaysSelect currentDate={currentDate} workEntries={workEntries} />
           <DaysEntryTable />
