@@ -5,6 +5,7 @@ import DaysEntryTable from "@/features/days/components/days-entry-table/days-ent
 import DaysHeader from "@/features/days/components/days-header/days-header";
 import DaysNavigation from "@/features/days/components/days-navigation/days-navigation";
 import DaysSelect from "@/features/days/components/days-select/days-select";
+import TimesheetUtil from "@/features/timesheet/utils/timesheet-util";
 import { isMonday, isSunday, nextSunday, previousMonday } from "date-fns";
 import { useEffect, useState } from "react";
 
@@ -15,8 +16,10 @@ type Props = {
 };
 
 function Day({ params }: Props) {
-  const [currentDate, setCurrentDay] = useState(new Date(params.date));
-  const [workEntries, setWorkEntries] = useState([]);
+  const [currentDate] = useState(new Date(params.date));
+  const [workEntries, setWorkEntries] = useState<Array<any>>([]);
+  const [clients, setClients] = useState<Array<any>>([]);
+  const [categories, setCategories] = useState<Array<string>>([]);
 
   var firstMonday = isMonday(currentDate)
     ? currentDate
@@ -26,6 +29,12 @@ function Day({ params }: Props) {
     : nextSunday(currentDate);
 
   useEffect(() => {
+    fetchWorkEntities();
+    fetchClients();
+    fetchCategories();
+  }, [currentDate]);
+
+  const fetchWorkEntities = () => {
     fetch(
       MockQueryConstants.getAllWorkEntriesForUser("1", firstMonday, lastSunday)
     )
@@ -38,7 +47,33 @@ function Day({ params }: Props) {
       .catch((error) => {
         throw new Error(error.message);
       });
-  }, [currentDate]);
+  };
+
+  const fetchClients = () => {
+    fetch(MockQueryConstants.getAllClientsFetchProjects())
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        setClients(body);
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  };
+
+  const fetchCategories = () => {
+    fetch(MockQueryConstants.categories)
+      .then((response) => {
+        return response.json();
+      })
+      .then((body) => {
+        setCategories(body);
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  };
 
   return (
     <>
@@ -54,7 +89,14 @@ function Day({ params }: Props) {
             currentDate={currentDate}
           />
           <DaysSelect currentDate={currentDate} workEntries={workEntries} />
-          <DaysEntryTable />
+          <DaysEntryTable
+            clients={clients}
+            categories={categories}
+            workEntries={TimesheetUtil.extractWorkEntriesForDate(
+              currentDate,
+              workEntries
+            )}
+          />
         </main>
       </div>
     </>

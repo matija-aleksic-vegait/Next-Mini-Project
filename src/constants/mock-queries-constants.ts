@@ -7,6 +7,7 @@ export default class MockQueryConstants {
 
   public static roles: string = this.base + "/roles";
   public static countries: string = this.base + "/countries";
+  public static categories: string = this.base + "/categories";
 
   //User queries
   public static getAllUsers(): string {

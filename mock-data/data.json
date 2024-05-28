@@ -43,70 +43,6 @@
       "city": "City3",
       "zipCode": 123,
       "country": "Serbia"
-    },
-    {
-      "id": "4",
-      "name": "Client4",
-      "address": "Address4",
-      "city": "City4",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "5",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "6",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "7",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "8",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "9",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "10",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
-    },
-    {
-      "id": "11",
-      "name": "Client",
-      "address": "Address",
-      "city": "City",
-      "zipCode": 123,
-      "country": "Serbia"
     }
   ],
   "projects": [
@@ -267,7 +203,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "2",
@@ -277,7 +214,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "3",
@@ -287,7 +225,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "4",
@@ -297,7 +236,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "17",
@@ -307,7 +247,8 @@
       "description": "ever since the 1500s, when ",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "5",
@@ -317,7 +258,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "6",
@@ -327,7 +269,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "7",
@@ -337,7 +280,8 @@
       "description": "Learning for upcoming project",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "12",
@@ -347,7 +291,8 @@
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "13",
@@ -357,7 +302,8 @@
       "description": "is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "14",
@@ -367,7 +313,8 @@
       "description": "dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "15",
@@ -377,7 +324,8 @@
       "description": "text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "8",
@@ -387,7 +335,8 @@
       "description": "typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever s",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "16",
@@ -397,7 +346,8 @@
       "description": "standard dummy text ever since the 1500s, when an unknown printer took a galley",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "9",
@@ -407,7 +357,8 @@
       "description": "Description",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "10",
@@ -417,7 +368,8 @@
       "description": "Learning for upcoming project",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     },
     {
       "id": "11",
@@ -427,7 +379,8 @@
       "description": "Lorem ipsum",
       "clientId": "2",
       "projectId": "2",
-      "userId": "1"
+      "userId": "1",
+      "category": "Software development"
     }
   ],
   "countries": [
@@ -449,6 +402,14 @@
     {
       "id": "2",
       "name": "worker"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Software Development"
+    },
+    {
+      "name": "Testing"
     }
   ]
 }

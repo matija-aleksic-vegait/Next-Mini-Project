@@ -36,7 +36,7 @@ function TimesheetCalendarDay({
           {TimesheetUtil.getDayName(day)}
         </div>
       </div>
-      {TimesheetUtil.extractWorkEntryDataForCalendar(day, workEntries).map(
+      {TimesheetUtil.extractWorkEntriesForDate(day, workEntries).map(
         (data, index) => (
           <div key={index} className="calendar__day__hours text-md">
             {data.hours} {data.description}

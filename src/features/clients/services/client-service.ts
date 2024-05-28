@@ -13,6 +13,18 @@ export default class ClientsService {
       });
   }
 
+  public static async getAllClientsFetchProjects() {
+    return await AxiosService.get(
+      MockQueryConstants.getAllClientsFetchProjects()
+    )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((error) => {
+        throw new Error(error.message);
+      });
+  }
+
   public static async getAllClientsAlphabet() {
     return await AxiosService.get(MockQueryConstants.clients)
       .then((response) => {

@@ -79,7 +79,7 @@ export default class TimesheetUtil {
     });
   }
 
-  public static extractWorkEntryDataForCalendar(
+  public static extractWorkEntriesForDate(
     givenDate: Date,
     workEntries: Array<any>
   ) {
@@ -87,10 +87,7 @@ export default class TimesheetUtil {
 
     workEntries.forEach((entry) => {
       if (isSameDay(entry.date, givenDate)) {
-        data.push({
-          description: entry.description,
-          hours: entry.time + entry.overtime,
-        });
+        data.push(entry);
       }
     });
 
