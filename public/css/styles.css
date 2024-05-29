@@ -240,9 +240,10 @@ ul {
 }
 .timesheet-entry__header {
   display: flex;
+  justify-content: space-around;
 }
 .timesheet-entry__header__item {
-  width: 22%;
+  width: 0%; 
 }
 .timesheet-entry__header__item--small {
   width: 6%;

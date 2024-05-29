@@ -20,12 +20,9 @@ function DaysEntryForm({
       var foundClient = clients.find(
         (client) => client.id === workEntry.clientId
       );
-      console.log(foundClient);
       if (foundClient) setAvailableProjects(foundClient.projects);
     }
-  }, [clients]);
-
-  console.log(workEntry);
+  }, [clients, categories]);
 
   const schema = Yup.object().shape({
     client: Yup.string().required(),
@@ -37,6 +34,10 @@ function DaysEntryForm({
     hours: Yup.number()
       .max(WorkEntriesConstants.WORK_ENTRY_HOURS_MAX)
       .min(WorkEntriesConstants.WORK_ENTRY_HOURS_MIN)
+      .required(),
+    overtime: Yup.number()
+      .max(WorkEntriesConstants.WORK_ENTRY_OVERTIME_MAX)
+      .min(WorkEntriesConstants.WORK_ENTRY_OVERTIME_MIN)
       .required(),
   });
 
@@ -52,6 +53,7 @@ function DaysEntryForm({
       category: workEntry ? workEntry.category : "Select Category",
       description: workEntry ? workEntry.description : "",
       hours: workEntry ? workEntry.hours : 0,
+      overtime: workEntry ? workEntry.overtime : 0,
     },
   });
 
@@ -172,7 +174,7 @@ function DaysEntryForm({
           <input
             id="hours"
             className="input-box__input-field"
-            type="text"
+            type="number"
             placeholder="Hours"
             aria-label="Hours"
             {...register("hours")}
@@ -180,6 +182,24 @@ function DaysEntryForm({
           {errors.hours && (
             <span className="validation-error-message">
               {errors.hours.message?.toString()}
+            </span>
+          )}
+        </div>
+        <div className="input-box input-box--sm">
+          <label className=" sr-only" htmlFor="hours">
+            Overtime
+          </label>
+          <input
+            id="overtime"
+            className="input-box__input-field"
+            type="number"
+            placeholder="Overtime"
+            aria-label="Overtime"
+            {...register("overtime")}
+          />
+          {errors.overtime && (
+            <span className="validation-error-message">
+              {errors.overtime.message?.toString()}
             </span>
           )}
         </div>

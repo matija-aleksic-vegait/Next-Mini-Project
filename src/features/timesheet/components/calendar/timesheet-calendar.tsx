@@ -9,10 +9,8 @@ function TimesheetCalendar({ currentDate }: { currentDate: Date }) {
   const [workEntries, setWorkEntries] = useState([]);
 
   const daysInCurrentMonth = TimesheetUtil.formCalendarDaysArray(currentDate);
-  const firstMondayOfMonth =
-    TimesheetUtil.findFirstWorkingDayOfMonth(currentDate);
-  const lastFridayOfMonth =
-    TimesheetUtil.findLastWorkingDayOfMonth(currentDate);
+  const firstMondayOfMonth = daysInCurrentMonth[0];
+  const lastFridayOfMonth = daysInCurrentMonth[daysInCurrentMonth.length - 1];
 
   useEffect(() => {
     fetch(

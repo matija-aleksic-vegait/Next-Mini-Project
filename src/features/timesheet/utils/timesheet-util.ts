@@ -36,18 +36,6 @@ export default class TimesheetUtil {
     return workingDaysArray;
   }
 
-  public static findFirstWorkingDayOfMonth(currentDate: Date) {
-    const startDayOfMonth = startOfMonth(currentDate);
-    return isMonday(startDayOfMonth)
-      ? startDayOfMonth
-      : previousMonday(startDayOfMonth);
-  }
-
-  public static findLastWorkingDayOfMonth(currentDate: Date) {
-    const endDayOfMonth = endOfMonth(currentDate);
-    return isSunday(endDayOfMonth) ? endDayOfMonth : nextSunday(endDayOfMonth);
-  }
-
   public static checkIfWorkEntryIsValid(
     givenDay: Date,
     workEntries: Array<any>
@@ -56,7 +44,7 @@ export default class TimesheetUtil {
 
     workEntries.forEach((entry: any) => {
       if (isSameDay(entry.date, givenDay)) {
-        totalTime += entry.time + entry.overtime;
+        totalTime += entry.hours + entry.overtime;
       }
     });
 

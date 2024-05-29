@@ -11,12 +11,12 @@ import { useEffect, useState } from "react";
 
 type Props = {
   params: {
-    date: string;
+    day: string;
   };
 };
 
 function Day({ params }: Props) {
-  const [currentDate] = useState(new Date(params.date));
+  const [currentDate] = useState(new Date(params.day));
   const [workEntries, setWorkEntries] = useState<Array<any>>([]);
   const [clients, setClients] = useState<Array<any>>([]);
   const [categories, setCategories] = useState<Array<string>>([]);
@@ -50,7 +50,7 @@ function Day({ params }: Props) {
   };
 
   const fetchClients = () => {
-    fetch(MockQueryConstants.getAllClientsFetchProjects())
+    return fetch(MockQueryConstants.getAllClientsFetchProjects())
       .then((response) => {
         return response.json();
       })

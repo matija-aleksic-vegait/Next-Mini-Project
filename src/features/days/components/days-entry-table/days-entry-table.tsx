@@ -81,8 +81,12 @@ function DaysEntryTableHeader() {
       <div className="timesheet-entry__header__item">
         <span>Description</span>
       </div>
-      <div className="timesheet-entry__header__item timesheet-entry__header__item--small">
+      <div className="timesheet-entry__header__item">
         <span>Hours</span>
+        <span className="mandatory">*</span>
+      </div>
+      <div className="timesheet-entry__header__item">
+        <span>Overtime</span>
         <span className="mandatory">*</span>
       </div>
     </div>
