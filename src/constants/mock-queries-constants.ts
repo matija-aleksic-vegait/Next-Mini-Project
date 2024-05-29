@@ -48,18 +48,20 @@ export default class MockQueryConstants {
   }
 
   public static getWorkEntriesForReport(
+    startDate?: Date,
+    endDate?: Date,
     userId?: string,
     clientId?: string,
     projectId?: string,
-    startDate?: Date,
-    endDate?: Date
+    category?: string
   ) {
-    return `${this.workEntries}?
-        ${this.formUserQuery(false, userId)}
-        ${this.formDateGreaterThanEqualQuery(true, startDate)}
-        ${this.formDateLowerThanEqualQuery(true, endDate)}
-        ${this.formClientQuery(true, clientId)}
-        ${this.formProjectQuery(true, projectId)}`;
+    return `${this.workEntries}?_expand=client&_expand=user&_expand=project
+        ${userId ? this.formUserQuery(false, userId) : ""}
+        ${startDate ? this.formDateGreaterThanEqualQuery(true, startDate) : ""}
+        ${endDate ? this.formDateLowerThanEqualQuery(true, endDate) : ""}
+        ${clientId ? this.formClientQuery(true, clientId) : ""}
+        ${projectId ? this.formProjectQuery(true, projectId) : ""}
+        ${category ? this.formCategoryQuery(true, category) : ""}`;
   }
 
   //HELPER METHODS
@@ -86,6 +88,13 @@ export default class MockQueryConstants {
       : "" + projectId
       ? `projectId=${projectId}`
       : "";
+  }
+
+  private static formCategoryQuery(
+    andSignRequired: boolean,
+    category?: string
+  ) {
+    return andSignRequired ? "&" : "" + category ? `category=${category}` : "";
   }
 
   private static formDateGreaterThanEqualQuery(

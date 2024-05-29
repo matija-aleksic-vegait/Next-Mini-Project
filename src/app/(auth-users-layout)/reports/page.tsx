@@ -1,11 +1,18 @@
+import Reports from "@/features/reports/components/reports/reports";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Reports",
 };
 
-function Reports() {
-  return <h1 className="flex justify-center text-5xl"> REPORTS</h1>;
+function ReportsPage() {
+  return (
+    <div className="application">
+      <main className="application-content">
+        <Reports />
+      </main>
+    </div>
+  );
 }
 
-export default Reports;
+export default ReportsPage;
