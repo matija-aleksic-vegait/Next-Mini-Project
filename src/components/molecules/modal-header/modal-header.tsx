@@ -1,5 +1,5 @@
-import { Head } from "@atoms";
-import { IconButton } from "@molecules";
+import { Head } from '@atoms';
+import { IconButton } from '../icon-button/icon-button';
 
 interface ModalHeaderProps {
   name: string;

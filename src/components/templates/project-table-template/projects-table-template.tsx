@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import Pagination from "@/components/organisms/table/pagination/pagination";
-import { TableHeader } from "@/components/organisms/table/table-header/table-header";
-import { AlphabetFilter } from "@/components/organisms/table/alphabet-filter/alphabet-filter";
-import { ProjectCard } from "@/components/molecules/table/cards/project-card/project-card";
-import { Div } from "@/components/atoms/div/div";
-import { Ul } from "@/components/atoms/ul/ul";
-import { ProjectModal } from "@/components/organisms/project-modal/project-modal";
-import { Section } from "@/components/atoms/section/section";
+import { Pagination } from '@/components/organisms/table/pagination/pagination';
+import { TableHeader } from '@/components/organisms/table/table-header/table-header';
+import { AlphabetFilter } from '@/components/organisms/table/alphabet-filter/alphabet-filter';
+import { ProjectCard } from '@/components/molecules/table/cards/project-card/project-card';
+import { Div } from '@/components/atoms/div/div';
+import { Ul } from '@/components/atoms/ul/ul';
+import { ProjectModal } from '@/components/organisms/project-modal/project-modal';
+import { Section } from '@/components/atoms/section/section';
 
 interface ProjectsTableProps {
   projects: Array<any>;
@@ -20,6 +20,7 @@ interface ProjectsTableProps {
   updateProject: any;
 
   newProjectModal: Function;
+  // eslint-disable-next-line no-unused-vars
   searchProjects: (searchString: string) => void;
   getAllAvailableLetters: Function;
   selectActiveLetter: Function;
@@ -48,9 +49,9 @@ export const ProjectsTableTemplate: React.FC<ProjectsTableProps> = ({
   closeProjectModal,
   deleteProjectEntity,
 }) => {
-  var title = "Projects";
-  var description =
-    "Here, you have full control over your project database, empowering you to efficiently organize and maintain your projects.";
+  const title = 'Projects';
+  const description =
+    'Here, you have full control over your project database, empowering you to efficiently organize and maintain your projects.';
 
   return (
     <>

@@ -1,15 +1,15 @@
-import { ErrorState } from "@molecules";
-import "@css";
+import { ErrorState } from '@molecules';
+import '@css';
 
 export default {
-  title: "molecules/FetchingStates/ErrorState",
+  title: 'molecules/FetchingStates/ErrorState',
   component: ErrorState,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const Example = {
   args: {
-    errorMessage: "Error 404: Not found",
+    errorMessage: 'Error 404: Not found',
   },
 };

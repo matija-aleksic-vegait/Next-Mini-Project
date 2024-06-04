@@ -1,6 +1,6 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse } from 'axios';
 
-type Method = "get" | "post" | "put" | "delete" | "patch";
+type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
 
 export const AxiosService = async (
   method: Method,

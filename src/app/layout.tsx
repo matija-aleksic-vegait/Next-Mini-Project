@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
-import "@css";
+import type { Metadata } from 'next';
+import '@css';
 
 export const metadata: Metadata = {
   title: {
-    default: "VegaIT",
-    template: "VegaIT | %s",
+    default: 'VegaIT',
+    template: 'VegaIT | %s',
   },
 };
 

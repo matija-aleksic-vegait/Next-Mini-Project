@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { TableConstants } from "@constants";
-import { AlphabetLetter } from "@molecules";
-import { Li, Ul, Section } from "@atoms";
+import { useEffect } from 'react';
+import { TableConstants } from '@constants';
+import { AlphabetLetter } from '@molecules';
+import { Li, Ul, Section } from '@atoms';
 
 interface AlphabetLetterProps {
   activeLetter: string;
@@ -20,6 +20,7 @@ export const AlphabetFilter: React.FC<AlphabetLetterProps> = ({
 }) => {
   useEffect(() => {
     getAllAlphabetLettersFunction();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onCharSelect = (char: string) => {

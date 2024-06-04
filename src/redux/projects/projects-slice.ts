@@ -1,6 +1,6 @@
-import { LoadingStateEnum } from "@constants";
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { ProjectsUtil, ClientUtil, UserUtil } from "@utils";
+import { LoadingStateEnum } from '@constants';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { ProjectsUtil, ClientUtil, UserUtil } from '@utils';
 import {
   createNewProject,
   deleteProject,
@@ -9,9 +9,9 @@ import {
   getAllClientNames,
   getAllUserNames,
   updateProject,
-} from "./projects-async-methods";
+} from './projects-async-methods';
 
-//STATE
+// STATE
 interface ProjectsState {
   loadingState: LoadingStateEnum;
   errorMessage: string;
@@ -35,13 +35,13 @@ interface ProjectsState {
 
 const initialState: ProjectsState = {
   loadingState: LoadingStateEnum.initial,
-  errorMessage: "",
+  errorMessage: '',
   projects: [],
   projectsCache: [],
   allProjectsCache: [],
 
   alphabet: [],
-  activeChar: "",
+  activeChar: '',
 
   totalElementCount: 0,
   pageIndex: 1,
@@ -54,14 +54,14 @@ const initialState: ProjectsState = {
   clientNames: [],
 };
 
-//ACTIONS
+// ACTIONS
 const projectsSlice = createSlice({
-  name: "projectsSlice",
+  name: 'projectsSlice',
   initialState,
   reducers: {
     alphabetFilterProjects: (state, action: PayloadAction<string>) => {
       if (action.payload.toLowerCase() === state.activeChar.toLowerCase()) {
-        state.activeChar = "";
+        state.activeChar = '';
         state.pageIndex = 1;
         state.projects = ProjectsUtil.getSetOfProjectsForPage(
           state.pageIndex,
@@ -71,15 +71,16 @@ const projectsSlice = createSlice({
         state.totalElementCount = state.allProjectsCache.length;
       } else if (
         action.payload.toLowerCase() !== state.activeChar.toLowerCase() &&
-        state.activeChar !== ""
+        state.activeChar !== ''
       ) {
-        state.activeChar = action.payload.toLowerCase();
-        state.pageIndex = 1;
-
-        var tempProjectList = ProjectsUtil.filterProjectsStartWithChar(
+        const tempProjectList = ProjectsUtil.filterProjectsStartWithChar(
           action.payload,
           state.allProjectsCache
         );
+
+        state.activeChar = action.payload.toLowerCase();
+        state.pageIndex = 1;
+
         state.projects = ProjectsUtil.getSetOfProjectsForPage(
           state.pageIndex,
           tempProjectList
@@ -88,13 +89,13 @@ const projectsSlice = createSlice({
         state.projectsCache = tempProjectList;
         state.totalElementCount = tempProjectList.length;
       } else {
-        state.activeChar = action.payload.toLowerCase();
-        state.pageIndex = 1;
-
-        var tempProjectList = ProjectsUtil.filterProjectsStartWithChar(
+        const tempProjectList = ProjectsUtil.filterProjectsStartWithChar(
           action.payload,
           state.allProjectsCache
         );
+
+        state.activeChar = action.payload.toLowerCase();
+        state.pageIndex = 1;
 
         state.projects = ProjectsUtil.getSetOfProjectsForPage(
           state.pageIndex,
@@ -113,12 +114,12 @@ const projectsSlice = createSlice({
       );
     },
     searchProjectByTitle: (state, action: PayloadAction<string>) => {
-      state.pageIndex = 1;
-      state.activeChar = "";
-
-      var tempProjectList = state.allProjectsCache.filter((project) =>
+      const tempProjectList = state.allProjectsCache.filter((project) =>
         project.name.toLowerCase().includes(action.payload)
       );
+
+      state.pageIndex = 1;
+      state.activeChar = '';
 
       state.projects = ProjectsUtil.getSetOfProjectsForPage(
         state.pageIndex,
@@ -166,10 +167,10 @@ const projectsSlice = createSlice({
         }
       )
       .addCase(fetchProjectsAsync.rejected, (state, action: any) => {
-        (state.loadingState = LoadingStateEnum.failure),
-          (state.errorMessage = action.error.message),
-          (state.projects = []),
-          (state.projectsCache = []);
+        state.loadingState = LoadingStateEnum.failure;
+        state.errorMessage = action.error.message;
+        state.projects = [];
+        state.projectsCache = [];
       })
       .addCase(
         getAllAvailableLettersAsync.fulfilled,
@@ -200,7 +201,7 @@ const projectsSlice = createSlice({
         }
       )
       .addCase(updateProject.fulfilled, (state, action: PayloadAction<any>) => {
-        var foundIndex = state.projects.findIndex(
+        let foundIndex = state.projects.findIndex(
           (element) => element.id === action.payload.data.id
         );
         state.projects[foundIndex] = action.payload.data;

@@ -1,28 +1,33 @@
 export class MockQueryConstants {
-  private static base: string = "http://localhost:8002";
-  public static users: string = this.base + "/users";
-  public static projects: string = this.base + "/projects";
-  public static clients: string = this.base + "/clients";
-  public static workEntries: string = this.base + "/workEntries";
+  private static base: string = 'http://localhost:8002';
 
-  public static roles: string = this.base + "/roles";
-  public static countries: string = this.base + "/countries";
+  public static users: string = `${this.base}'/users'`;
 
-  //User queries
+  public static projects: string = `${this.base}'/projects'`;
+
+  public static clients: string = `${this.base}'/clients'`;
+
+  public static workEntries: string = `${this.base}'/workEntries'`;
+
+  public static roles: string = `${this.base}'/roles'`;
+
+  public static countries: string = `${this.base}'/countries'`;
+
+  // User queries
   public static getAllUsers(): string {
-    return this.users + "?_expand=role";
+    return `${this.users}?_expand=role`;
   }
 
   public static getAllUsersPagination(pageIndex: number, pageSize: number) {
     return `${this.users}?_page=${pageIndex}&_limit=${pageSize}`;
   }
 
-  //Project queries
+  // Project queries
   public static getAllProjectsPagination(pageIndex: number, pageSize: number) {
     return `${this.projects}?_page=${pageIndex}&_limit=${pageSize}`;
   }
 
-  //Client queries
+  // Client queries
   public static getAllClientsPagination(pageIndex: number, pageSize: number) {
     return `${this.clients}?_page=${pageIndex}&_limit=${pageSize}`;
   }
@@ -31,7 +36,7 @@ export class MockQueryConstants {
     return `${this.clients}?_embed=projects`;
   }
 
-  //WorkEntry queries
+  // WorkEntry queries
   public static getAllWorkEntriesForUser(
     userId: string,
     startDate: Date,
@@ -61,19 +66,19 @@ export class MockQueryConstants {
         ${this.formProjectQuery(true, projectId)}`;
   }
 
-  //HELPER METHODS
+  // HELPER METHODS
   private static formUserQuery(
     andSignRequired: boolean,
     userId?: string
   ): string {
-    return andSignRequired ? "&" : "" + userId ? `userId=${userId}` : "";
+    return andSignRequired ? '&' : `${userId ? `userId=${userId}` : ''}`;
   }
 
   private static formClientQuery(
     andSignRequired: boolean,
     clientId?: string
   ): string {
-    return andSignRequired ? "&" : "" + clientId ? `clientId=${clientId}` : "";
+    return andSignRequired ? '&' : `${clientId ? `clientId=${clientId}` : ''}`;
   }
 
   private static formProjectQuery(
@@ -81,10 +86,8 @@ export class MockQueryConstants {
     projectId?: string
   ) {
     return andSignRequired
-      ? "&"
-      : "" + projectId
-        ? `projectId=${projectId}`
-        : "";
+      ? '&'
+      : `${projectId ? `projectId=${projectId}` : ''}`;
   }
 
   private static formDateGreaterThanEqualQuery(
@@ -92,10 +95,8 @@ export class MockQueryConstants {
     date?: Date
   ) {
     return andSignRequired
-      ? "&"
-      : "" + date
-        ? `date_gte=${date?.toDateString()}`
-        : "";
+      ? '&'
+      : `${date ? `date_gte=${date?.toDateString()}` : ''}`;
   }
 
   private static formDateLowerThanEqualQuery(
@@ -103,9 +104,7 @@ export class MockQueryConstants {
     date?: Date
   ) {
     return andSignRequired
-      ? "&"
-      : "" + date
-        ? `date_lte=${date?.toDateString()}`
-        : "";
+      ? '&'
+      : `${date ? `date_lte=${date?.toDateString()}` : ''}`;
   }
 }

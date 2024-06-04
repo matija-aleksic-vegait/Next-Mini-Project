@@ -1,4 +1,4 @@
-import { Link, Span } from "@atoms";
+import { Span } from '@atoms';
 
 interface PaginationNumberProps {
   pageIndex: number;
@@ -12,19 +12,19 @@ export const PaginationNumber: React.FC<PaginationNumberProps> = ({
   onPageIndexSelect,
 }) => {
   return (
-    <Link
+    <button
       onClick={() => {
         onPageIndexSelect(pageIndex);
       }}
       className={`application-content__list__pagination__number gray-hover ${
         pageIndex === selectedPageIndex
-          ? " application-content__list__pagination__number--selected pointer-default"
-          : "application-content__list__pagination__number pointer-default"
+          ? ' application-content__list__pagination__number--selected pointer-default'
+          : 'application-content__list__pagination__number pointer-default'
       }`}
     >
       <Span className="visually-hidden" label="page" />
       {pageIndex}
-    </Link>
+    </button>
   );
 };
 

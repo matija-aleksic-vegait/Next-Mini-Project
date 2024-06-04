@@ -1,16 +1,16 @@
-import { SearchInputField } from "@molecules";
-import "@css";
+import { SearchInputField } from '@molecules';
+import '@css';
 
 export default {
-  title: "molecules/SearchInputField",
+  title: 'molecules/SearchInputField',
   component: SearchInputField,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const SearchInput = {
   args: {
-    title: "Projects",
+    title: 'Projects',
     searchFunction: (searchString: string) => {
       if (searchString) alert(searchString);
     },

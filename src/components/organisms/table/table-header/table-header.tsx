@@ -1,5 +1,5 @@
-import { Div, Paragraph, Section } from "@atoms";
-import { IconButton, SearchInputField } from "@molecules";
+import { Div, Paragraph, Section } from '@atoms';
+import { IconButton, SearchInputField } from '@molecules';
 
 interface TableHeaderCardProps {
   title: string;

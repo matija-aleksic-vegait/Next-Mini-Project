@@ -1,17 +1,17 @@
-import { AlphabetFilter } from "@organisms";
-import "@css";
+import { AlphabetFilter } from '@organisms';
+import '@css';
 
 export default {
-  title: "organisms/AlphabetFilter",
+  title: 'organisms/AlphabetFilter',
   component: AlphabetFilter,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const TableAlphabetFilter = {
   args: {
-    activeLetter: "A",
-    availableLetters: ["A", "B", "C"],
+    activeLetter: 'A',
+    availableLetters: ['A', 'B', 'C'],
     getAllAlphabetLettersFunction: () => {},
     alphabetFilterFunction: (selectedLetter: string) => alert(selectedLetter),
   },

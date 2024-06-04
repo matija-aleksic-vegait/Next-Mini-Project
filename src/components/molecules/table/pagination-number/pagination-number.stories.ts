@@ -1,11 +1,11 @@
-import { PaginationNumber } from "@molecules";
-import "@css";
+import { PaginationNumber } from '@molecules';
+import '@css';
 
 export default {
-  title: "molecules/PaginationNumber",
+  title: 'molecules/PaginationNumber',
   component: PaginationNumber,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const PaginationNumberExample = {

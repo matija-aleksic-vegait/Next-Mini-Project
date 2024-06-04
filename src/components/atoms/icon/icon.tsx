@@ -1,6 +1,6 @@
-import ImageConstants from "@/constants/image-constants";
-import Image from "next/image";
-import React from "react";
+import ImageConstants from '@/constants/image-constants';
+import Image from 'next/image';
+import React from 'react';
 
 export interface IconProps {
   src: string;

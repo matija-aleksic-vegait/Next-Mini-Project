@@ -1,11 +1,11 @@
-import { Header } from "@organisms";
-import "@css";
+import { Header } from '@organisms';
+import '@css';
 
 export default {
-  title: "organisms/Header",
+  title: 'organisms/Header',
   component: Header,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const MainHeader = {};

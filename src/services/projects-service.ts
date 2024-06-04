@@ -1,6 +1,6 @@
-import { MockQueryConstants } from "@constants";
-import { AxiosService } from "@services";
-import { TableUtil } from "@utils";
+import { MockQueryConstants } from '@constants';
+import { TableUtil } from '@utils';
+import { AxiosService } from './axios-service';
 
 export class ProjectsService {
   public static async getAllProjectsForTable(
@@ -8,12 +8,12 @@ export class ProjectsService {
     pageSize: number
   ) {
     return await AxiosService(
-      "get",
+      'get',
       MockQueryConstants.getAllProjectsPagination(pageIndex, pageSize)
     )
       .then((response: any) => {
         return {
-          count: response.headers["x-total-count"],
+          count: response.headers['x-total-count'],
           projects: response.data,
         };
       })
@@ -23,9 +23,9 @@ export class ProjectsService {
   }
 
   public static async getAllProjectsAlphabet() {
-    return await AxiosService("get", MockQueryConstants.projects)
+    return await AxiosService('get', MockQueryConstants.projects)
       .then((response) => {
-        var foundLetters: string[] = [];
+        const foundLetters: string[] = [];
         response.data.forEach((element: any) => {
           if (
             !TableUtil.letterExistsInList(element.name.charAt(0), foundLetters)
@@ -42,8 +42,8 @@ export class ProjectsService {
 
   public static async getAllProjects() {
     return await AxiosService(
-      "get",
-      MockQueryConstants.projects + "?_sort=name"
+      'get',
+      `${MockQueryConstants.projects} + '?_sort=name'`
     )
       .then((response) => {
         return response.data;
@@ -54,7 +54,7 @@ export class ProjectsService {
   }
 
   public static async createNewProject(data: any) {
-    return await AxiosService("post", MockQueryConstants.projects, {
+    return await AxiosService('post', MockQueryConstants.projects, {
       id: Date.now().toString(),
       name: data.name,
       description: data.description,
@@ -64,7 +64,7 @@ export class ProjectsService {
   }
 
   public static async updateProject(data: any, id: string) {
-    return await AxiosService("put", MockQueryConstants.projects + `/${id}`, {
+    return await AxiosService('put', `${MockQueryConstants.projects}${id}`, {
       name: data.name,
       description: data.description,
       clientId: data.client,
@@ -73,6 +73,6 @@ export class ProjectsService {
   }
 
   public static async deleteProject(id: string) {
-    return await AxiosService("delete", MockQueryConstants.projects + `/${id}`);
+    return await AxiosService('delete', `${MockQueryConstants.projects}${id}`);
   }
 }

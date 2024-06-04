@@ -1,1 +1,1 @@
-export * from "./project-table-page/projects-table-page";
+export * from './project-table-page/projects-table-page';

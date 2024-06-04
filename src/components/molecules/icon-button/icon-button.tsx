@@ -1,5 +1,5 @@
-import React from "react";
-import { Icon, Button, buttonType } from "@atoms";
+import React from 'react';
+import { Icon, Button, buttonType } from '@atoms';
 
 interface IconButtonProps {
   className: string;

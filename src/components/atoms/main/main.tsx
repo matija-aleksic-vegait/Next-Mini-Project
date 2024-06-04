@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 interface MainProps {
   className: string;
@@ -16,3 +16,5 @@ export const Main: React.FC<MainProps> = ({
     </main>
   );
 };
+
+export default Main;

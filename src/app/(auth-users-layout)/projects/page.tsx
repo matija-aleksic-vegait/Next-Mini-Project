@@ -1,8 +1,8 @@
-import { ProjectProvider } from "@providers";
-import { Metadata } from "next";
+import { ProjectProvider } from '@providers';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: 'Projects',
 };
 
 function Projects() {

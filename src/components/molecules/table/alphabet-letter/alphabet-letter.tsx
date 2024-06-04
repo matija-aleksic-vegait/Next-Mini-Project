@@ -1,4 +1,4 @@
-import { Button } from "@atoms";
+import { Button } from '@atoms';
 
 interface AlphabetLetterProps {
   char: string;
@@ -18,9 +18,9 @@ export const AlphabetLetter: React.FC<AlphabetLetterProps> = ({
       className={`application-content__alphabet__letter ${
         alphabet.includes(char)
           ? char.toLowerCase() === activeLetter.toLowerCase()
-            ? "application-content__alphabet__letter--selected yellow-hover"
-            : "yellow-hover"
-          : "application-content__alphabet__letter--disabled pointer-events-disable"
+            ? 'application-content__alphabet__letter--selected yellow-hover'
+            : 'yellow-hover'
+          : 'application-content__alphabet__letter--disabled pointer-events-disable'
       }`}
       aria-label="Select Letter A"
       type="button"

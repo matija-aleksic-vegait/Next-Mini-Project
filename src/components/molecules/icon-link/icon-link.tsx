@@ -1,4 +1,4 @@
-import { Icon, Link } from "@atoms";
+import { Icon, Link } from '@atoms';
 
 interface IconLinkProps {
   src: string;

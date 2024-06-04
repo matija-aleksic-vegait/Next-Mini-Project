@@ -1,4 +1,4 @@
-import { Link, Logo } from "@atoms";
+import { Link, Logo } from '@atoms';
 
 interface LogoLinkProps {
   src: string;
@@ -19,7 +19,7 @@ export const LogoLink: React.FC<LogoLinkProps> = ({
 }) => {
   return (
     <Link href={href} {...props}>
-      <Logo src={src} alt={alt} height={height} width={width}></Logo>
+      <Logo src={src} alt={alt} height={height} width={width} />
     </Link>
   );
 };

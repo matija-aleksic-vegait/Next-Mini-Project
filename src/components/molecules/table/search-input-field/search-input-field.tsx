@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import { useCallback, useEffect, useState } from "react";
-import { IconButton } from "../../../molecules/icon-button/icon-button";
-import { InputField, Div } from "@atoms";
-import { TableConstants } from "@constants";
-import { useDebounce } from "@utils";
+import { useCallback, useEffect, useState } from 'react';
+import { useDebounce } from '@utils';
+import { InputField, Div } from '@atoms';
+import { TableConstants } from '@constants';
+import { IconButton } from '../../icon-button/icon-button';
 
 interface SearchInputFieldProps {
   title: string;
@@ -15,7 +15,7 @@ export const SearchInputField: React.FC<SearchInputFieldProps> = ({
   title,
   searchFunction,
 }) => {
-  const [searchString, setSearchString] = useState("");
+  const [searchString, setSearchString] = useState('');
   const debouncedSearch = useDebounce(
     searchString,
     TableConstants.searchInputDebounceMilliseconds
@@ -28,6 +28,7 @@ export const SearchInputField: React.FC<SearchInputFieldProps> = ({
 
   useEffect(() => {
     debouncedSearchFunction();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearch]);
 
   return (

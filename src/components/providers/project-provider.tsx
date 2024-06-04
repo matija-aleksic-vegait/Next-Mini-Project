@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Provider } from "react-redux";
-import { ProjectsTablePage } from "@pages";
-import { store } from "@redux";
+import { Provider } from 'react-redux';
+import { ProjectsTablePage } from '@pages';
+import { store } from '@redux';
 
 export const ProjectProvider: React.FC = () => {
   return (

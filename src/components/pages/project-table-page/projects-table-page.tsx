@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   AppDispatch,
   RootState,
@@ -16,11 +16,10 @@ import {
   getAllClientNames,
   getAllUserNames,
   deleteProject,
-} from "@redux";
-import { LoadingStateEnum, MockQueryConstants } from "@constants";
-import { EmptyState, ErrorState, LoadingState } from "@molecules";
-import { ProjectsTableTemplate } from "@templates";
-import { ClientUtil, UserUtil } from "@/utils";
+} from '@redux';
+import { LoadingStateEnum } from '@constants';
+import { EmptyState, ErrorState, LoadingState } from '@molecules';
+import { ProjectsTableTemplate } from '@templates';
 
 export const ProjectsTablePage: React.FC = () => {
   const loadingState = useSelector(
@@ -54,6 +53,8 @@ export const ProjectsTablePage: React.FC = () => {
     (state: RootState) => state.projectsStore.updateModalProject
   );
 
+  const dispatch = useDispatch<AppDispatch>();
+
   const newProjectModal = () => {
     dispatch(toggleCreateNewModal());
   };
@@ -74,8 +75,8 @@ export const ProjectsTablePage: React.FC = () => {
     dispatch(alphabetFilterProjects(char));
   };
 
-  const changePageIdx = (pageIndex: number) => {
-    dispatch(changePageIndex(pageIndex));
+  const changePageIdx = (pageIndx: number) => {
+    dispatch(changePageIndex(pageIndx));
   };
 
   const closeProjectModal = async () => {
@@ -86,17 +87,16 @@ export const ProjectsTablePage: React.FC = () => {
     dispatch(deleteProject(id));
   };
 
-  const dispatch = useDispatch<AppDispatch>();
-
   useEffect(() => {
     dispatch(fetchProjectsAsync());
     dispatch(getAllUserNames());
     dispatch(getAllClientNames());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loadingState === LoadingStateEnum.loading) return LoadingState({});
   if (loadingState === LoadingStateEnum.empty)
-    return EmptyState({ entitiesName: "Projects" });
+    return EmptyState({ entitiesName: 'Projects' });
   if (loadingState === LoadingStateEnum.failure)
     return ErrorState({ errorMessage: errorMessage });
   return (

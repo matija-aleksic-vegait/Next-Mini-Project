@@ -1,6 +1,6 @@
-import { TableConstants } from "@constants";
-import { Li, Nav, Ul, Link } from "@atoms";
-import { PaginationNumber, IconLink } from "@molecules";
+import { TableConstants } from '@constants';
+import { Li, Nav, Ul } from '@atoms';
+import { PaginationNumber, IconLink } from '@molecules';
 
 interface PaginationProps {
   pageIndex: number;
@@ -13,7 +13,7 @@ export const Pagination: React.FC<PaginationProps> = ({
   totalElementCount,
   changePageIndexFunction,
 }) => {
-  var pageIndexes: Array<number> = [];
+  let pageIndexes: Array<number> = [];
 
   pageIndexes = new Array(
     Math.ceil(totalElementCount / TableConstants.elementsPerPage)
@@ -24,9 +24,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   const firstIndex = pageIndexes.shift();
   const lastIndex = pageIndexes.pop();
 
-  const onPageIndexSelect = (pageIndex: number) => {
-    if (pageIndex > 0 && pageIndex < pageIndexes.length + 3)
-      changePageIndexFunction(pageIndex);
+  const onPageIndexSelect = (pageIndx: number) => {
+    if (pageIndx > 0 && pageIndx < pageIndexes.length + 3)
+      changePageIndexFunction(pageIndx);
   };
 
   return (
@@ -52,10 +52,9 @@ export const Pagination: React.FC<PaginationProps> = ({
 
         {pageIndex > TableConstants.numOfIndexesAdjacentForDots && (
           <Li>
-            <Link
-              className="application-content__list__pagination__number pointer-events-disable"
-              label="..."
-            />
+            <button className="application-content__list__pagination__number pointer-events-disable">
+              ...
+            </button>
           </Li>
         )}
 
@@ -83,10 +82,10 @@ export const Pagination: React.FC<PaginationProps> = ({
         {pageIndex + TableConstants.numOfIndexesAdjacentForDots <=
           lastIndex! && (
           <Li>
-            <Link
-              className="application-content__list__pagination__number pointer-events-disable"
-              label="..."
-            />
+            <button className="application-content__list__pagination__number pointer-events-disable">
+              {' '}
+              ...{' '}
+            </button>
           </Li>
         )}
 

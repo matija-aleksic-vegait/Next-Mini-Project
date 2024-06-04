@@ -1,10 +1,9 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { ProjectsService, UserService, ClientService } from "@services";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { ProjectsService, UserService, ClientService } from '@services';
 
 export const fetchProjectsAsync = createAsyncThunk(
-  "projectsSlice/fetchProjects",
+  'projectsSlice/fetchProjects',
   async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
     return await ProjectsService.getAllProjects().then((response) => {
       return response;
     });
@@ -12,7 +11,7 @@ export const fetchProjectsAsync = createAsyncThunk(
 );
 
 export const getAllAvailableLettersAsync = createAsyncThunk(
-  "projectsSlice/getAllProjectsAlphabet",
+  'projectsSlice/getAllProjectsAlphabet',
   async () => {
     return await ProjectsService.getAllProjectsAlphabet()
       .then((response) => {
@@ -25,7 +24,7 @@ export const getAllAvailableLettersAsync = createAsyncThunk(
 );
 
 export const getAllUserNames = createAsyncThunk(
-  "projectsSlice/getAllUserNames",
+  'projectsSlice/getAllUserNames',
   async () => {
     return await UserService.getAllUsers()
       .then((response) => {
@@ -38,7 +37,7 @@ export const getAllUserNames = createAsyncThunk(
 );
 
 export const getAllClientNames = createAsyncThunk(
-  "projectsSlice/getAllClientNames",
+  'projectsSlice/getAllClientNames',
   async () => {
     return await ClientService.getAllClients()
       .then((response) => {
@@ -51,7 +50,7 @@ export const getAllClientNames = createAsyncThunk(
 );
 
 export const createNewProject = createAsyncThunk(
-  "projectsSlice/createNewProject",
+  'projectsSlice/createNewProject',
   async (data: any) => {
     return await ProjectsService.createNewProject(data)
       .then((response) => {
@@ -64,7 +63,7 @@ export const createNewProject = createAsyncThunk(
 );
 
 export const updateProject = createAsyncThunk(
-  "projectsSlice/updateProject",
+  'projectsSlice/updateProject',
   async (data: any) => {
     return await ProjectsService.updateProject(data.data, data.id)
       .then((response) => {
@@ -77,7 +76,7 @@ export const updateProject = createAsyncThunk(
 );
 
 export const deleteProject = createAsyncThunk(
-  "projectsSlice/deleteProject",
+  'projectsSlice/deleteProject',
   async (id: string) => {
     return await ProjectsService.deleteProject(id)
       .then(() => {

@@ -1,11 +1,11 @@
-import { Pagination } from "@organisms";
-import "@css";
+import { Pagination } from '@organisms';
+import '@css';
 
 export default {
-  title: "organisms/Pagination",
+  title: 'organisms/Pagination',
   component: Pagination,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const PaginationExample = {

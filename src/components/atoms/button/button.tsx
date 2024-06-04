@@ -1,6 +1,4 @@
-import React from "react";
-
-export type buttonType = "button" | "submit" | "reset";
+export type buttonType = 'button' | 'submit' | 'reset';
 
 export interface ButtonProps {
   className: string;

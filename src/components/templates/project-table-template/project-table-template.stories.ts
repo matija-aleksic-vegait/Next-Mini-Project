@@ -1,16 +1,16 @@
-import { ProjectsTableTemplate } from "@templates";
+import { ProjectsTableTemplate } from '@templates';
 
 export default {
-  title: "templates/ProjectsTableTemplate",
+  title: 'templates/ProjectsTableTemplate',
   component: ProjectsTableTemplate,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const ProjectsTableExample = {
   args: {
     newProjectModal: () => {},
-    searchProjects: (searchString: string) => {},
+    searchProjects: () => {},
     getAllAvailableLetters: () => {},
     selectActiveLetter: () => {},
     updateProjectModal: () => {},
@@ -19,14 +19,14 @@ export const ProjectsTableExample = {
     deleteProjectEntity: () => {},
 
     projects: [
-      { name: "Name1", description: "Description" },
-      { name: "Name2", description: "Description" },
-      { name: "Name3", description: "Description" },
+      { name: 'Name1', description: 'Description' },
+      { name: 'Name2', description: 'Description' },
+      { name: 'Name3', description: 'Description' },
     ],
-    alphabet: ["N"],
+    alphabet: ['N'],
     pageIndex: 7,
     totalElementCount: 50,
-    activeChar: "",
+    activeChar: '',
     isCreateNewModalOpen: false,
     isUpdateModalOpen: false,
     updateProject: undefined,

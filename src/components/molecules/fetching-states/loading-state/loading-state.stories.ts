@@ -1,11 +1,11 @@
-import { LoadingState } from "@molecules";
-import "@css";
+import { LoadingState } from '@molecules';
+import '@css';
 
 export default {
-  title: "molecules/FetchingStates/LoadingState",
+  title: 'molecules/FetchingStates/LoadingState',
   component: LoadingState,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const Example = {

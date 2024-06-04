@@ -1,4 +1,4 @@
-import { Button, Div, Icon, Span } from "@atoms";
+import { Button, Div, Icon, Span } from '@atoms';
 
 interface ProjectCardProps {
   project: any;

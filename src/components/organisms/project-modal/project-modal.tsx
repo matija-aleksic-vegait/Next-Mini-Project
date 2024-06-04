@@ -1,9 +1,9 @@
-import { AppDispatch, RootState } from "@/redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { closeModal, deleteProject } from "@redux";
-import { Div } from "@atoms";
-import { ModalHeader } from "@molecules";
-import { ProjectForm } from "../forms/project-form/project-form";
+import { AppDispatch, RootState } from '@/redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal, deleteProject } from '@redux';
+import { Div } from '@atoms';
+import { ModalHeader } from '@molecules';
+import { ProjectForm } from '../forms/project-form/project-form';
 
 interface ProjectModalProps {
   isOpenModal: boolean;
@@ -36,40 +36,38 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
   };
 
   return (
-    <>
+    <Div>
       {isOpenModal && (
-        <>
-          <Div className="modal-wrapper">
-            <Div
-              id="create-project-modal-overlay"
-              className="modal-overlay modal-overlay--background-shadow"
-              onClick={() => {
-                closeModalFunction();
-              }}
-            ></Div>
-            <Div
-              className="modal"
-              role="dialog"
-              aria-modal="true"
-              aria-labelledby="modal-title"
-            >
-              <ModalHeader
-                name="Project"
-                closeModalFunction={closeModalFunction}
-                isUpdate={isUpdate}
-              />
+        <Div className="modal-wrapper">
+          <Div
+            id="create-project-modal-overlay"
+            className="modal-overlay modal-overlay--background-shadow"
+            onClick={() => {
+              closeModalFunction();
+            }}
+          />
+          <Div
+            className="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+          >
+            <ModalHeader
+              name="Project"
+              closeModalFunction={closeModalFunction}
+              isUpdate={isUpdate}
+            />
 
-              <ProjectForm
-                isUpdate={isUpdate}
-                project={project}
-                clientNames={clientNames}
-                userNames={userNames}
-                deleteProjectFunction={deleteProjectFunction}
-              />
-            </Div>
+            <ProjectForm
+              isUpdate={isUpdate}
+              project={project}
+              clientNames={clientNames}
+              userNames={userNames}
+              deleteProjectFunction={deleteProjectFunction}
+            />
           </Div>
-        </>
+        </Div>
       )}
-    </>
+    </Div>
   );
 };

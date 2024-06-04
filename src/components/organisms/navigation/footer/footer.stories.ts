@@ -1,11 +1,11 @@
-import { Footer } from "@organisms";
-import "@css";
+import { Footer } from '@organisms';
+import '@css';
 
 export default {
-  title: "organisms/Footer",
+  title: 'organisms/Footer',
   component: Footer,
   parameters: {},
-  tags: ["autodocs"],
+  tags: ['autodocs'],
 };
 
 export const MainFooter = {};
