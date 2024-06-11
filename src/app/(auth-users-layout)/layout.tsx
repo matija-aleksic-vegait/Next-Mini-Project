@@ -1,5 +1,4 @@
-import Footer from "@/components/navigation/footer";
-import Header from "@/components/navigation/header";
+import { Header, Footer } from '@organisms';
 
 export default function RootLayout({
   children,

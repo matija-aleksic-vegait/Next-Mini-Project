@@ -1,20 +1,26 @@
 @font-face {
-  font-family: "PPMori-Extralight";
-  src: url("../fonts/web-fonts/PPMori-Extralight.woff2") format("woff2"), url("../fonts/web-fonts/PPMori-Extralight.woff") format("woff");
+  font-family: 'PPMori-Extralight';
+  src:
+    url('../fonts/web-fonts/PPMori-Extralight.woff2') format('woff2'),
+    url('../fonts/web-fonts/PPMori-Extralight.woff') format('woff');
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "PPMori-Regular";
-  src: url("../fonts/web-fonts/PPMori-Regular.woff2") format("woff2"), url("../fonts/web-fonts/PPMori-Regular.woff") format("woff");
+  font-family: 'PPMori-Regular';
+  src:
+    url('../fonts/web-fonts/PPMori-Regular.woff2') format('woff2'),
+    url('../fonts/web-fonts/PPMori-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 @font-face {
-  font-family: "PPMori-Bold";
-  src: url("../fonts/web-fonts/PPMori-Bold.woff2") format("woff2"), url("../fonts/web-fonts/PPMori-Bold.woff") format("woff");
+  font-family: 'PPMori-Bold';
+  src:
+    url('../fonts/web-fonts/PPMori-Bold.woff2') format('woff2'),
+    url('../fonts/web-fonts/PPMori-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -23,7 +29,7 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "PPMori-Regular", sans-serif;
+  font-family: 'PPMori-Regular', sans-serif;
   font-weight: 400;
   font-size: 14px;
   line-height: 14px;
@@ -66,6 +72,9 @@ ul {
 .application-header__menu__list__item {
   text-decoration: none;
   color: #000000;
+  padding: 15%;
+  border: 2px solid white;
+  border-radius: 15%;
 }
 .application-header__menu__hamburger-icon {
   display: none;
@@ -294,7 +303,7 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  z-index: 1000;    
+  z-index: 1000;
 }
 
 .modal-wrapper {
@@ -383,11 +392,11 @@ ul {
 .input-box__input-field:focus-visible {
   outline: 1.5px solid #000000;
 }
-.input-box__input-field[type=search]::-webkit-search-cancel-button {
+.input-box__input-field[type='search']::-webkit-search-cancel-button {
   appearance: none;
   width: 24px;
   height: 24px;
-  background: url("../icons/cancel.svg") no-repeat center center;
+  background: url('../icons/cancel.svg') no-repeat center center;
 }
 .input-box__btn {
   position: absolute;
@@ -403,7 +412,7 @@ ul {
 }
 .input-box__select {
   appearance: none;
-  background-image: url("../icons/chevron-down.svg");
+  background-image: url('../icons/chevron-down.svg');
   background-repeat: no-repeat;
   background-position: right 24px center;
 }
@@ -611,14 +620,12 @@ ul {
 
 /*# sourceMappingURL=style.css.map */
 
-
-
 /* KOMENTARI ZA KSENIJU */
 /* ==================== */
 
 /* Volio bi da mogu samo ovako kad mi treba nesto jednostavno npr. da align text na sredinu da sa jednom kalsom mogu to da uradim
 da ne pisem custom svoje */
-.text-align-center{
+.text-align-center {
   text-align: center;
 }
 
@@ -633,34 +640,37 @@ da ne pisem custom svoje */
  mt-0 = margin-top: 0;
  mb-0 = margin-bottom: 0;
    */
-.loading-status{
+.loading-status {
   font-size: 2rem;
   margin: 20px;
 }
 
 /* kul bi bilo da imam ovako osnove boje (crvenu = errori, zelenu za potvrdne response poruke,...) */
-.text-red{
+.text-red {
   color: red;
 }
 
-
 /* Kada Alphabet slova koja nisu pronadjena da mogu jednostavno da im isljucim hover efekat */
-.pointer-events-disable{
+.pointer-events-disable {
   pointer-events: none;
 }
-.pointer-default{
+.pointer-default {
   cursor: default;
 }
 
-
-.gray-hover:hover{
+.gray-hover:hover {
   background-color: #81817e;
 }
-.yellow-hover:hover{
+.yellow-hover:hover {
   background-color: yellow;
 }
+.shadow-hover:hover {
+  box-shadow:
+    rgba(67, 71, 85, 0.27) 0px 0px 0.25em,
+    rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
 
-.validation-error-message{
+.validation-error-message {
   display: flex;
   color: red;
   justify-content: center;

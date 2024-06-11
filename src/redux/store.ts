@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import projectsReducer from "../features/projects/redux/projects-slice";
+import { configureStore } from '@reduxjs/toolkit';
+import projectsReducer from './projects/projects-slice';
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>

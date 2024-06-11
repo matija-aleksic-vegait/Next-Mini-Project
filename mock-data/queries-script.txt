@@ -9,7 +9,7 @@ DELETE /users/id
 
 Conditions:
 -----------
-" " → ==
+' ' → ==
 lt → <
 lte → <=
 gt → >
