@@ -50,13 +50,13 @@ export const Pagination: React.FC<PaginationProps> = ({
           pageIndex={firstIndex!}
         />
 
-        {pageIndex > TableConstants.numOfIndexesAdjacentForDots && (
+        {/* {pageIndex > TableConstants.numOfIndexesAdjacentForDots && (
           <Li>
-            <button className="application-content__list__pagination__number pointer-events-disable">
+            <Link className="application-content__list__pagination__number pointer-events-disable">
               ...
-            </button>
+            </Link>
           </Li>
-        )}
+        )} */}
 
         {pageIndexes &&
           pageIndexes
@@ -79,15 +79,14 @@ export const Pagination: React.FC<PaginationProps> = ({
               </Li>
             ))}
 
-        {pageIndex + TableConstants.numOfIndexesAdjacentForDots <=
+        {/* {pageIndex + TableConstants.numOfIndexesAdjacentForDots <=
           lastIndex! && (
           <Li>
-            <button className="application-content__list__pagination__number pointer-events-disable">
-              {' '}
-              ...{' '}
-            </button>
+            <Link className="application-content__list__pagination__number pointer-events-disable">
+              ...
+            </Link>
           </Li>
-        )}
+        )} */}
 
         {lastIndex && (
           <PaginationNumber

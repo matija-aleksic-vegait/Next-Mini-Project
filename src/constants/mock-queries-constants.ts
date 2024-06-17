@@ -1,17 +1,17 @@
 export class MockQueryConstants {
   private static base: string = 'http://localhost:8002';
 
-  public static users: string = `${this.base}'/users'`;
+  public static users: string = `${this.base}/users`;
 
-  public static projects: string = `${this.base}'/projects'`;
+  public static projects: string = `${this.base}/projects`;
 
-  public static clients: string = `${this.base}'/clients'`;
+  public static clients: string = `${this.base}/clients`;
 
-  public static workEntries: string = `${this.base}'/workEntries'`;
+  public static workEntries: string = `${this.base}/workEntries`;
 
-  public static roles: string = `${this.base}'/roles'`;
+  public static roles: string = `${this.base}/roles`;
 
-  public static countries: string = `${this.base}'/countries'`;
+  public static countries: string = `${this.base}/countries`;
 
   // User queries
   public static getAllUsers(): string {
