@@ -50,7 +50,13 @@
   "globals": {
     "React": "readonly"
   },
+<<<<<<< Updated upstream
   "parserOptions": {
     "sourceType": "module"
+=======
+  "rules": {
+    
+
+>>>>>>> Stashed changes
   }
 }

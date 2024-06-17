@@ -1,6 +1,12 @@
+<<<<<<< Updated upstream
 import { MockQueryConstants } from '@constants';
 import { TableUtil } from '@utils';
 import { AxiosService } from './axios-service';
+=======
+import { MockQueryConstants } from "@constants";
+import { AxiosService } from "./axios-service";
+import { TableUtil } from "@utils";
+>>>>>>> Stashed changes
 
 export class ProjectsService {
   public static async getAllProjectsForTable(

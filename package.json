@@ -19,6 +19,7 @@
     "@hookform/resolvers": "3.3.4",
     "@reduxjs/toolkit": "2.2.3",
     "axios": "1.5",
+    "eslint-config-airbnb": "^19.0.4",
     "install": "0.13.0",
     "json-server": "0.17.4",
     "next": "13.5",

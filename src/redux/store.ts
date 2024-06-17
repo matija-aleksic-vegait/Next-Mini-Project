@@ -2,8 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import projectsReducer from './projects/projects-slice';
 
 export const store = configureStore({
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
       serializableCheck: false,
     }),
   reducer: {
